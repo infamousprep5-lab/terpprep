@@ -145,6 +145,88 @@ const ela = {
             'Comparing a lid to "a small gold moon" without "like" or "as" is a metaphor. It elevates a humble household task, suggesting the grandmother’s labor has quiet beauty and meaning.',
         },
         {
+          id: 'ela-rl-7',
+          type: 'single',
+          passage:
+            'From "Bus Stop in January"\n\nThe shelter’s glass was a fogged map of breath. Maya stamped her feet and counted the minutes the way her mother counted bus fares — carefully, without hope of leftovers. When the headlights finally bloomed at the corner, she did not rush. She waited until the doors sighed open, as if arriving too eagerly might scare the warmth away.',
+          prompt: 'What does Maya’s decision not to rush most strongly suggest?',
+          choices: [
+            { id: 'a', text: 'She is uninterested in reaching her destination.' },
+            { id: 'b', text: 'She treats small comforts as fragile and worth approaching carefully.' },
+            { id: 'c', text: 'She is angry at the bus driver for being late.' },
+            { id: 'd', text: 'She has forgotten which bus she needs.' },
+          ],
+          answer: 'b',
+          explanation:
+            'Waiting "as if arriving too eagerly might scare the warmth away" shows she treats the coming warmth as something delicate — a careful, almost protective stance toward a small comfort.',
+        },
+        {
+          id: 'ela-rl-8',
+          type: 'single',
+          passage:
+            'From "Bus Stop in January" (continued)\n\nInside, a stranger offered half a scarf without asking her name. Maya accepted it the way people accept weather — as a fact, not a favor — and only later wondered whether kindness, too, could be a kind of route that runs on time.',
+          prompt: 'How does the scarf moment develop Maya’s character?',
+          choices: [
+            { id: 'a', text: 'It shows she distrusts everyone she meets.' },
+            { id: 'b', text: 'It reveals she is used to hardship and slow to name care as personal kindness.' },
+            { id: 'c', text: 'It proves she plans to return the scarf immediately.' },
+            { id: 'd', text: 'It suggests she is wealthy and often receives gifts.' },
+          ],
+          answer: 'b',
+          explanation:
+            'Accepting the scarf "as a fact, not a favor" and only later considering kindness as intentional shows someone accustomed to surviving, not expecting care — a quiet depth of character.',
+        },
+        {
+          id: 'ela-rl-9',
+          type: 'multi',
+          passage:
+            'From "Bus Stop in January"\n\nThe shelter’s glass was a fogged map of breath. Maya stamped her feet and counted the minutes the way her mother counted bus fares — carefully, without hope of leftovers. When the headlights finally bloomed at the corner, she did not rush. She waited until the doors sighed open, as if arriving too eagerly might scare the warmth away.\n\nInside, a stranger offered half a scarf without asking her name. Maya accepted it the way people accept weather — as a fact, not a favor — and only later wondered whether kindness, too, could be a kind of route that runs on time.',
+          prompt: 'Select the TWO details that best support the idea that Maya’s life is shaped by scarcity.',
+          choices: [
+            { id: 'a', text: '"counted the minutes the way her mother counted bus fares — carefully, without hope of leftovers"' },
+            { id: 'b', text: '"headlights finally bloomed at the corner"' },
+            { id: 'c', text: '"accepted it the way people accept weather — as a fact, not a favor"' },
+            { id: 'd', text: '"doors sighed open"' },
+            { id: 'e', text: '"fogged map of breath"' },
+          ],
+          answer: ['a', 'c'],
+          explanation:
+            'Counting fares "without hope of leftovers" and treating kindness as impersonal "weather" both signal a life trained by scarcity. The other details are atmospheric but do not primarily show scarcity.',
+        },
+        {
+          id: 'ela-rl-10',
+          type: 'single',
+          passage:
+            'From "The Chess Clock"\n\nUncle Ray never played to win so much as to teach. Each lesson ended the same way: he tipped his king, smiled, and said, "Now tell me what I gave you."',
+          prompt: 'What does tipping the king most clearly symbolize in this passage?',
+          choices: [
+            { id: 'a', text: 'Anger at losing a competitive game.' },
+            { id: 'b', text: 'A deliberate choice to value teaching over victory.' },
+            { id: 'c', text: 'Confusion about the rules of chess.' },
+            { id: 'd', text: 'A refusal to speak to his niece again.' },
+          ],
+          answer: 'b',
+          explanation:
+            'He "never played to win so much as to teach," and tipping the king while asking what he "gave" shows surrender used as pedagogy — prioritizing learning over winning.',
+        },
+        {
+          id: 'ela-rl-11',
+          type: 'cr',
+          points: 3,
+          passage:
+            'Source Texts for Writing\n\nFrom "Bus Stop in January"\n\nThe shelter’s glass was a fogged map of breath. Maya stamped her feet and counted the minutes the way her mother counted bus fares — carefully, without hope of leftovers. When the headlights finally bloomed at the corner, she did not rush. She waited until the doors sighed open, as if arriving too eagerly might scare the warmth away.\n\nInside, a stranger offered half a scarf without asking her name. Maya accepted it the way people accept weather — as a fact, not a favor — and only later wondered whether kindness, too, could be a kind of route that runs on time.\n\nFrom "The Chess Clock"\n\nUncle Ray never played to win so much as to teach. Each lesson ended the same way: he tipped his king, smiled, and said, "Now tell me what I gave you."',
+          prompt:
+            'Both passages explore how people give or receive care. In a well-organized paragraph, analyze how each text presents care. Use specific evidence from BOTH passages.',
+          sampleResponse:
+            'Both texts present care as something quiet and intentional rather than flashy. In "Bus Stop in January," a stranger offers "half a scarf without asking her name," and Maya only later realizes kindness can be "a kind of route that runs on time." The care is practical and almost anonymous, yet it reshapes how she understands generosity. In "The Chess Clock," Uncle Ray tips his king and asks what he "gave," showing care as teaching — he sacrifices winning so someone else can learn. Together the passages suggest that care often looks like small, deliberate acts: shared warmth on a bus, or a game lost on purpose so a lesson can be won.',
+          rubric: [
+            'States a clear controlling idea about how care is shown.',
+            'Uses specific evidence from BOTH passages.',
+            'Explains how the evidence supports the idea (not only summary).',
+            'Organized and clear enough that errors do not block meaning.',
+          ],
+        },
+        {
           id: 'ela-rl-6',
           type: 'cr',
           points: 3,
@@ -270,6 +352,88 @@ const ela = {
             'Organized with logical transitions; controls conventions well enough that errors do not interfere with meaning.',
           ],
         },
+        {
+          id: 'ela-ri-7',
+          type: 'single',
+          passage:
+            'From "Why Cities Plant Trees"\n\nUrban foresters plant street trees not only for beauty. Canopy cover lowers summer temperatures, reduces stormwater runoff, and has been linked in several studies to lower asthma-related emergency visits. The catch is maintenance: young trees need watering for three years, and budget cuts often hit pruning first — which is when trees become hazards instead of assets.',
+          prompt: 'Which statement best expresses the central idea of the passage?',
+          choices: [
+            { id: 'a', text: 'Street trees are planted only to make cities look nicer.' },
+            { id: 'b', text: 'Street trees offer real public-health and environmental benefits, but only if cities fund long-term care.' },
+            { id: 'c', text: 'Cities should stop planting trees because maintenance is impossible.' },
+            { id: 'd', text: 'Asthma is caused entirely by a lack of street trees.' },
+          ],
+          answer: 'b',
+          explanation:
+            'The passage lists benefits (cooling, stormwater, health links) and then stresses the "catch" of multi-year care and budgets — benefits depend on sustained maintenance.',
+        },
+        {
+          id: 'ela-ri-8',
+          type: 'single',
+          passage:
+            'From "Why Cities Plant Trees"\n\nUrban foresters plant street trees not only for beauty. Canopy cover lowers summer temperatures, reduces stormwater runoff, and has been linked in several studies to lower asthma-related emergency visits. The catch is maintenance: young trees need watering for three years, and budget cuts often hit pruning first — which is when trees become hazards instead of assets.',
+          prompt: 'How does the phrase "The catch is maintenance" function in the argument?',
+          choices: [
+            { id: 'a', text: 'It introduces a limitation that complicates the benefits just listed.' },
+            { id: 'b', text: 'It proves trees have no benefits at all.' },
+            { id: 'c', text: 'It changes the topic to national parks.' },
+            { id: 'd', text: 'It repeats the opening claim without adding ideas.' },
+          ],
+          answer: 'a',
+          explanation:
+            '"The catch" signals a trade-off: after listing benefits, the author complicates the case by showing what those benefits require.',
+        },
+        {
+          id: 'ela-ri-9',
+          type: 'multi',
+          passage:
+            'From "Why Cities Plant Trees"\n\nUrban foresters plant street trees not only for beauty. Canopy cover lowers summer temperatures, reduces stormwater runoff, and has been linked in several studies to lower asthma-related emergency visits. The catch is maintenance: young trees need watering for three years, and budget cuts often hit pruning first — which is when trees become hazards instead of assets.',
+          prompt: 'Select the TWO details that best support the claim that trees need upkeep to stay beneficial.',
+          choices: [
+            { id: 'a', text: '"linked in several studies to lower asthma-related emergency visits"' },
+            { id: 'b', text: '"budget cuts often hit pruning first — which is when trees become hazards instead of assets"' },
+            { id: 'c', text: '"not only for beauty"' },
+            { id: 'd', text: '"Urban foresters plant street trees"' },
+            { id: 'e', text: '"young trees need watering for three years"' },
+          ],
+          answer: ['b', 'e'],
+          explanation:
+            'Watering for three years and pruning cuts that create hazards directly support the upkeep requirement. Asthma links show a benefit, not the maintenance condition.',
+        },
+        {
+          id: 'ela-ri-10',
+          type: 'single',
+          passage:
+            'From "The Quiet Power of Sleep"\n\nTeenagers need about eight to ten hours of sleep, yet early school start times collide with natural adolescent sleep cycles. Districts that shifted start times later reported fewer car crashes among teen drivers and small gains in attendance. Skeptics argue that after-school jobs and sports make later dismissals harder for families.',
+          prompt: 'Which choice best describes how the author organizes the paragraph?',
+          choices: [
+            { id: 'a', text: 'Problem, evidence of a proposed fix, then a counterconcern.' },
+            { id: 'b', text: 'Strict chronological history of one school year.' },
+            { id: 'c', text: 'A list of unrelated facts with no connection.' },
+            { id: 'd', text: 'A step-by-step lab procedure.' },
+          ],
+          answer: 'a',
+          explanation:
+            'The paragraph states the sleep/start-time problem, cites crash and attendance evidence for later starts, then presents skeptics’ concerns — problem, evidence, counterconcern.',
+        },
+        {
+          id: 'ela-ri-11',
+          type: 'cr',
+          points: 4,
+          passage:
+            'Source Text for Writing\n\nFrom "Why Cities Plant Trees"\n\nUrban foresters plant street trees not only for beauty. Canopy cover lowers summer temperatures, reduces stormwater runoff, and has been linked in several studies to lower asthma-related emergency visits. The catch is maintenance: young trees need watering for three years, and budget cuts often hit pruning first — which is when trees become hazards instead of assets.\n\nFrom "The Quiet Power of Sleep"\n\nTeenagers need about eight to ten hours of sleep, yet early school start times collide with natural adolescent sleep cycles. Districts that shifted start times later reported fewer car crashes among teen drivers and small gains in attendance. Skeptics argue that after-school jobs and sports make later dismissals harder for families.',
+          prompt:
+            'Both passages discuss a public policy with benefits and trade-offs. Write a paragraph that compares how each author balances benefits with challenges. Use evidence from BOTH passages.',
+          sampleResponse:
+            'Both authors present policies as promising but incomplete without facing costs. In "Why Cities Plant Trees," benefits like cooler temperatures and fewer asthma visits are immediately tempered by "The catch is maintenance," including three years of watering and pruning budgets that, if cut, turn trees into "hazards." In "The Quiet Power of Sleep," later start times are linked to fewer teen crashes and better attendance, yet skeptics warn that later dismissals complicate jobs and sports. Each passage therefore refuses a one-sided pitch: public gains are real, but only if communities plan for the practical burdens that come with them.',
+          rubric: [
+            'Makes a clear comparison about how both passages balance benefits and challenges.',
+            'Uses specific evidence from BOTH passages.',
+            'Explains the comparison rather than only summarizing.',
+            'Organized and controlled enough that errors do not interfere with meaning.',
+          ],
+        },
       ],
     },
     {
@@ -358,6 +522,87 @@ const ela = {
           explanation:
             'The context — refusing to quit and pushing past failure — matches persistent and determined. The other options contradict or are unrelated to the described behavior.',
         },
+        {
+          id: 'ela-v-6',
+          type: 'single',
+          passage:
+            'The speaker’s tone in the poem shifts from "guarded" in the opening stanzas to "unguarded wonder" in the final lines.',
+          prompt: 'In this context, "unguarded" most nearly means',
+          choices: [
+            { id: 'a', text: 'unprotected from physical danger.' },
+            { id: 'b', text: 'open and without emotional reserve.' },
+            { id: 'c', text: 'angry and ready to argue.' },
+            { id: 'd', text: 'confused about the poem’s meaning.' },
+          ],
+          answer: 'b',
+          explanation:
+            'Paired against "guarded," "unguarded wonder" signals emotional openness — wonder expressed without holding back — not literal lack of protection.',
+        },
+        {
+          id: 'ela-v-7',
+          type: 'single',
+          passage:
+            'Critics called the mayor’s plan "piecemeal," noting that each neighborhood received a different fix instead of one coordinated citywide strategy.',
+          prompt: 'What does "piecemeal" suggest about the plan?',
+          choices: [
+            { id: 'a', text: 'It was done in separate, incomplete parts rather than as a unified whole.' },
+            { id: 'b', text: 'It was expensive beyond what the city could afford.' },
+            { id: 'c', text: 'It was popular with every neighborhood equally.' },
+            { id: 'd', text: 'It was finished ahead of schedule.' },
+          ],
+          answer: 'a',
+          explanation:
+            'The contrast with "one coordinated citywide strategy" shows piecemeal means fragmented, part-by-part action rather than a unified plan.',
+        },
+        {
+          id: 'ela-v-8',
+          type: 'multi',
+          passage:
+            'In the article, the scientist’s claim is called "tentative": she presents early findings, invites peer review, and warns that larger studies are still needed.',
+          prompt: 'Select the TWO words closest in meaning to "tentative" as used here.',
+          choices: [
+            { id: 'a', text: 'provisional' },
+            { id: 'b', text: 'final' },
+            { id: 'c', text: 'cautious' },
+            { id: 'd', text: 'reckless' },
+            { id: 'e', text: 'secret' },
+          ],
+          answer: ['a', 'c'],
+          explanation:
+            'Early findings that invite review and call for larger studies are provisional and cautious — not final, reckless, or secret.',
+        },
+        {
+          id: 'ela-v-9',
+          type: 'single',
+          passage:
+            'The historian writes that the treaty was a "watershed" moment: afterward, trade routes, alliances, and borders all shifted in lasting ways.',
+          prompt: 'The word "watershed" most nearly means',
+          choices: [
+            { id: 'a', text: 'a minor, easily forgotten event.' },
+            { id: 'b', text: 'a turning point that marks a lasting change.' },
+            { id: 'c', text: 'a flood that destroyed the capital.' },
+            { id: 'd', text: 'a secret negotiation held at night.' },
+          ],
+          answer: 'b',
+          explanation:
+            'The lasting shifts in trade, alliances, and borders show watershed as a decisive turning point, not a minor or purely literal flood event.',
+        },
+        {
+          id: 'ela-v-10',
+          type: 'single',
+          passage:
+            'Although the two candidates "concurred" on funding schools, they disagreed sharply on how to raise the money.',
+          prompt: 'As used in the sentence, "concurred" most nearly means',
+          choices: [
+            { id: 'a', text: 'competed.' },
+            { id: 'b', text: 'agreed.' },
+            { id: 'c', text: 'campaigned.' },
+            { id: 'd', text: 'resigned.' },
+          ],
+          answer: 'b',
+          explanation:
+            'The contrast with "disagreed sharply" on another issue shows that concurred means they agreed on school funding.',
+        },
       ],
     },
     {
@@ -414,6 +659,23 @@ const ela = {
             'Establishes a character, setting, and a decision with clear stakes.',
             'Uses descriptive detail and dialogue effectively.',
             'The decision reveals a value; the narrative has a coherent sequence.',
+          ],
+        },
+        {
+          id: 'ela-w-4',
+          type: 'cr',
+          points: 4,
+          passage:
+            'Stimulus for Argumentative Writing\n\nProposal under debate:\n"High schools should replace some final exams with portfolio defenses — short presentations where students explain a body of work to teachers and community members."\n\nNotes for writers:\n• Supporters say portfolios show growth over time and real communication skills, not just one stressful sitting.\n• A pilot school reported higher engagement in spring courses when finals were replaced for two departments.\n• Critics worry about fairness: students with more coaching at home may present more polished work.\n• Teachers note that scoring portfolios takes more time unless rubrics are clear and shared.\n\nTake a position on the proposal. Use the notes and address a counterargument.',
+          prompt:
+            'ARGUMENT: Should high schools replace some final exams with portfolio defenses? Write an argumentative essay that states a claim, supports it with reasons and examples, and addresses a likely counterargument.',
+          sampleResponse:
+            'High schools should replace some — not all — final exams with portfolio defenses because the goal of assessment should be to show what students can sustain and explain, not only what they can recall under a clock. A portfolio defense asks students to present a body of work and answer questions, which rewards revision, reflection, and clear speaking — skills employers and colleges say they want. The pilot school’s higher spring engagement suggests that when a single high-stakes sitting is removed, students stay invested longer. Critics fairly worry that home coaching could widen gaps, and that concern matters. The answer is not to keep only silent exams, but to publish shared rubrics, offer in-school practice panels, and limit outside coaching so the defense measures school learning. Used carefully, portfolio defenses make assessment more authentic without abandoning standards.',
+          rubric: [
+            'Takes a clear position on the proposal.',
+            'Develops at least two reasons with relevant examples.',
+            'Acknowledges and responds to a counterargument.',
+            'Maintains formal style and control of conventions.',
           ],
         },
       ],
@@ -534,6 +796,108 @@ const misa = {
             'Explains the circulatory system’s role (transporting O2 and CO2) and how the systems interact.',
           ],
         },
+        {
+          id: 'misa-sf-5',
+          type: 'single',
+          passage:
+            'PHENOMENON: On a hot, dry afternoon, a student observes that the leaves of a wilted bean plant have many open stomata, while the leaves of a well-watered plant have mostly closed stomata.',
+          prompt:
+            'Which statement best connects stomata structure to function in this situation?',
+          choices: [
+            { id: 'a', text: 'Open stomata increase gas exchange but also increase water loss through transpiration.' },
+            { id: 'b', text: 'Closed stomata allow the plant to absorb more water from the air.' },
+            { id: 'c', text: 'Stomata produce glucose directly from sunlight.' },
+            { id: 'd', text: 'Stomata have no effect on water balance in plants.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Stomata are pores that allow CO2 in and O2 out for photosynthesis, but open stomata also let water vapor escape. On dry days, closing stomata reduces water loss — a structure-function trade-off.',
+        },
+        {
+          id: 'misa-sf-6',
+          type: 'single',
+          passage:
+            'An enzyme that breaks down starch has an active site shaped to fit starch molecules. A mutation changes the active site so it no longer binds starch efficiently.',
+          prompt:
+            'What is the most likely result of this mutation?',
+          choices: [
+            { id: 'a', text: 'The enzyme will break down starch faster because the shape changed.' },
+            { id: 'b', text: 'The enzyme will lose its ability to catalyze starch breakdown because structure no longer matches substrate.' },
+            { id: 'c', text: 'The enzyme will begin performing photosynthesis instead.' },
+            { id: 'd', text: 'The enzyme will create new atoms to replace starch.' },
+          ],
+          answer: 'b',
+          explanation:
+            'Enzyme function depends on the precise shape of the active site. If the site no longer fits the substrate, the enzyme cannot catalyze the reaction efficiently — a direct structure-function relationship.',
+        },
+        {
+          id: 'misa-sf-7',
+          type: 'multi',
+          passage:
+            'A microscope image shows a plant cell with a rigid cell wall, a large central vacuole, and chloroplasts arranged near the cell membrane.',
+          prompt:
+            'Select the TWO statements that correctly link each structure to its function in the plant cell.',
+          choices: [
+            { id: 'a', text: 'The cell wall provides structural support and protection for the cell.' },
+            { id: 'b', text: 'Chloroplasts capture light energy for photosynthesis.' },
+            { id: 'c', text: 'The large vacuole stores genetic information in place of a nucleus.' },
+            { id: 'd', text: 'The cell wall is the main site of cellular respiration in plants.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'A and B correctly connect structure to function. The vacuole stores water and helps maintain turgor pressure (not genetic information), and respiration occurs mainly in mitochondria, not the cell wall.',
+        },
+        {
+          id: 'misa-sf-8',
+          type: 'single',
+          passage:
+            'PHENOMENON: Human lungs contain hundreds of millions of tiny sacs called alveoli. A smoker’s lungs show damaged, fewer alveoli compared with healthy lungs.',
+          prompt:
+            'Why would fewer, damaged alveoli reduce the amount of oxygen entering the blood?',
+          choices: [
+            { id: 'a', text: 'Alveoli decrease the total surface area available for gas exchange between air and blood.' },
+            { id: 'b', text: 'Alveoli pump blood directly to the heart without needing oxygen.' },
+            { id: 'c', text: 'Damaged alveoli increase the amount of oxygen stored in the lungs.' },
+            { id: 'd', text: 'Alveoli produce red blood cells that carry carbon dioxide only.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Alveoli provide an enormous surface area for O2 and CO2 to diffuse between air and blood. Fewer, damaged alveoli mean less surface area and less efficient gas exchange.',
+        },
+        {
+          id: 'misa-sf-9',
+          type: 'multi',
+          passage:
+            'A protein hormone must fold into a specific three-dimensional shape to bind receptors on target cells. Heat denatures the protein, unfolding it.',
+          prompt:
+            'Select the TWO statements that correctly describe how protein structure relates to function.',
+          choices: [
+            { id: 'a', text: 'The hormone’s shape allows it to fit specific receptors on target cells.' },
+            { id: 'b', text: 'Denaturing the protein by heat can prevent it from performing its function.' },
+            { id: 'c', text: 'A protein’s function is unrelated to its three-dimensional shape.' },
+            { id: 'd', text: 'Unfolded proteins always work better because they are simpler.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'Protein function depends on precise folding that creates binding sites. Heat denaturation disrupts that shape and typically destroys function — C and D contradict this principle.',
+        },
+        {
+          id: 'misa-sf-10',
+          type: 'single',
+          passage:
+            'Root hair cells extend long, thin projections into soil. A student compares root hairs on a drought-stressed plant with those on a well-watered plant and finds shorter, fewer root hairs on the stressed plant.',
+          prompt:
+            'Which explanation best connects root hair structure to the plant’s ability to absorb water?',
+          choices: [
+            { id: 'a', text: 'Long, thin root hairs increase surface area in contact with soil water, improving absorption.' },
+            { id: 'b', text: 'Root hairs block water from entering the plant to prevent flooding.' },
+            { id: 'c', text: 'Root hairs convert sunlight into water inside the root.' },
+            { id: 'd', text: 'Shorter root hairs always absorb more water because they are closer to the stem.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Like villi in the intestine, root hairs increase surface area for absorption. Fewer, shorter root hairs under drought stress reduce the plant’s ability to take up limited soil water.',
+        },
       ],
     },
     {
@@ -627,6 +991,91 @@ const misa = {
             'Concludes that a continuous outside energy source is required.',
           ],
         },
+        {
+          id: 'misa-me-6',
+          type: 'single',
+          passage:
+            'PHENOMENON: After a forest fire, charred logs lie on the ground. Within months, mushrooms and other decomposers grow on the logs, and new seedlings appear in the same area.',
+          prompt:
+            'What role do decomposers play in the cycling of matter in this ecosystem?',
+          choices: [
+            { id: 'a', text: 'They break down dead organic matter, returning nutrients to the soil for plants to reuse.' },
+            { id: 'b', text: 'They create new carbon atoms that did not exist before.' },
+            { id: 'c', text: 'They store all energy permanently so it never leaves the ecosystem.' },
+            { id: 'd', text: 'They replace sunlight as the primary energy source for the forest.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Decomposers break down dead organisms, releasing nutrients back into the soil. Matter is conserved and recycled; decomposers do not create new atoms or replace the sun as the energy source.',
+        },
+        {
+          id: 'misa-me-7',
+          type: 'single',
+          passage:
+            'A student tracks a carbon atom as it moves through an ecosystem: CO2 in the air → glucose in a leaf → body tissue of a rabbit → CO2 exhaled by the rabbit → CO2 in the air again.',
+          prompt:
+            'Which statement about this pathway is correct?',
+          choices: [
+            { id: 'a', text: 'The carbon atom is destroyed when the rabbit exhales CO2.' },
+            { id: 'b', text: 'The carbon atom is rearranged among molecules but conserved throughout the cycle.' },
+            { id: 'c', text: 'The carbon atom becomes energy and disappears as heat only.' },
+            { id: 'd', text: 'The carbon atom can exist only in plants, never in animals.' },
+          ],
+          answer: 'b',
+          explanation:
+            'Atoms of carbon are conserved as they move through photosynthesis, consumption, and respiration. They are rearranged into different molecules but are not created or destroyed.',
+        },
+        {
+          id: 'misa-me-8',
+          type: 'multi',
+          passage:
+            'A class compares photosynthesis and cellular respiration in a plant cell over 24 hours.',
+          prompt:
+            'Select the TWO statements that correctly describe matter and energy in these two processes.',
+          choices: [
+            { id: 'a', text: 'Photosynthesis stores light energy in the chemical bonds of glucose.' },
+            { id: 'b', text: 'Cellular respiration releases stored chemical energy from glucose for the cell to use.' },
+            { id: 'c', text: 'Photosynthesis and respiration together prove that energy is created inside cells.' },
+            { id: 'd', text: 'Respiration destroys all carbon atoms so they cannot be reused.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'Photosynthesis captures light energy in glucose; respiration breaks glucose to release usable energy. Energy is transformed, not created, and carbon atoms are rearranged (not destroyed) in respiration.',
+        },
+        {
+          id: 'misa-me-9',
+          type: 'single',
+          passage:
+            'PHENOMENON: In a lake, algae absorb nutrients and grow. Small fish eat algae; larger fish eat small fish. When fish die, bacteria break them down.',
+          prompt:
+            'Where does the matter that makes up the larger fish originally come from?',
+          choices: [
+            { id: 'a', text: 'It is built from atoms that passed through algae, smaller fish, and nutrients in the ecosystem.' },
+            { id: 'b', text: 'It is created new each time a fish eats another fish.' },
+            { id: 'c', text: 'It comes only from water and never from other organisms.' },
+            { id: 'd', text: 'It is produced from pure energy with no atoms involved.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Matter in the larger fish comes from atoms in its food — algae and smaller fish — which in turn obtained atoms from nutrients, water, and CO2. Atoms are transferred and rearranged up food chains, not created.',
+        },
+        {
+          id: 'misa-me-10',
+          type: 'multi',
+          passage:
+            'An ecologist measures energy at each trophic level in a grassland: producers 20,000 kcal; primary consumers 2,000 kcal; secondary consumers 200 kcal.',
+          prompt:
+            'Select the TWO conclusions best supported by these data.',
+          choices: [
+            { id: 'a', text: 'Most energy is lost as heat and used for life processes at each transfer between levels.' },
+            { id: 'b', text: 'Only a small fraction of producer energy is available to secondary consumers.' },
+            { id: 'c', text: 'Energy is recycled back to producers after it reaches secondary consumers.' },
+            { id: 'd', text: 'Secondary consumers contain more total energy than producers.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'The pyramid shows roughly 90% energy loss at each level, leaving only about 1% of producer energy for secondary consumers. Energy flows one way and is not recycled — C and D are incorrect.',
+        },
       ],
     },
     {
@@ -718,6 +1167,91 @@ const misa = {
             'Connects soil pH (environment) to the difference in flower color.',
           ],
         },
+        {
+          id: 'misa-iv-6',
+          type: 'single',
+          passage:
+            'In guinea pigs, black fur (B) is dominant to white fur (b). A cross between two heterozygous black guinea pigs (Bb × Bb) is performed.',
+          prompt:
+            'What fraction of the offspring is expected to have white fur?',
+          choices: [
+            { id: 'a', text: '0/4' },
+            { id: 'b', text: '1/4' },
+            { id: 'c', text: '2/4' },
+            { id: 'd', text: '3/4' },
+          ],
+          answer: 'b',
+          explanation:
+            'A Bb × Bb cross yields genotypes BB, Bb, Bb, and bb in a 1:2:1 ratio. Only bb offspring (1 of 4) show the recessive white phenotype.',
+        },
+        {
+          id: 'misa-iv-7',
+          type: 'single',
+          passage:
+            'In cattle, red coat and white coat alleles are codominant. A red cow (RR) is crossed with a white bull (WW).',
+          prompt:
+            'What phenotype is expected in the F1 offspring?',
+          choices: [
+            { id: 'a', text: 'All offspring with roan coats (mix of red and white hairs).' },
+            { id: 'b', text: 'All offspring with solid red coats.' },
+            { id: 'c', text: 'All offspring with solid white coats.' },
+            { id: 'd', text: 'Half red and half white in each individual cow.' },
+          ],
+          answer: 'a',
+          explanation:
+            'With codominance, both alleles are expressed. RW offspring show roan — a mix of red and white hairs — rather than a blended intermediate color.',
+        },
+        {
+          id: 'misa-iv-8',
+          type: 'multi',
+          passage:
+            'Before a cell divides, it copies its DNA so each new cell receives a full set of genetic information.',
+          prompt:
+            'Select the TWO statements that correctly describe DNA replication and inheritance.',
+          choices: [
+            { id: 'a', text: 'Each new DNA molecule contains one original strand and one newly synthesized strand.' },
+            { id: 'b', text: 'Replication ensures that daughter cells receive the same genetic instructions as the parent cell (barring mutation).' },
+            { id: 'c', text: 'Replication creates entirely new genes that were not present in the parent cell.' },
+            { id: 'd', text: 'Replication destroys the parent cell’s DNA so only new strands remain.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'Semiconservative replication produces molecules with one old and one new strand, preserving genetic information for daughter cells. Replication copies existing genes; it does not invent new ones or destroy the template.',
+        },
+        {
+          id: 'misa-iv-9',
+          type: 'single',
+          passage:
+            'Red-green color blindness is a recessive trait carried on the X chromosome. A carrier woman (X^N X^n) has a child with a man who has normal color vision (X^N Y).',
+          prompt:
+            'Which outcome is possible for a son of this couple?',
+          choices: [
+            { id: 'a', text: 'A son could inherit the X^n chromosome from his mother and be color-blind.' },
+            { id: 'b', text: 'A son could inherit a Y chromosome from his mother and be color-blind.' },
+            { id: 'c', text: 'All sons must be color-blind regardless of inheritance.' },
+            { id: 'd', text: 'Sons cannot inherit sex-linked traits from their mothers.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Sons receive an X chromosome from the mother and a Y from the father. A son who inherits X^n from a carrier mother will express the recessive trait because he has no second X to mask it.',
+        },
+        {
+          id: 'misa-iv-10',
+          type: 'multi',
+          passage:
+            'A biologist lists sources of genetic variation in a population of wildflowers.',
+          prompt:
+            'Select the TWO sources that can introduce new genetic variation into the population.',
+          choices: [
+            { id: 'a', text: 'Mutations in DNA that create new alleles.' },
+            { id: 'b', text: 'Crossing over and independent assortment during meiosis.' },
+            { id: 'c', text: 'Mitosis producing identical body cells for growth.' },
+            { id: 'd', text: 'An organism choosing which alleles to pass on.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'Mutations create new alleles, and meiotic processes shuffle existing alleles into new combinations. Mitosis copies DNA without creating variation, and organisms do not choose their alleles.',
+        },
       ],
     },
     {
@@ -808,6 +1342,91 @@ const misa = {
             'Explains differential survival and reproduction of large-beaked finches.',
             'Explains that advantageous alleles are inherited, shifting the population average over generations (not individual change).',
           ],
+        },
+        {
+          id: 'misa-ev-6',
+          type: 'single',
+          passage:
+            'PHENOMENON: Arctic foxes have thick fur and small ears in winter. A population moved to a warmer climate shows thinner fur and larger ears over many generations.',
+          prompt:
+            'Which statement best explains this change using natural selection?',
+          choices: [
+            { id: 'a', text: 'Individual foxes grew larger ears during their lifetimes to release heat, and all offspring inherited the change.' },
+            { id: 'b', text: 'Foxes with traits better suited to warmer conditions were more likely to survive and reproduce, increasing those traits in the population.' },
+            { id: 'c', text: 'The foxes intentionally adapted to the new climate within one generation.' },
+            { id: 'd', text: 'Natural selection only acts on plants, not animals.' },
+          ],
+          answer: 'b',
+          explanation:
+            'Natural selection acts on heritable variation across generations. Traits that improve survival and reproduction in a warmer climate become more common — individual foxes do not choose to adapt within their lifetime.',
+        },
+        {
+          id: 'misa-ev-7',
+          type: 'single',
+          passage:
+            'A small population of deer is isolated on an island after a storm. By chance, the surviving deer happen to have shorter antlers than the original mainland population.',
+          prompt:
+            'Over time, the island population remains small and antlers stay shorter than on the mainland, even without hunting pressure. This is best explained by',
+          choices: [
+            { id: 'a', text: 'genetic drift — random changes in allele frequencies in a small population.' },
+            { id: 'b', text: 'every deer choosing to grow shorter antlers.' },
+            { id: 'c', text: 'natural selection always favoring the largest antlers.' },
+            { id: 'd', text: 'new antler alleles being created from sunlight.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Genetic drift causes random changes in allele frequency, especially in small populations. The founder effect and continued small population size can maintain traits that are not necessarily adaptive.',
+        },
+        {
+          id: 'misa-ev-8',
+          type: 'multi',
+          passage:
+            'Scientists compare the DNA of humans, chimpanzees, and mice and find many shared genes with similar sequences, as well as fossil evidence of transitional forms.',
+          prompt:
+            'Select the TWO statements that correctly use this evidence to support evolution.',
+          choices: [
+            { id: 'a', text: 'Similar DNA sequences suggest shared ancestry among these species.' },
+            { id: 'b', text: 'Transitional fossils show gradual changes in traits over geologic time.' },
+            { id: 'c', text: 'Shared genes prove that all species are identical today.' },
+            { id: 'd', text: 'Fossils show that organisms never change once they appear.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'Molecular similarities and the fossil record both support common descent and change over time. Shared genes indicate relatedness, not identity, and fossils document change — contradicting C and D.',
+        },
+        {
+          id: 'misa-ev-9',
+          type: 'single',
+          passage:
+            'PHENOMENON: Two populations of the same bird species live on opposite sides of a new mountain range. Over thousands of years, their songs and mating behaviors diverge until they no longer interbreed.',
+          prompt:
+            'This scenario best illustrates',
+          choices: [
+            { id: 'a', text: 'speciation caused by reproductive isolation between populations.' },
+            { id: 'b', text: 'individual birds changing their DNA during their lifetime to match the mountain.' },
+            { id: 'c', text: 'extinction of both populations due to the mountain.' },
+            { id: 'd', text: 'proof that mutations never occur in isolated populations.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Geographic isolation can lead to divergent traits and reproductive barriers — the process of speciation. Populations accumulate differences over generations until they are separate species.',
+        },
+        {
+          id: 'misa-ev-10',
+          type: 'multi',
+          passage:
+            'A teacher lists conditions required for natural selection to change a trait in a population over time.',
+          prompt:
+            'Select the TWO conditions that must be present for natural selection to occur.',
+          choices: [
+            { id: 'a', text: 'Heritable variation in the trait among individuals.' },
+            { id: 'b', text: 'Differences in survival or reproduction linked to the trait.' },
+            { id: 'c', text: 'Every individual must mutate in the same way each generation.' },
+            { id: 'd', text: 'Organisms must choose to evolve toward a goal.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'Natural selection requires variation that can be inherited and differences in fitness tied to that variation. Mutations are random, not uniform, and evolution has no goal-directed "choosing" — C and D are misconceptions.',
         },
       ],
     },
@@ -962,6 +1581,125 @@ const government = {
             'Organized response using accurate government vocabulary.',
           ],
         },
+        {
+          id: 'gov-c-7',
+          type: 'single',
+          passage:
+            'Article I of the Constitution grants Congress the power to declare war, regulate interstate commerce, and collect taxes.',
+          prompt:
+            'These powers belong to which branch of the federal government?',
+          choices: [
+            { id: 'a', text: 'The legislative branch (Congress).' },
+            { id: 'b', text: 'The executive branch (the president).' },
+            { id: 'c', text: 'The judicial branch (the federal courts).' },
+            { id: 'd', text: 'State legislatures only, with no national role.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Article I establishes Congress and lists its enumerated powers, including declaring war, regulating interstate commerce, and taxing — core legislative authorities.',
+        },
+        {
+          id: 'gov-c-8',
+          type: 'single',
+          passage:
+            'The president negotiates a treaty with another country, but the treaty does not take effect until two-thirds of the Senate votes to approve it.',
+          prompt:
+            'This process is an example of',
+          choices: [
+            { id: 'a', text: 'a check by the legislative branch on executive foreign-policy power.' },
+            { id: 'b', text: 'judicial review of treaties.' },
+            { id: 'c', text: 'a state power under the Tenth Amendment.' },
+            { id: 'd', text: 'the impeachment process.' },
+          ],
+          answer: 'a',
+          explanation:
+            'The president (executive) proposes treaties, but the Senate (legislative) must ratify them with a two-thirds vote — a shared power and a check on unilateral executive action.',
+        },
+        {
+          id: 'gov-c-9',
+          type: 'multi',
+          passage:
+            'The Constitution lists examples of checks and balances among the three branches.',
+          prompt:
+            'Select the TWO examples that correctly describe a check by one branch on another.',
+          choices: [
+            { id: 'a', text: 'Congress can override a presidential veto with a two-thirds vote in both chambers.' },
+            { id: 'b', text: 'The Senate can reject a presidential nominee for the Supreme Court.' },
+            { id: 'c', text: 'The president can declare any law unconstitutional without a court ruling.' },
+            { id: 'd', text: 'State governors can remove federal judges from office.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'Congress can override vetoes (check on executive), and the Senate confirms or rejects nominees (check on executive appointments). Only courts exercise judicial review — the president cannot unilaterally void laws, and governors cannot remove federal judges.',
+        },
+        {
+          id: 'gov-c-10',
+          type: 'single',
+          passage:
+            'The Tenth Amendment states that powers not delegated to the national government nor prohibited to the states are reserved to the states or the people.',
+          prompt:
+            'This amendment is most closely associated with which constitutional principle?',
+          choices: [
+            { id: 'a', text: 'Federalism — dividing power between national and state governments.' },
+            { id: 'b', text: 'Judicial review.' },
+            { id: 'c', text: 'The electoral college.' },
+            { id: 'd', text: 'The amendment process only.' },
+          ],
+          answer: 'a',
+          explanation:
+            'The Tenth Amendment reinforces federalism by reserving undelegated powers to the states or the people, limiting national authority to what the Constitution grants.',
+        },
+        {
+          id: 'gov-c-11',
+          type: 'single',
+          passage:
+            'Congress passes a law. A citizen challenges it in court, arguing it violates the Constitution. The Supreme Court hears the case and strikes down the law.',
+          prompt:
+            'Which sequence correctly describes how power is exercised in this scenario?',
+          choices: [
+            { id: 'a', text: 'Legislative branch makes law → judicial branch reviews constitutionality → law is invalidated if unconstitutional.' },
+            { id: 'b', text: 'Judicial branch makes law → executive branch reviews it → law automatically stands.' },
+            { id: 'c', text: 'Executive branch makes law → legislative branch enforces it → courts have no role.' },
+            { id: 'd', text: 'State courts alone decide all federal constitutional questions.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Congress (legislative) enacts laws; courts (judicial) may use judicial review to strike down laws that conflict with the Constitution — a classic separation-of-powers interaction.',
+        },
+        {
+          id: 'gov-c-12',
+          type: 'multi',
+          passage:
+            'The Constitution creates both shared and separate powers among the branches.',
+          prompt:
+            'Select the TWO powers that belong primarily to the executive branch.',
+          choices: [
+            { id: 'a', text: 'Serving as commander in chief of the armed forces.' },
+            { id: 'b', text: 'Enforcing federal laws through executive agencies.' },
+            { id: 'c', text: 'Writing and passing federal statutes.' },
+            { id: 'd', text: 'Interpreting the meaning of the Constitution in final appeals.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'The president leads the military and executes laws. Congress passes statutes, and the judiciary interprets the Constitution in cases — including Supreme Court appeals.',
+        },
+        {
+          id: 'gov-c-13',
+          type: 'single',
+          passage:
+            'Anti-Federalists worried that a strong national government without a bill of rights would threaten individual freedoms. Federalists argued the Constitution already limited government power.',
+          prompt:
+            'How was this disagreement ultimately resolved during ratification?',
+          choices: [
+            { id: 'a', text: 'The Bill of Rights was added to protect individual liberties, helping secure ratification.' },
+            { id: 'b', text: 'The Constitution was rejected and never ratified.' },
+            { id: 'c', text: 'All state governments were abolished.' },
+            { id: 'd', text: 'The president was given power to rewrite the Constitution alone.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Ratification succeeded partly because a promise was made to add the Bill of Rights — the first ten amendments — to address Anti-Federalist concerns about protecting individual rights.',
+        },
       ],
     },
     {
@@ -1037,6 +1775,108 @@ const government = {
           explanation:
             'Free expression, a free press, and the rights to assemble and petition let citizens debate ideas, inform themselves, and pressure leaders — all necessary for self-government and accountability.',
         },
+        {
+          id: 'gov-p-5',
+          type: 'single',
+          passage:
+            'The 14th Amendment includes the Equal Protection Clause, which has been used to challenge laws that discriminate unfairly against groups of citizens.',
+          prompt:
+            'This clause supports which broader principle of American democracy?',
+          choices: [
+            { id: 'a', text: 'Laws should apply fairly and protect equal treatment under the law.' },
+            { id: 'b', text: 'Only the president may decide who is a citizen.' },
+            { id: 'c', text: 'States may ignore all federal civil rights protections.' },
+            { id: 'd', text: 'Citizens lose constitutional rights when they disagree with the government.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Equal protection requires that government treat similarly situated people alike and not discriminate without justification — a foundation for civil rights in a democracy.',
+        },
+        {
+          id: 'gov-p-6',
+          type: 'single',
+          passage:
+            'A student registers to vote when she turns 18, researches candidates, and casts a ballot in a primary and general election.',
+          prompt:
+            'These actions best illustrate which responsibility of citizenship in a representative democracy?',
+          choices: [
+            { id: 'a', text: 'Participating in the electoral process to choose representatives.' },
+            { id: 'b', text: 'Exercising judicial review over laws.' },
+            { id: 'c', text: 'Serving as commander in chief of the military.' },
+            { id: 'd', text: 'Ratifying treaties with foreign nations.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Voting and informed participation in elections are core civic responsibilities that allow citizens to influence who governs and what policies are pursued.',
+        },
+        {
+          id: 'gov-p-7',
+          type: 'multi',
+          passage:
+            'Civil liberties protect individuals from certain government actions, while civil rights often address equal treatment and participation.',
+          prompt:
+            'Select the TWO examples that are best classified as civil liberties protected by the Bill of Rights.',
+          choices: [
+            { id: 'a', text: 'Freedom of speech and freedom of religion.' },
+            { id: 'b', text: 'Protection against unreasonable searches and seizures (Fourth Amendment).' },
+            { id: 'c', text: 'The right to vote regardless of race (15th Amendment).' },
+            { id: 'd', text: 'Equal protection under the law (14th Amendment).' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'Speech, religion, and protection from unreasonable searches are classic civil liberties limiting government power. Voting rights and equal protection are civil rights focused on equal participation and treatment — also vital, but a different category.',
+        },
+        {
+          id: 'gov-p-8',
+          type: 'single',
+          passage:
+            'During a public hearing, citizens testify about a proposed zoning law. Several residents also sign a petition asking the city council to reject the proposal.',
+          prompt:
+            'Which First Amendment freedoms are these citizens exercising?',
+          choices: [
+            { id: 'a', text: 'Petition and speech (including the right to address government).' },
+            { id: 'b', text: 'Freedom from taxation.' },
+            { id: 'c', text: 'The right to bear arms only.' },
+            { id: 'd', text: 'Protection against double jeopardy.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Testifying at a hearing and signing a petition are forms of speech and petition — two First Amendment freedoms that let citizens seek change from government.',
+        },
+        {
+          id: 'gov-p-9',
+          type: 'multi',
+          passage:
+            'Political participation can take many forms beyond voting on election day.',
+          prompt:
+            'Select the TWO actions that are forms of civic participation.',
+          choices: [
+            { id: 'a', text: 'Volunteering for a campaign or community organization.' },
+            { id: 'b', text: 'Contacting an elected official about a policy issue.' },
+            { id: 'c', text: 'Refusing to obey all laws one personally dislikes, without legal process.' },
+            { id: 'd', text: 'Avoiding all news and public issues permanently as a civic duty.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'Campaign work and contacting officials are recognized forms of participation. Unilateral lawbreaking and deliberate disengagement are not constructive civic participation in a democracy.',
+        },
+        {
+          id: 'gov-p-10',
+          type: 'single',
+          passage:
+            'The 19th Amendment (1920) guaranteed that the right to vote could not be denied on account of sex. The 26th Amendment (1971) lowered the voting age to 18.',
+          prompt:
+            'Together, these amendments show that voting rights in the United States have',
+          choices: [
+            { id: 'a', text: 'expanded over time to include more groups of citizens.' },
+            { id: 'b', text: 'been eliminated for all citizens except property owners.' },
+            { id: 'c', text: 'always been limited to men over age 21 only.' },
+            { id: 'd', text: 'been decided solely by the Supreme Court without constitutional change.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Both amendments removed barriers to voting — by sex and by age — continuing the historical trend of broadening suffrage through constitutional amendment.',
+        },
       ],
     },
     {
@@ -1093,6 +1933,108 @@ const government = {
           answer: ['a', 'b'],
           explanation:
             'Common goals of regulation include protecting consumers/workers and maintaining competition. In a market economy the government generally does not equalize profits or set all prices.',
+        },
+        {
+          id: 'gov-e-4',
+          type: 'single',
+          passage:
+            'When the economy slows and unemployment rises, the Federal Reserve lowers interest rates to encourage borrowing and spending.',
+          prompt:
+            'This action is an example of',
+          choices: [
+            { id: 'a', text: 'monetary policy.' },
+            { id: 'b', text: 'fiscal policy set by Congress.' },
+            { id: 'c', text: 'judicial review.' },
+            { id: 'd', text: 'the amendment process.' },
+          ],
+          answer: 'a',
+          explanation:
+            'The Federal Reserve uses monetary policy — adjusting interest rates and the money supply — to influence economic activity. Fiscal policy involves government spending and taxation decisions by Congress and the president.',
+        },
+        {
+          id: 'gov-e-5',
+          type: 'single',
+          passage:
+            'A country can produce 100 units of food or 50 units of clothing with the same resources, but not both at maximum levels at the same time.',
+          prompt:
+            'This situation illustrates the economic concept of',
+          choices: [
+            { id: 'a', text: 'scarcity and opportunity cost.' },
+            { id: 'b', text: 'separation of powers.' },
+            { id: 'c', text: 'judicial review.' },
+            { id: 'd', text: 'double jeopardy.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Limited resources force choices. Producing more of one good means giving up some of another — the opportunity cost of using scarce resources.',
+        },
+        {
+          id: 'gov-e-6',
+          type: 'multi',
+          passage:
+            'Governments use both fiscal and monetary tools to influence the economy.',
+          prompt:
+            'Select the TWO statements that correctly match policy type to the institution that primarily carries it out.',
+          choices: [
+            { id: 'a', text: 'Congress and the president use spending and tax decisions as fiscal policy.' },
+            { id: 'b', text: 'The Federal Reserve uses interest rates and the money supply as monetary policy.' },
+            { id: 'c', text: 'The Supreme Court sets the federal budget each year.' },
+            { id: 'd', text: 'State courts regulate the national money supply.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'Fiscal policy is carried out through the federal budget (Congress/president). Monetary policy is the Fed’s domain. Courts do not set budgets or control the money supply.',
+        },
+        {
+          id: 'gov-e-7',
+          type: 'single',
+          passage:
+            'PHENOMENON: After a hurricane, the price of bottled water rises sharply in affected areas because supply is limited and demand is high.',
+          prompt:
+            'Which economic concept best explains the price increase?',
+          choices: [
+            { id: 'a', text: 'Shortage — quantity demanded exceeds quantity supplied at the previous price, pushing prices up.' },
+            { id: 'b', text: 'Federalism — power divided between national and state governments.' },
+            { id: 'c', text: 'Judicial review — courts strike down unconstitutional laws.' },
+            { id: 'd', text: 'Suffrage — the right to vote.' },
+          ],
+          answer: 'a',
+          explanation:
+            'When demand surges and supply falls, a shortage develops. Sellers raise prices until quantity demanded and supplied balance — a market response to scarcity.',
+        },
+        {
+          id: 'gov-e-8',
+          type: 'multi',
+          passage:
+            'In a mixed market economy, private businesses and government both play roles.',
+          prompt:
+            'Select the TWO functions that are typically performed by government in such an economy.',
+          choices: [
+            { id: 'a', text: 'Providing public goods such as national defense and infrastructure.' },
+            { id: 'b', text: 'Enforcing contracts and property rights through laws and courts.' },
+            { id: 'c', text: 'Setting the exact wage for every private-sector job in all industries.' },
+            { id: 'd', text: 'Owning and operating every business with no private competition.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'Governments commonly provide public goods, enforce rules, and protect property. A mixed economy retains private enterprise — the government does not set all wages or run all businesses.',
+        },
+        {
+          id: 'gov-e-9',
+          type: 'cr',
+          points: 4,
+          passage:
+            'Stimulus Passage — Inflation and Policy Response\n\nOver the past year, consumer prices for food, rent, and energy have risen faster than wages for many workers. Grocery bills that once totaled $120 per week now cost about $145 for the same items. The unemployment rate remains low, but surveys show that families are cutting discretionary spending and using savings to cover essentials.\n\nPolicy context you may use:\n• Fiscal policy: federal decisions about government spending and taxation (Congress and the president).\n• Monetary policy: actions by the Federal Reserve to influence interest rates and the money supply.\n• When inflation is high, policymakers may raise interest rates (monetary) or reduce deficit spending / adjust taxes (fiscal) to cool demand.\n• Trade-offs: slowing inflation can reduce spending and may increase unemployment if the economy cools too quickly.\n• Regulators may also monitor price gouging in emergencies, but long-term inflation is usually addressed through broader economic policy.',
+          prompt:
+            'Using the stimulus above, explain TWO actions the federal government could take to address high inflation. For each action, identify whether it is primarily fiscal or monetary policy and explain how it could affect consumers.',
+          sampleResponse:
+            'To address high inflation, the federal government could use both monetary and fiscal tools. First, the Federal Reserve could raise interest rates — a monetary policy action. Higher rates make borrowing more expensive for businesses and consumers, which tends to reduce spending on homes, cars, and other purchases. For consumers, that can mean slower price increases over time, but also higher loan payments and less money available for discretionary spending in the short run. Second, Congress and the president could reduce deficit spending or adjust taxes — fiscal policy. Cutting spending or raising certain taxes reduces the amount of money flowing through the economy, which can lower overall demand and ease upward pressure on prices. For consumers, lower demand might stabilize prices on essentials like food and rent, but tax increases or reduced government services could also leave less money in households’ budgets. Both approaches aim to cool an overheated economy, but each involves trade-offs for families trying to afford everyday goods.',
+          rubric: [
+            'Identifies TWO distinct policy actions aimed at addressing inflation.',
+            'Correctly labels each action as fiscal or monetary policy.',
+            'Explains a plausible mechanism by which each action affects the economy.',
+            'Connects each policy to a likely effect on consumers using details from the stimulus or accurate economic reasoning.',
+          ],
         },
       ],
     },
@@ -1194,6 +2136,57 @@ const government = {
             'Reasoning connects evidence to the claim (not just listing quotes).',
             'Organized argument using appropriate government/skills vocabulary.',
           ],
+        },
+        {
+          id: 'gov-eb-5',
+          type: 'single',
+          passage:
+            'Refer to Source C in the EBAS source set above.',
+          prompt:
+            'Which claim from Source C could be used as evidence AGAINST lowering the voting age to 16?',
+          choices: [
+            { id: 'a', text: 'Sixteen-year-olds are "still full-time dependents in high school," so votes may be "unduly shaped by parents or teachers."' },
+            { id: 'b', text: 'Voting is "habit-forming" and earlier voters keep voting for life.' },
+            { id: 'c', text: '"Cold cognition... is well developed by about age 16."' },
+            { id: 'd', text: 'Sixteen-year-olds work and pay taxes.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Source C argues against lowering the age by citing dependence on adults and concern about independent judgment. B, C, and D are points more favorable to lowering the age (from Sources A and B).',
+        },
+        {
+          id: 'gov-eb-6',
+          type: 'multi',
+          passage:
+            'Refer to Sources A–C in the EBAS source set above.',
+          prompt:
+            'Select the TWO steps a student should take BEFORE using a source as evidence in an EBAS argument.',
+          choices: [
+            { id: 'a', text: 'Identify the author, audience, and likely purpose of the source.' },
+            { id: 'b', text: 'Evaluate whether the source provides relevant, credible evidence for the claim.' },
+            { id: 'c', text: 'Use only the shortest quote possible without reading the full source.' },
+            { id: 'd', text: 'Ignore any point of view because all sources are completely neutral.' },
+          ],
+          answer: ['a', 'b'],
+          explanation:
+            'EBAS skills require analyzing sources for author, purpose, and credibility before citing them. Skipping context or assuming neutrality undermines source-based argument.',
+        },
+        {
+          id: 'gov-eb-7',
+          type: 'single',
+          passage:
+            'Refer to Source A in the EBAS source set above.',
+          prompt:
+            'A student writes: "Source A proves that every 16-year-old is mature enough to vote because the author says so." What is the main weakness of this use of evidence?',
+          choices: [
+            { id: 'a', text: 'It treats an advocacy source as unbiased proof without addressing limits or counterevidence.' },
+            { id: 'b', text: 'It cites too many details from the source.' },
+            { id: 'c', text: 'It correctly balances all three sources equally.' },
+            { id: 'd', text: 'It focuses on monetary policy rather than voting rights.' },
+          ],
+          answer: 'a',
+          explanation:
+            'Source A is an advocacy op-ed with a clear position. Strong EBAS writing uses such sources as evidence for specific claims while acknowledging point of view — not as absolute, unbiased proof.',
         },
       ],
     },
@@ -1389,8 +2382,7 @@ function renderHome() {
   <main class="mx-auto max-w-6xl px-4 py-8">
     <section class="mb-10 overflow-hidden rounded-3xl bg-slate-900 px-6 py-12 text-white sm:px-12">
       <span class="inline-flex rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold">Maryland high-school assessment prep</span>
-      <h1 class="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">One hub. Three tests.<br class="hidden sm:block">Ready on test day.</h1>
-      <p class="mt-4 max-w-xl text-lg text-slate-300">Practice for <strong class="text-white">ELA 10 MCAP</strong>, <strong class="text-white">MISA</strong>, and <strong class="text-white">American Government MCAP</strong> - with feedback and saved progress.</p>
+      <p class="mt-6 max-w-xl text-lg text-slate-300">Practice for <strong class="text-white">ELA 10 MCAP</strong>, <strong class="text-white">MISA</strong>, and <strong class="text-white">American Government MCAP</strong> — with feedback and saved progress. Each full test is built for about an hour of focused practice.</p>
       <div class="mt-6 flex flex-wrap gap-3">${subjects.map((s) => {
         const t = themeOf(s);
         return `<button data-action="subject" data-slug="${s.slug}" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn}">Start ${esc(s.name)}</button>`;
@@ -1450,7 +2442,7 @@ function renderSubject() {
     <div class="mt-6 grid gap-6 lg:grid-cols-3">
       <div class="lg:col-span-2 space-y-6">
         <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100 flex flex-wrap items-center justify-between gap-3">
-          <div><h2 class="text-lg font-bold">Full practice test</h2><p class="text-sm text-slate-500">A shuffled mix of every topic.</p></div>
+          <div><h2 class="text-lg font-bold">Full practice test</h2><p class="text-sm text-slate-500">A shuffled mix of every topic — about 1 hour of focused practice.</p></div>
           <button data-action="quiz" data-slug="${s.slug}" data-mode="full" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn}">Start full test (${st.total} items)</button>
         </div>
         <div>
