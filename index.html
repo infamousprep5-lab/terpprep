@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terp Prep — Maryland MCAP and MISA Practice</title>
-  <meta name="description" content="Practice hub for Maryland ELA 10 MCAP, MISA Life Science, and American Government MCAP." />
+  <title>Terp Prep — Maryland MSTAR and MISA Practice</title>
+  <meta name="description" content="Practice hub for Maryland ELA 10 MSTAR, MISA Life Science, and American Government MSTAR." />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: Inter, system-ui, Segoe UI, Roboto, sans-serif; background: #f8fafc; color: #0f172a; }
@@ -14,8 +14,8 @@
 <body>
   <div id="app"></div>
   <script>
-// English Language Arts / Literacy — Grade 10 MCAP
-// Aligned to the four MCAP ELA/L claims: Reading Literature, Reading Informational
+// English Language Arts / Literacy — Grade 10 MSTAR
+// Aligned to the four MSTAR ELA/L claims: Reading Literature, Reading Informational
 // Text, Vocabulary Interpretation & Use, and Writing. Item types mirror the real
 // test: single-select MC, multi-select MC, and 2–4 point constructed response.
 
@@ -24,7 +24,7 @@ const ela = {
   slug: 'ela',
   theme: 'ela',
   name: 'ELA 10',
-  fullName: 'English Language Arts / Literacy — Grade 10 MCAP',
+  fullName: 'English Language Arts / Literacy — Grade 10 MSTAR',
   tagline: 'Read closely, analyze evidence, and write with purpose.',
   officialUrl: 'https://assessments.msde.maryland.gov/public/ela-10-2025-practice-test',
   accent: 'blue',
@@ -682,7 +682,6 @@ const ela = {
     },
   ],
 }
-
 
 // Maryland Integrated Science Assessment (MISA) — High School Life Science
 // End-of-course biology exam aligned to the NGSS. Items are built around
@@ -1433,8 +1432,7 @@ const misa = {
   ],
 }
 
-
-// MCAP American Government — End-of-course assessment
+// MSTAR American Government — End-of-course assessment
 // Five reporting standards: Civics, Peoples of the Nations & World, Geography,
 // Economics, and Skills & Processes. Item types: SR, TE (modeled as multi-select),
 // CR, and Evidence-Based Argument Sets (EBAS).
@@ -1443,8 +1441,8 @@ const government = {
   id: 'government',
   slug: 'government',
   theme: 'gov',
-  name: 'Gov MCAP',
-  fullName: 'American Government — MCAP',
+  name: 'Gov MSTAR',
+  fullName: 'American Government — MSTAR',
   tagline: 'Understand how power is structured, shared, and checked.',
   officialUrl:
     'https://marylandpublicschools.org/about/pages/daait/assessment/mcapag/index.aspx',
@@ -2042,7 +2040,7 @@ const government = {
       id: 'ebas',
       name: 'EBAS: Evidence-Based Argument',
       blurb:
-        'Analyze multiple sources, evaluate credibility, and build a claim — the signature MCAP Government task.',
+        'Analyze multiple sources, evaluate credibility, and build a claim — the signature MSTAR Government task.',
       ebas: {
         compellingQuestion:
           'COMPELLING QUESTION: Should the voting age for national elections be lowered to 16?',
@@ -2192,7 +2190,6 @@ const government = {
     },
   ],
 }
-
 
 const STORAGE_KEY = 'terp-prep-progress-v1';
 const subjects = [ela, misa, government];
@@ -2370,7 +2367,7 @@ function renderHome() {
         <span class="grid h-9 w-9 place-items-center rounded-xl bg-slate-900 text-white font-extrabold">T</span>
         <span class="text-left leading-tight">
           <span class="block text-sm font-extrabold">Terp Prep</span>
-          <span class="block text-[11px] text-slate-500">Maryland MCAP &amp; MISA</span>
+          <span class="block text-[11px] text-slate-500">Maryland MSTAR &amp; MISA</span>
         </span>
       </button>
       <nav class="flex gap-1 overflow-x-auto">${subjects.map((s) => {
@@ -2381,8 +2378,8 @@ function renderHome() {
   </header>
   <main class="mx-auto max-w-6xl px-4 py-8">
     <section class="mb-10 overflow-hidden rounded-3xl bg-slate-900 px-6 py-12 text-white sm:px-12">
-      <span class="inline-flex rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold">Maryland high-school assessment prep</span>
-      <p class="mt-6 max-w-xl text-lg text-slate-300">Practice for <strong class="text-white">ELA 10 MCAP</strong>, <strong class="text-white">MISA</strong>, and <strong class="text-white">American Government MCAP</strong> — with feedback and saved progress. Each full test is built for about an hour of focused practice.</p>
+      <span class="inline-flex rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold">Maryland MSTAR &amp; MISA prep</span>
+      <p class="mt-6 max-w-xl text-lg text-slate-300">Practice for <strong class="text-white">ELA 10 MSTAR</strong>, <strong class="text-white">MISA</strong>, and <strong class="text-white">American Government MSTAR</strong> — with feedback and saved progress. MSTAR (Maryland System of Testing Academic Readiness) is the new name for the former MCAP ELA and Government tests; MISA remains the life-science assessment. Each full test is built for about an hour of focused practice.</p>
       <div class="mt-6 flex flex-wrap gap-3">${subjects.map((s) => {
         const t = themeOf(s);
         return `<button data-action="subject" data-slug="${s.slug}" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn}">Start ${esc(s.name)}</button>`;
@@ -2408,7 +2405,7 @@ function renderHome() {
       </button>`;
     }).join('')}</div>
   </main>
-  <footer class="border-t border-slate-200 bg-white mt-8"><div class="mx-auto max-w-6xl px-4 py-6 text-center text-xs text-slate-500">Terp Prep is an independent study aid. Practice items are original and modeled on MCAP/MISA formats - not official test questions.</div></footer>`;
+  <footer class="border-t border-slate-200 bg-white mt-8"><div class="mx-auto max-w-6xl px-4 py-6 text-center text-xs text-slate-500">Terp Prep is an independent study aid. Practice items are original and modeled on MSTAR/MISA formats - not official test questions.</div></footer>`;
 }
 
 function renderSubject() {
