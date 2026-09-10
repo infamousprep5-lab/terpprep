@@ -9,6 +9,46 @@
   <style>
     body { font-family: Inter, system-ui, Segoe UI, Roboto, sans-serif; background: #f8fafc; color: #0f172a; }
     button:disabled { cursor: not-allowed; }
+
+    /* ---------- Official Test Mode (TestNav / Cognia kiosk simulation) ---------- */
+    .exam-root { min-height: 100vh; background: #e2e8f0; }
+    .exam-text { white-space: pre-wrap; }
+    .exam-hl { border-radius: 2px; padding: 0 1px; color: inherit; }
+    .hl-yellow { background: #fde68a; }
+    .hl-blue   { background: #9ec5fe; }
+    .hl-pink   { background: #f9a8d4; }
+    .hl-green  { background: #86efac; }
+    .exam-elim { text-decoration: line-through; text-decoration-color: #e11d48; text-decoration-thickness: 2px; opacity: .5; }
+    .exam-masked { visibility: hidden; }
+    .exam-float { position: fixed; z-index: 70; box-shadow: 0 18px 45px rgba(15,23,42,.3); }
+    .exam-grip { cursor: move; user-select: none; }
+    .exam-resize { position: absolute; right: 0; bottom: 0; width: 16px; height: 16px; cursor: nwse-resize; }
+    .exam-resize::after { content: ''; position: absolute; right: 3px; bottom: 3px; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; opacity: .5; }
+    #exam-linereader { position: fixed; inset: 0; z-index: 60; pointer-events: none; }
+    #exam-linereader > div { position: absolute; left: 0; right: 0; background: rgba(15,23,42,.62); }
+
+    /* Color contrast options. Scoped selectors outrank Tailwind's single-class utilities. */
+    .exam-root.c-cream { background: #e6d8b5; }
+    .exam-root.c-cream .exam-bar, .exam-root.c-cream .exam-card, .exam-root.c-cream .exam-panel, .exam-root.c-cream .exam-choice { background: #fbf3de; color: #1c1917; border-color: #b8a377; }
+    .exam-root.c-cream .exam-muted { color: #5b5344; }
+    .exam-root.c-cream .exam-stim { background: #f3e8c9; color: #1c1917; }
+
+    .exam-root.c-sky { background: #a9c9ef; }
+    .exam-root.c-sky .exam-bar, .exam-root.c-sky .exam-card, .exam-root.c-sky .exam-panel, .exam-root.c-sky .exam-choice { background: #ddebfb; color: #0b1c33; border-color: #7ba4d4; }
+    .exam-root.c-sky .exam-muted { color: #3d5978; }
+    .exam-root.c-sky .exam-stim { background: #c9dcf5; color: #0b1c33; }
+
+    .exam-root.c-night { background: #000; }
+    .exam-root.c-night .exam-bar, .exam-root.c-night .exam-card, .exam-root.c-night .exam-panel, .exam-root.c-night .exam-choice { background: #111827; color: #f8fafc; border-color: #475569; }
+    .exam-root.c-night .exam-muted { color: #cbd5e1; }
+    .exam-root.c-night .exam-stim { background: #1e293b; color: #f8fafc; }
+    .exam-root.c-night .exam-hl { color: #0f172a; }
+
+    .exam-root.c-amber { background: #000; }
+    .exam-root.c-amber .exam-bar, .exam-root.c-amber .exam-card, .exam-root.c-amber .exam-panel, .exam-root.c-amber .exam-choice { background: #0b0b0b; color: #fde047; border-color: #7c6f1d; }
+    .exam-root.c-amber .exam-muted { color: #d9c65a; }
+    .exam-root.c-amber .exam-stim { background: #171717; color: #fde047; }
+    .exam-root.c-amber .exam-hl { color: #0f172a; }
   </style>
 </head>
 <body>
@@ -2278,7 +2318,7 @@ function nl(str) {
 }
 
 const state = {
-  view: 'home', // home | subject | quiz | results
+  view: 'home', // home | subject | quiz | results | official-setup | official | official-results
   slug: null,
   mode: null,
   questions: [],
@@ -2289,16 +2329,24 @@ const state = {
   checked: {},
   selfGrade: {},
   ebasOpen: true,
+  // Official Test Mode
+  setupSlug: 'ela',
+  setupTimed: true,
+  official: null,
 };
 
 const app = document.getElementById('app');
 
 function goHome() {
+  stopOfficialTimer();
+  state.official = null;
   state.view = 'home';
   render();
 }
 
 function goSubject(slug) {
+  stopOfficialTimer();
+  state.official = null;
   state.view = 'subject';
   state.slug = slug;
   render();
@@ -2354,6 +2402,9 @@ function render() {
   else if (state.view === 'subject') app.innerHTML = renderSubject();
   else if (state.view === 'quiz') app.innerHTML = renderQuiz();
   else if (state.view === 'results') app.innerHTML = renderResults();
+  else if (state.view === 'official-setup') app.innerHTML = renderOfficialSetup();
+  else if (state.view === 'official') app.innerHTML = renderOfficial();
+  else if (state.view === 'official-results') app.innerHTML = renderOfficialResults();
   bind();
 }
 
@@ -2404,6 +2455,27 @@ function renderHome() {
         </div>
       </button>`;
     }).join('')}</div>
+
+    <section class="mt-10 overflow-hidden rounded-3xl border-2 border-dashed border-slate-300 bg-white p-6 sm:p-8">
+      <div class="flex flex-wrap items-start justify-between gap-6">
+        <div class="max-w-2xl">
+          <span class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-xs font-bold text-white"><span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Official Test Mode</span>
+          <h2 class="mt-3 text-2xl font-extrabold">Take it the way you'll take it on test day</h2>
+          <p class="mt-2 text-sm text-slate-600">A full-screen simulation of the real Maryland testing platforms — timed ${esc(officialProfiles.ela.sectionWord.toLowerCase())}s you can't go back to, the actual on-screen tools (highlighter, answer eliminator, notepad, bookmark, review screen, line reader, magnification, colour contrast${officialProfiles.misa.calculator ? ', calculator on MISA' : ''}), and <strong>no answer feedback until you turn it in</strong>.</p>
+          <p class="mt-2 text-xs text-slate-500">ELA 10 runs on Pearson TestNav 8; Government and MISA run on the Cognia MCAP Government &amp; LS MISA Kiosk. Terp Prep mirrors each one separately.</p>
+        </div>
+        <button data-action="o-setup" class="rounded-xl bg-slate-900 px-5 py-3 text-sm font-bold text-white hover:bg-slate-700">Enter Official Test Mode -&gt;</button>
+      </div>
+      <div class="mt-6 grid gap-3 sm:grid-cols-3">${subjects.map((s) => {
+        const th = themeOf(s);
+        const p = officialProfiles[s.slug];
+        return `<button data-action="o-setup" data-slug="${s.slug}" class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-left hover:border-slate-400 hover:bg-white">
+          <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full ${th.dot}"></span><span class="text-sm font-bold">${esc(s.name)}</span></div>
+          <p class="mt-1 text-xs text-slate-500">${p.sections} ${esc(p.sectionWord.toLowerCase())}s · ${p.sectionMinutes} min each · ${p.calculator ? 'calculator provided' : 'no calculator'}</p>
+          <p class="mt-2 text-xs font-bold ${th.text}">Start official format -&gt;</p>
+        </button>`;
+      }).join('')}</div>
+    </section>
   </main>
   <footer class="border-t border-slate-200 bg-white mt-8"><div class="mx-auto max-w-6xl px-4 py-6 text-center text-xs text-slate-500">Terp Prep is an independent study aid. Practice items are original and modeled on MSTAR/MISA formats - not official test questions.</div></footer>`;
 }
@@ -2411,6 +2483,7 @@ function renderHome() {
 function renderSubject() {
   const s = subjects.find((x) => x.slug === state.slug);
   const t = themeOf(s);
+  const op = officialProfiles[s.slug];
   const st = statsFor(s.slug);
   const recent = [...st.sessions].reverse().slice(0, 5);
   return `
@@ -2439,8 +2512,15 @@ function renderSubject() {
     <div class="mt-6 grid gap-6 lg:grid-cols-3">
       <div class="lg:col-span-2 space-y-6">
         <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100 flex flex-wrap items-center justify-between gap-3">
-          <div><h2 class="text-lg font-bold">Full practice test</h2><p class="text-sm text-slate-500">A shuffled mix of every topic — about 1 hour of focused practice.</p></div>
+          <div><h2 class="text-lg font-bold">Full practice test</h2><p class="text-sm text-slate-500">A shuffled mix of every topic — about 1 hour of focused practice, with feedback after every item.</p></div>
           <button data-action="quiz" data-slug="${s.slug}" data-mode="full" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn}">Start full test (${st.total} items)</button>
+        </div>
+        <div class="rounded-2xl border-2 border-dashed border-slate-300 bg-white p-6 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2"><h2 class="text-lg font-bold">Official format</h2><span class="rounded-full bg-slate-900 px-2 py-0.5 text-[11px] font-bold text-white">Test-day simulation</span></div>
+            <p class="text-sm text-slate-500">${esc(op.platform)} — ${op.sections} ${esc(op.sectionWord.toLowerCase())}s of ${op.sectionMinutes} minutes, real on-screen tools, no feedback until you turn it in.</p>
+          </div>
+          <button data-action="o-setup" data-slug="${s.slug}" class="rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-700">Official format -&gt;</button>
         </div>
         <div>
           <h2 class="mb-3 text-lg font-bold">Practice by topic</h2>
@@ -2466,6 +2546,14 @@ function renderSubject() {
             <div class="rounded-xl bg-slate-50 px-4 py-3"><div class="text-2xl font-extrabold">${st.answered}/${st.total}</div><div class="text-xs font-semibold uppercase text-slate-500">Attempted</div></div>
             <div class="rounded-xl bg-slate-50 px-4 py-3"><div class="text-2xl font-extrabold">${st.accuracy}%</div><div class="text-xs font-semibold uppercase text-slate-500">Accuracy</div></div>
           </div>
+        </div>
+        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+          <h2 class="text-lg font-bold">Tools on test day</h2>
+          <p class="mt-1 text-xs text-slate-500">${esc(op.platform)}</p>
+          <ul class="mt-3 flex flex-wrap gap-1.5">${op.tools.map((k) => toolCatalog[k]).filter(Boolean).map((tool) => `<li class="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-600">${esc(tool.name)}</li>`).join('')}
+            <li class="rounded-full px-2.5 py-1 text-[11px] font-semibold ${op.calculator ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${op.calculator ? 'Calculator' : 'No calculator'}</li>
+          </ul>
+          <button data-action="o-setup" data-slug="${s.slug}" class="mt-4 text-xs font-bold text-slate-500 hover:text-slate-900">See full tool reference &amp; sources -&gt;</button>
         </div>
         <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
           <h2 class="text-lg font-bold">Reporting categories</h2>
@@ -2611,6 +2699,908 @@ function renderResults() {
   </main>`;
 }
 
+/* =============================================================================
+   OFFICIAL TEST MODE
+   Simulates the real Maryland computer-based testing platforms.
+
+   ELA/L 10 (MSTAR) runs on Pearson TestNav 8 (via ADAM): four 70-minute
+   Sections, no calculator, highlighter + answer eliminator + notepad +
+   bookmark + review menu, plus the MAAAM accessibility features (line reader,
+   magnification, color contrast, answer masking).
+
+   American Government (MSTAR) and Life Science MISA run on a different
+   platform - the Cognia/eMetric "MCAP Government and LS MISA Kiosk" - with
+   four 40-minute Sessions and a bottom-left tool bar. MISA additionally
+   provides a scientific calculator and the Periodic Table as reference.
+
+   Sources are cited in officialProfiles[...].sources and surfaced to students
+   in the tool reference screen.
+   ============================================================================= */
+
+const officialProfiles = {
+  ela: {
+    platform: 'TestNav 8 (Pearson / ADAM)',
+    sectionWord: 'Section',
+    sections: 4,
+    sectionMinutes: 70,
+    realStructure: 'Four 70-minute Sections. Grade 10 ELA/L is computer-adaptive, and you may review and change answers only within the Section you are currently working in.',
+    highlightColors: ['blue', 'pink'],
+    highlightNote: 'TestNav shows a small pop-up over your selection with the available highlighter colours.',
+    tools: ['highlighter', 'eliminator', 'masking', 'notepad', 'bookmark', 'review', 'lineReader', 'zoom', 'contrast'],
+    calculator: false,
+    references: false,
+    clearBtn: false,
+    calcNote: 'No calculator. Calculators are provided on MSTAR Mathematics Sections only, never on ELA/L.',
+    extras: [
+      'Headphones are required for every ELA/L Section, even if you are not using text-to-speech.',
+      'Text-to-speech on ELA/L is an accommodation, not an open accessibility feature - it requires eligibility under Appendix D of the Maryland Accessibility & Accommodations Manual.',
+      'Answer masking, colour contrast and text-to-speech must be turned on in advance through your Personal Needs Profile (PNP).',
+    ],
+    sources: [
+      { label: 'MSDE Spring 2026 ELA/Mathematics Test Administrator Manual (Section testing times, TestNav toolbar, calculator policy)', url: 'https://support.mdassessments.com/resources/training/MD1165751_ELAMath_TAM_WEBTAG.pdf' },
+      { label: 'Pearson TestNav 8 - Tools documentation', url: 'https://support.testnav.com/TN/testnav-tools-16908339.html' },
+      { label: 'Maryland Assessment, Accessibility & Accommodations Manual (bookmark, answer eliminator, highlighter, notepad, line reader, magnification, colour contrast)', url: 'https://marylandpublicschools.org/programs/Documents/Special-Ed/IEP/MAM508102017.pdf' },
+      { label: 'MSDE MCAP Practice Tests & TestNav 8 Tutorial', url: 'https://support.mdassessments.com/practice-tests/' },
+    ],
+  },
+  misa: {
+    platform: 'MCAP Government & LS MISA Kiosk (Cognia / eMetric)',
+    sectionWord: 'Session',
+    sections: 4,
+    sectionMinutes: 40,
+    realStructure: 'Four 40-minute Sessions, each unlocked with its own Session Access Code. Once a Session is turned in you cannot go back to it.',
+    highlightColors: ['yellow', 'blue', 'pink', 'green'],
+    highlightNote: 'The kiosk highlighter offers four colours, an eraser, and a Clear All button.',
+    tools: ['highlighter', 'eliminator', 'masking', 'notepad', 'bookmark', 'review', 'lineReader', 'zoom', 'contrast', 'calculator', 'references'],
+    calculator: true,
+    references: true,
+    clearBtn: true,
+    calcNote: 'Yes - a scientific calculator is built into the kiosk and is available to every student. A handheld scientific calculator is optional because the platform provides one.',
+    referenceNote: 'The Periodic Table of Elements is an allowable aid on MISA. A word-to-word bilingual dictionary is allowed if it is listed in your ML plan.',
+    extras: [
+      'The Sketch tool lets you draw over an item with black/red/blue brushes plus a yellow highlighter brush. It is not available on constructed-response items.',
+      'Custom Masking lets you drag resizable panels over any part of the screen to block out distractions.',
+      'Notes and sketches are cleared if you exit the test or finish a Session - they are for your use only and are never seen by scorers.',
+    ],
+    sources: [
+      { label: 'MCAP Government and LS MISA Kiosk User Guide (full student tool bar)', url: 'https://maryland.onlinehelp.cognia.org/wp-content/uploads/sites/15/2025/10/MCAP-Government-and-LS-MISA-Kiosk-User-Guide-v1.pdf' },
+      { label: 'Maryland 2025-26 Test Administrator Manual - LS MISA (40-minute sessions, calculator and Periodic Table as allowable aids)', url: 'https://maryland.onlinehelp.cognia.org/wp-content/uploads/sites/15/2025/09/MD_25-26_TAM_LS-MISA_ADA.pdf' },
+      { label: 'Maryland Assessment, Accessibility & Accommodations Manual', url: 'https://marylandpublicschools.org/programs/Documents/Special-Ed/IEP/MAM508102017.pdf' },
+    ],
+  },
+  government: {
+    platform: 'MCAP Government & LS MISA Kiosk (Cognia / eMetric)',
+    sectionWord: 'Session',
+    sections: 4,
+    sectionMinutes: 40,
+    realStructure: 'Four 40-minute Sessions. Two Sessions contain an Evidence-Based Argument Set (EBAS); the other two mix selected-response, technology-enhanced and 4-point constructed-response items.',
+    highlightColors: ['yellow', 'blue', 'pink', 'green'],
+    highlightNote: 'The kiosk highlighter offers four colours, an eraser, and a Clear All button. Highlighting on a shared stimulus stays with you across every item in that set.',
+    tools: ['highlighter', 'eliminator', 'masking', 'notepad', 'bookmark', 'review', 'lineReader', 'zoom', 'contrast'],
+    calculator: false,
+    references: false,
+    clearBtn: true,
+    calcNote: 'Not part of the Government tool set. (The kiosk is shared with LS MISA, where a scientific calculator is provided, but Maryland documents the calculator as a science tool - do not plan on one for Government.)',
+    extras: [
+      'The Sketch tool lets you draw over an item with black/red/blue brushes plus a yellow highlighter brush. It is not available on constructed-response items.',
+      'Custom Masking lets you drag resizable panels over any part of the screen to block out distractions.',
+      'On an EBAS, highlighting and notes you make on the sources carry across every item in that set - use them to tag evidence before you write your claim.',
+    ],
+    sources: [
+      { label: 'MCAP Government and LS MISA Kiosk User Guide (full student tool bar)', url: 'https://maryland.onlinehelp.cognia.org/wp-content/uploads/sites/15/2025/10/MCAP-Government-and-LS-MISA-Kiosk-User-Guide-v1.pdf' },
+      { label: 'MSDE MCAP Government FAQ (four 40-minute sessions, EBAS format)', url: 'https://www.marylandpublicschools.org/about/Documents/DCAA/SocialStudies/MCAP/MCAPGovernmentFAQ.pdf' },
+      { label: 'MCAP American Government High-Level Blueprint', url: 'https://marylandpublicschools.org/about/Documents/DAAIT/Assessment/MCAP/MCAP-Government-Blueprint-A.pdf' },
+      { label: 'Maryland Assessment, Accessibility & Accommodations Manual', url: 'https://marylandpublicschools.org/programs/Documents/Special-Ed/IEP/MAM508102017.pdf' },
+    ],
+  },
+};
+
+const toolCatalog = {
+  highlighter: { name: 'Highlighter', blurb: 'Select passage or question text and mark it. Erase a single highlight or clear the whole screen.' },
+  eliminator: { name: 'Answer Eliminator', blurb: 'Cross out answer choices you have ruled out. A crossed-out choice cannot be selected until you restore it.' },
+  masking: { name: 'Answer Masking', blurb: 'Hide answer choices behind a cover so you can read the question without them. Must be switched on in advance via your PNP on the real test.' },
+  notepad: { name: 'Notepad', blurb: 'A draggable, resizable notepad. Each item keeps its own notes, and notes on a shared stimulus follow you across the whole set.' },
+  bookmark: { name: 'Bookmark', blurb: 'Flag an item to come back to. Bookmarked items are starred on the review screen.' },
+  review: { name: 'Review screen', blurb: 'See every item in the current section with its answered / unanswered / bookmarked status, and jump straight to any of them.' },
+  lineReader: { name: 'Line Reader', blurb: 'A movable window that dims everything except the line or lines you are reading.' },
+  zoom: { name: 'Magnification', blurb: 'Zoom the test content. The kiosk steps through 100%, 150%, 200% and 300%.' },
+  contrast: { name: 'Colour Contrast', blurb: 'Change the background and text colours of the test content. Must be switched on in advance via your PNP on the real test.' },
+  calculator: { name: 'Scientific Calculator', blurb: 'Built into the platform. Provided on MISA; never provided on ELA/L.' },
+  references: { name: 'References', blurb: 'Opens the reference material provided with the test in a movable, resizable window.' },
+};
+
+let officialTimer = null;
+
+function fmtClock(sec) {
+  const s = Math.max(0, Math.floor(sec));
+  const m = Math.floor(s / 60);
+  return String(m).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+}
+
+function shortHash(str) {
+  let h = 5381;
+  const s = String(str || '');
+  for (let i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+  return h.toString(36);
+}
+
+/* Split a subject's topics into n contiguous sections, balancing item counts
+   while keeping each topic (and therefore each shared stimulus / EBAS) intact. */
+function splitTopics(topics, n) {
+  const remaining = [...topics];
+  const groups = [];
+  for (let g = 0; g < n && remaining.length; g++) {
+    const slotsLeft = n - g;
+    if (remaining.length <= slotsLeft) { groups.push([remaining.shift()]); continue; }
+    const totalLeft = remaining.reduce((a, t) => a + t.questions.length, 0);
+    const target = totalLeft / slotsLeft;
+    const take = [];
+    let acc = 0;
+    while (remaining.length > slotsLeft - 1 && (acc === 0 || acc + remaining[0].questions.length / 2 <= target)) {
+      const t = remaining.shift();
+      take.push(t);
+      acc += t.questions.length;
+    }
+    groups.push(take);
+  }
+  return groups.filter((g) => g.length);
+}
+
+/* ---- Highlight ranges: stored as sorted, non-overlapping {s,e,c} on the
+   plain source string, so they survive every full re-render. ---- */
+function hlSubtract(list, s, e) {
+  const out = [];
+  (list || []).forEach((r) => {
+    if (r.e <= s || r.s >= e) { out.push(r); return; }
+    if (r.s < s) out.push({ s: r.s, e: s, c: r.c });
+    if (r.e > e) out.push({ s: e, e: r.e, c: r.c });
+  });
+  return out.sort((a, b) => a.s - b.s);
+}
+
+function hlAdd(list, s, e, c) {
+  const out = hlSubtract(list, s, e);
+  out.push({ s, e, c });
+  return out.sort((a, b) => a.s - b.s);
+}
+
+function hlRender(text, ranges) {
+  const src = String(text || '');
+  if (!ranges || !ranges.length) return esc(src);
+  let out = '';
+  let pos = 0;
+  ranges.forEach((r) => {
+    const s = Math.max(pos, Math.min(r.s, src.length));
+    const e = Math.max(s, Math.min(r.e, src.length));
+    if (e <= s) return;
+    out += esc(src.slice(pos, s));
+    out += '<mark class="exam-hl hl-' + esc(r.c) + '">' + esc(src.slice(s, e)) + '</mark>';
+    pos = e;
+  });
+  return out + esc(src.slice(pos));
+}
+
+/* Highlights on a shared stimulus are keyed by the stimulus text, so two items
+   that quote the same passage share your marks - as they do on the real test. */
+function hlKey(q, scope) {
+  if (scope === 'passage') return 'p:' + shortHash(q.passage);
+  if (scope === 'prompt') return 'q:' + q.id;
+  return 'e:' + (q.topicId || '') + ':' + scope;
+}
+
+function hlBlock(text, q, scope, cls) {
+  const key = hlKey(q, scope);
+  const ranges = state.official.highlights[key] || [];
+  return `<div class="exam-text ${cls}" data-hl-scope="${esc(scope)}" data-hl-key="${esc(key)}">${hlRender(text, ranges)}</div>`;
+}
+
+function officialQ() {
+  const o = state.official;
+  return o.questions[o.index];
+}
+
+function officialSection() {
+  const o = state.official;
+  return o.sections[o.section];
+}
+
+function officialAnswered(q) {
+  const v = state.official.answers[q.id];
+  if (q.type === 'multi') return Array.isArray(v) && v.length > 0;
+  if (q.type === 'cr') return typeof v === 'string' && v.trim().length > 0;
+  return !!v;
+}
+
+function startOfficial(slug, timed) {
+  const subject = subjects.find((s) => s.slug === slug);
+  const profile = officialProfiles[slug];
+  const groups = splitTopics(subject.topics, profile.sections);
+  const questions = [];
+  const sections = groups.map((group, gi) => {
+    const start = questions.length;
+    group.forEach((t) => t.questions.forEach((q) => questions.push({
+      ...q,
+      topicName: t.name,
+      topicId: t.id,
+      ...(t.ebas ? { ebas: t.ebas } : {}),
+    })));
+    return {
+      start,
+      end: questions.length,
+      label: profile.sectionWord + ' ' + (gi + 1),
+      topics: group.map((t) => t.name),
+    };
+  });
+
+  const w = typeof window !== 'undefined' ? window.innerWidth : 1200;
+  state.official = {
+    slug,
+    timed: !!timed,
+    questions,
+    sections,
+    section: 0,
+    index: 0,
+    answers: {},
+    flags: {},
+    eliminated: {},
+    masked: {},
+    notes: {},
+    highlights: {},
+    globalNote: '',
+    selfGrade: {},
+    tool: { highlighter: false, eliminator: false, masking: false, notepad: false, lineReader: false, calculator: false, references: false, help: false },
+    hlColor: profile.highlightColors[0],
+    hlErase: false,
+    zoom: 100,
+    contrast: '',
+    lineWindow: 56,
+    noteTab: 'item',
+    notePos: { x: Math.max(16, w - 372), y: 168 },
+    noteSize: { w: 340, h: 280 },
+    calcPos: { x: Math.max(16, w - 740), y: 200 },
+    calcExpr: '',
+    calcDeg: true,
+    refPos: { x: 80, y: 200 },
+    secondsLeft: timed ? profile.sectionMinutes * 60 : 0,
+    elapsed: 0,
+    showReview: false,
+    sectionExpired: false,
+    submitted: false,
+    results: null,
+  };
+  state.view = 'official';
+  state.slug = slug;
+  startOfficialTimer();
+  render();
+}
+
+function startOfficialTimer() {
+  stopOfficialTimer();
+  officialTimer = setInterval(officialTick, 1000);
+}
+
+function stopOfficialTimer() {
+  if (officialTimer) { clearInterval(officialTimer); officialTimer = null; }
+}
+
+function officialTick() {
+  const o = state.official;
+  if (!o || o.submitted) { stopOfficialTimer(); return; }
+  o.elapsed++;
+  const el = document.getElementById('exam-timer');
+  if (!o.timed) {
+    if (el) el.textContent = fmtClock(o.elapsed);
+    return;
+  }
+  o.secondsLeft = Math.max(0, o.secondsLeft - 1);
+  if (el) {
+    el.textContent = fmtClock(o.secondsLeft);
+    el.style.color = o.secondsLeft <= 300 ? '#e11d48' : '';
+  }
+  if (o.secondsLeft === 0) advanceSection(true);
+}
+
+function advanceSection(expired) {
+  const o = state.official;
+  const profile = officialProfiles[o.slug];
+  if (o.section >= o.sections.length - 1) { submitOfficial(); return; }
+  o.section++;
+  o.index = o.sections[o.section].start;
+  o.showReview = false;
+  o.sectionExpired = !!expired;
+  if (o.timed) o.secondsLeft = profile.sectionMinutes * 60;
+  render();
+}
+
+function submitOfficial() {
+  const o = state.official;
+  if (o.submitted) return;
+  stopOfficialTimer();
+  const results = o.questions.map((q) => {
+    if (q.type === 'cr') {
+      // Constructed responses are hand-scored after the real test, so they are
+      // not machine-gradable here either - the student rubric-scores them on
+      // the results screen.
+      return { id: q.id, gradable: false, isCorrect: false };
+    }
+    const a = o.answers[q.id];
+    const ok = q.type === 'single' ? a === q.answer : sameSet(a || [], q.answer || []);
+    return { id: q.id, gradable: true, isCorrect: ok };
+  });
+  const subject = subjects.find((s) => s.slug === o.slug);
+  const label = subject.name + ' · Official format' + (o.timed ? ' (timed)' : ' (untimed)');
+  recordSession(o.slug, label, results);
+  o.submitted = true;
+  o.results = results;
+  o.label = label;
+  state.view = 'official-results';
+  render();
+}
+
+function exitOfficial(force) {
+  const o = state.official;
+  if (!force && o && !o.submitted) {
+    if (!confirm('Leave the official test? Your answers, highlights and notes for this attempt will be discarded — just like exiting the real testing platform.')) return;
+  }
+  stopOfficialTimer();
+  state.official = null;
+  goSubject(state.slug);
+}
+
+/* Progress bookkeeping for rubric self-scores made after submitting, without
+   logging a duplicate session. */
+function applySelfScore(slug, qid, ok) {
+  const data = readProgress();
+  const entry = data[slug] || { answered: {}, correct: {}, sessions: [] };
+  const answered = { ...entry.answered, [qid]: true };
+  const correct = { ...entry.correct };
+  if (ok) correct[qid] = true; else delete correct[qid];
+  data[slug] = { answered, correct, sessions: entry.sessions || [] };
+  writeProgress(data);
+}
+
+/* ---- Scientific calculator (MISA only). Hand-written parser, no eval. ---- */
+function calcEval(expr, deg) {
+  const src = String(expr).replace(/\s+/g, '').replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-').replace(/π/g, 'pi').replace(/√/g, 'sqrt');
+  let i = 0;
+  const toRad = (x) => (deg ? (x * Math.PI) / 180 : x);
+  const fns = {
+    sqrt: Math.sqrt, ln: Math.log, log: (x) => Math.log(x) / Math.LN10,
+    sin: (x) => Math.sin(toRad(x)), cos: (x) => Math.cos(toRad(x)), tan: (x) => Math.tan(toRad(x)),
+    abs: Math.abs,
+  };
+  const fnNames = Object.keys(fns);
+  function peek() { return src[i]; }
+  function expression() {
+    let v = term();
+    while (peek() === '+' || peek() === '-') { const op = src[i++]; const r = term(); v = op === '+' ? v + r : v - r; }
+    return v;
+  }
+  function term() {
+    let v = power();
+    while (peek() === '*' || peek() === '/') { const op = src[i++]; const r = power(); v = op === '*' ? v * r : v / r; }
+    return v;
+  }
+  function power() {
+    const base = unary();
+    if (peek() === '^') { i++; return Math.pow(base, power()); }
+    return base;
+  }
+  function unary() {
+    if (peek() === '-') { i++; return -unary(); }
+    if (peek() === '+') { i++; return unary(); }
+    return primary();
+  }
+  function primary() {
+    if (peek() === '(') {
+      i++;
+      const v = expression();
+      if (peek() === ')') i++; else throw new Error('unbalanced');
+      return v;
+    }
+    for (let k = 0; k < fnNames.length; k++) {
+      const name = fnNames[k];
+      if (src.startsWith(name, i)) { i += name.length; return fns[name](unary()); }
+    }
+    if (src.startsWith('pi', i)) { i += 2; return Math.PI; }
+    if (peek() === 'e') { i++; return Math.E; }
+    const start = i;
+    while (i < src.length && /[0-9.]/.test(src[i])) i++;
+    if (start === i) throw new Error('unexpected');
+    return parseFloat(src.slice(start, i));
+  }
+  const value = expression();
+  if (i < src.length) throw new Error('trailing');
+  if (!isFinite(value)) throw new Error('range');
+  return value;
+}
+
+/* ---------------------------- Official rendering --------------------------- */
+
+const contrastModes = [
+  { id: '', name: 'Default' },
+  { id: 'c-cream', name: 'Black on cream' },
+  { id: 'c-sky', name: 'Black on light blue' },
+  { id: 'c-night', name: 'White on black' },
+  { id: 'c-amber', name: 'Yellow on black' },
+];
+
+function renderToolReference(slug) {
+  const p = officialProfiles[slug];
+  const s = subjects.find((x) => x.slug === slug);
+  const rows = p.tools.map((k) => toolCatalog[k]).filter(Boolean);
+  return `
+    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <h3 class="text-lg font-bold">Tools you get on the real ${esc(s.name)} test</h3>
+      <p class="mt-1 text-sm text-slate-500">Platform: <strong>${esc(p.platform)}</strong>. ${esc(p.realStructure)}</p>
+      <ul class="mt-4 space-y-2.5">${rows.map((tool) => `
+        <li class="flex gap-3 text-sm"><span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400"></span><span><strong>${esc(tool.name)}</strong> — ${esc(tool.blurb)}</span></li>`).join('')}
+        <li class="flex gap-3 text-sm"><span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full ${p.calculator ? 'bg-emerald-500' : 'bg-rose-400'}"></span><span><strong>Calculator</strong> — ${esc(p.calcNote)}</span></li>
+      </ul>
+      ${p.extras && p.extras.length ? `<div class="mt-4 rounded-xl bg-slate-50 p-4">
+        <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Also good to know</p>
+        <ul class="mt-2 space-y-1.5">${p.extras.map((x) => `<li class="text-sm text-slate-600">${esc(x)}</li>`).join('')}</ul>
+      </div>` : ''}
+      <div class="mt-4 border-t border-slate-100 pt-3">
+        <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Sources (MSDE / platform documentation)</p>
+        <ul class="mt-2 space-y-1">${p.sources.map((src) => `<li class="text-xs text-slate-500"><a href="${esc(src.url)}" target="_blank" rel="noreferrer" class="underline hover:text-slate-900">${esc(src.label)}</a></li>`).join('')}</ul>
+      </div>
+    </div>`;
+}
+
+function renderOfficialSetup() {
+  const s = subjects.find((x) => x.slug === state.setupSlug) || subjects[0];
+  const p = officialProfiles[s.slug];
+  const t = themeOf(s);
+  const items = countQ(s);
+  return `
+  <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+      <button data-action="home" class="flex items-center gap-2.5">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-slate-900 text-white font-extrabold">T</span>
+        <span class="text-sm font-extrabold">Terp Prep</span>
+      </button>
+      <span class="rounded-full bg-slate-900 px-3 py-1 text-xs font-bold text-white">Official Test Mode</span>
+    </div>
+  </header>
+  <main class="mx-auto max-w-5xl px-4 py-8">
+    <button data-action="home" class="mb-4 text-sm font-semibold text-slate-500 hover:text-slate-900">&lt;- All tests</button>
+    <section class="overflow-hidden rounded-3xl bg-slate-900 p-6 text-white sm:p-8">
+      <span class="inline-flex rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold">Test-day simulation</span>
+      <h1 class="mt-3 text-3xl font-extrabold sm:text-4xl">Official Test Mode</h1>
+      <p class="mt-2 max-w-2xl text-slate-300">A full-screen run-through in the shape of the real thing: timed sections you cannot go back to, the same on-screen tools, no answer feedback until you turn it in.</p>
+    </section>
+
+    <h2 class="mb-3 mt-8 text-lg font-bold">1. Choose your test</h2>
+    <div class="grid gap-4 md:grid-cols-3">${subjects.map((sub) => {
+      const th = themeOf(sub);
+      const pr = officialProfiles[sub.slug];
+      const active = sub.slug === s.slug;
+      return `<button data-action="o-pick" data-slug="${sub.slug}" class="rounded-2xl border-2 bg-white p-5 text-left transition ${active ? th.border + ' ' + th.soft : 'border-slate-200 hover:border-slate-300'}">
+        <div class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full ${th.dot}"></span><span class="font-bold">${esc(sub.name)}</span></div>
+        <p class="mt-1.5 text-sm text-slate-600">${esc(sub.fullName)}</p>
+        <p class="mt-2 text-xs font-semibold ${th.text}">${pr.sections} ${esc(pr.sectionWord.toLowerCase())}s · ${pr.sectionMinutes} min each</p>
+      </button>`;
+    }).join('')}</div>
+
+    <h2 class="mb-3 mt-8 text-lg font-bold">2. Choose your timing</h2>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <button data-action="o-timed" data-val="true" class="rounded-2xl border-2 bg-white p-5 text-left ${state.setupTimed ? t.border + ' ' + t.soft : 'border-slate-200 hover:border-slate-300'}">
+        <div class="font-bold">Timed — official section clock</div>
+        <p class="mt-1 text-sm text-slate-600">${p.sectionMinutes} minutes per ${esc(p.sectionWord.toLowerCase())}. When the clock runs out the ${esc(p.sectionWord.toLowerCase())} closes automatically, exactly like test day.</p>
+      </button>
+      <button data-action="o-timed" data-val="false" class="rounded-2xl border-2 bg-white p-5 text-left ${!state.setupTimed ? t.border + ' ' + t.soft : 'border-slate-200 hover:border-slate-300'}">
+        <div class="font-bold">Untimed — learn the tools first</div>
+        <p class="mt-1 text-sm text-slate-600">Same interface and same ${esc(p.sectionWord.toLowerCase())} structure, but the clock counts up instead of down. Best for your first run.</p>
+      </button>
+    </div>
+
+    <div class="mt-8 flex flex-wrap items-center gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <div class="grow">
+        <h2 class="text-lg font-bold">3. Start the ${esc(s.name)} official-format test</h2>
+        <p class="text-sm text-slate-500">${items} items across ${p.sections} ${esc(p.sectionWord.toLowerCase())}s. You will not see whether an answer is right until you turn the whole test in.</p>
+      </div>
+      <button data-action="o-start" data-slug="${s.slug}" class="rounded-xl px-5 py-3 text-sm font-bold text-white ${t.btn}">Begin test -&gt;</button>
+    </div>
+
+    <div class="mt-8">${renderToolReference(s.slug)}</div>
+    <p class="mt-4 text-xs text-slate-400">Terp Prep is an independent study aid. This is a practice simulation of the Maryland testing platforms, not the official software, and the items are original.</p>
+  </main>`;
+}
+
+function renderExamTools() {
+  const o = state.official;
+  const p = officialProfiles[o.slug];
+  const btn = (tool, label) => {
+    if (!p.tools.includes(tool)) return '';
+    const on = !!o.tool[tool];
+    return `<button data-action="o-tool" data-tool="${tool}" class="rounded-md px-2.5 py-1.5 text-xs font-bold ${on ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}">${esc(label)}</button>`;
+  };
+  const contrast = contrastModes.find((c) => c.id === o.contrast) || contrastModes[0];
+  return `
+    <div class="exam-bar flex flex-wrap items-center gap-1.5 border-t border-slate-200 bg-white px-4 py-1.5">
+      <span class="exam-muted mr-1 text-[10px] font-bold uppercase tracking-wide text-slate-400">Tools</span>
+      ${btn('highlighter', 'Highlighter')}
+      ${btn('eliminator', 'Answer eliminator')}
+      ${btn('masking', 'Answer masking')}
+      ${btn('notepad', 'Notepad')}
+      ${btn('lineReader', 'Line reader')}
+      ${btn('calculator', 'Calculator')}
+      ${btn('references', 'References')}
+      ${p.tools.includes('zoom') ? `<span class="ml-1 inline-flex items-center overflow-hidden rounded-md bg-slate-100">
+        <button data-action="o-zoom" data-dir="out" class="px-2 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-200">&minus;</button>
+        <button data-action="o-zoom" data-dir="reset" class="px-1.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-200">${o.zoom}%</button>
+        <button data-action="o-zoom" data-dir="in" class="px-2 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-200">+</button>
+      </span>` : ''}
+      ${p.tools.includes('contrast') ? `<button data-action="o-contrast" class="rounded-md bg-slate-100 px-2.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-200">Contrast: ${esc(contrast.name)}</button>` : ''}
+      <button data-action="o-tool" data-tool="help" class="ml-auto rounded-md bg-slate-100 px-2.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-200">? Tool help</button>
+    </div>
+    ${o.tool.highlighter ? `<div class="exam-bar flex flex-wrap items-center gap-2 border-t border-slate-200 bg-amber-50 px-4 py-1.5">
+      <span class="text-[11px] font-bold uppercase tracking-wide text-slate-500">Highlighter — select text to mark it</span>
+      ${p.highlightColors.map((c) => `<button data-action="o-hlcolor" data-color="${c}" title="${c}" class="h-6 w-6 rounded border-2 hl-${c} ${o.hlColor === c && !o.hlErase ? 'border-slate-900' : 'border-slate-300'}"></button>`).join('')}
+      <button data-action="o-hlerase" class="rounded-md px-2.5 py-1.5 text-xs font-bold ${o.hlErase ? 'bg-slate-900 text-white' : 'bg-white text-slate-700 ring-1 ring-slate-300'}">Eraser</button>
+      <button data-action="o-hlclear" class="rounded-md bg-white px-2.5 py-1.5 text-xs font-bold text-slate-700 ring-1 ring-slate-300">Clear all</button>
+    </div>` : ''}`;
+}
+
+function renderExamItem() {
+  const o = state.official;
+  const p = officialProfiles[o.slug];
+  const q = officialQ();
+  const sec = officialSection();
+  const answer = o.answers[q.id];
+  const elim = o.eliminated[q.id] || {};
+  const mask = o.masked[q.id] || {};
+  const ebas = q.ebas;
+
+  let body = '';
+  if (q.type === 'single' || q.type === 'multi') {
+    if (q.type === 'multi') body += '<p class="exam-muted mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">Select all that apply</p>';
+    body += `<div class="space-y-2.5">${q.choices.map((c) => {
+      const selected = q.type === 'multi' ? (Array.isArray(answer) && answer.includes(c.id)) : answer === c.id;
+      const off = !!elim[c.id] || !!mask[c.id];
+      return `<div class="exam-choice flex items-start gap-2 rounded-lg border-2 bg-white p-3 ${selected ? 'border-slate-900' : 'border-slate-200'}">
+        ${p.tools.includes('masking') && o.tool.masking ? `<button data-action="o-mask" data-cid="${c.id}" title="Hide or show this choice" class="mt-0.5 shrink-0 rounded border border-slate-300 px-1.5 py-0.5 text-[11px] font-bold text-slate-500 hover:bg-slate-100">${mask[c.id] ? 'show' : 'hide'}</button>` : ''}
+        <button data-action="o-choose" data-cid="${c.id}" class="flex flex-1 items-start gap-3 text-left">
+          <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center border-2 text-[11px] font-bold ${q.type === 'multi' ? 'rounded-md' : 'rounded-full'} ${selected ? 'border-slate-900 bg-slate-900 text-white' : 'border-slate-300 text-slate-400'}">${c.id.toUpperCase()}</span>
+          <span class="text-sm leading-relaxed ${elim[c.id] ? 'exam-elim' : ''} ${mask[c.id] ? 'exam-masked' : ''}">${esc(c.text)}</span>
+        </button>
+        ${o.tool.eliminator ? `<button data-action="o-elim" data-cid="${c.id}" title="Cross out this choice" class="mt-0.5 shrink-0 rounded border px-1.5 py-0.5 text-[11px] font-bold ${elim[c.id] ? 'border-rose-500 bg-rose-500 text-white' : 'border-slate-300 text-slate-500 hover:bg-slate-100'}">&#10005;</button>` : ''}
+      </div>`;
+    }).join('')}</div>`;
+    if (o.tool.eliminator) body += '<p class="exam-muted mt-2 text-xs text-slate-500">Answer eliminator is on: click a choice to cross it out. Crossed-out choices cannot be selected.</p>';
+  } else {
+    body = `<textarea data-action="o-text" rows="10" class="exam-panel w-full resize-y rounded-lg border-2 border-slate-200 bg-white p-4 text-sm leading-relaxed focus:outline-none focus:ring-2 focus:ring-slate-300" placeholder="Type your response here.">${esc(answer || '')}</textarea>
+      <p class="exam-muted mt-1.5 text-xs text-slate-500">${q.points ? 'Worth up to ' + q.points + ' points. ' : ''}On the real test this is hand-scored against a rubric — you will score it yourself after you turn the test in.</p>`;
+  }
+
+  return `
+    ${o.sectionExpired ? `<div class="mb-4 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-3 text-sm font-semibold text-amber-900">Time expired on the previous ${esc(p.sectionWord.toLowerCase())}. You are now in ${esc(sec.label)} and cannot return to earlier ${esc(p.sectionWord.toLowerCase())}s.</div>` : ''}
+    ${ebas ? `<div class="exam-card mb-4 rounded-lg border-2 border-slate-200 bg-white p-5">
+      <div class="exam-muted text-[11px] font-bold uppercase tracking-wide text-slate-500">Evidence-Based Argument Set — source material</div>
+      <p class="mt-2 font-bold">${esc(ebas.compellingQuestion)}</p>
+      ${hlBlock(ebas.background, q, 'ebas-bg', 'exam-muted mt-2 text-sm text-slate-600')}
+      <div class="mt-3 space-y-3">${ebas.sources.map((src, si) => `
+        <div class="exam-stim rounded-lg bg-slate-50 p-4">
+          <div class="flex flex-wrap justify-between gap-2"><span class="font-bold">${esc(src.label)}</span><span class="exam-muted text-xs italic text-slate-500">${esc(src.citation)}</span></div>
+          ${hlBlock(src.text, q, 'ebas-src-' + si, 'mt-1.5 text-sm')}
+        </div>`).join('')}</div>
+    </div>` : ''}
+    <div class="exam-card rounded-lg border-2 border-slate-200 bg-white p-6">
+      <div class="mb-4 flex flex-wrap items-center gap-2">
+        <span class="rounded bg-slate-900 px-2 py-1 text-[11px] font-bold text-white">Item ${o.index - sec.start + 1}</span>
+        <span class="exam-muted rounded bg-slate-100 px-2 py-1 text-[11px] font-semibold text-slate-600">${esc(q.topicName)}</span>
+        <span class="exam-muted rounded bg-slate-100 px-2 py-1 text-[11px] font-semibold text-slate-600">${q.type === 'single' ? 'Selected response' : q.type === 'multi' ? 'Multiple select' : 'Constructed response' + (q.points ? ' · ' + q.points + ' pt' : '')}</span>
+        ${o.flags[q.id] ? '<span class="rounded bg-amber-400 px-2 py-1 text-[11px] font-bold text-amber-950">&#9733; Bookmarked</span>' : ''}
+      </div>
+      ${q.passage ? hlBlock(q.passage, q, 'passage', 'exam-stim mb-5 rounded-lg border-l-4 border-slate-300 bg-slate-50 p-4 text-[15px] leading-relaxed') : ''}
+      ${hlBlock(q.prompt, q, 'prompt', 'mb-4 text-lg font-semibold leading-snug')}
+      ${body}
+    </div>`;
+}
+
+function renderExamReview() {
+  const o = state.official;
+  const p = officialProfiles[o.slug];
+  const sec = officialSection();
+  const isLastSection = o.section === o.sections.length - 1;
+  const items = [];
+  for (let i = sec.start; i < sec.end; i++) items.push(i);
+  const unanswered = items.filter((i) => !officialAnswered(o.questions[i])).length;
+  const flagged = items.filter((i) => o.flags[o.questions[i].id]).length;
+  return `
+    <div class="exam-card rounded-lg border-2 border-slate-200 bg-white p-6">
+      <h2 class="text-xl font-bold">${esc(sec.label)} review</h2>
+      <p class="exam-muted mt-1 text-sm text-slate-500">${items.length} items · ${unanswered} unanswered · ${flagged} bookmarked. Click any item to go back to it.</p>
+      <div class="mt-5 flex flex-wrap gap-3 text-xs font-semibold">
+        <span class="flex items-center gap-1.5"><span class="h-3 w-3 rounded border-2 border-slate-900 bg-slate-900"></span>Answered</span>
+        <span class="flex items-center gap-1.5"><span class="h-3 w-3 rounded border-2 border-slate-300 bg-white"></span>Not answered</span>
+        <span class="flex items-center gap-1.5"><span class="h-3 w-3 rounded border-2 border-amber-500 bg-amber-300"></span>Bookmarked</span>
+      </div>
+      <div class="mt-4 grid grid-cols-5 gap-2 sm:grid-cols-8 md:grid-cols-10">${items.map((i) => {
+        const q = o.questions[i];
+        const done = officialAnswered(q);
+        const flag = o.flags[q.id];
+        const cls = flag ? 'border-amber-500 bg-amber-300 text-amber-950' : done ? 'border-slate-900 bg-slate-900 text-white' : 'border-slate-300 bg-white text-slate-600';
+        return `<button data-action="o-goto" data-i="${i}" class="rounded-lg border-2 py-2.5 text-sm font-bold ${cls}">${i - sec.start + 1}${flag ? ' &#9733;' : ''}</button>`;
+      }).join('')}</div>
+      <div class="mt-6 flex flex-wrap gap-3 border-t border-slate-200 pt-5">
+        <button data-action="o-review" class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-slate-700 ring-1 ring-slate-300 hover:bg-slate-50">Return to test</button>
+        <button data-action="o-turnin" class="rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-bold text-white hover:bg-slate-700">${isLastSection ? 'Turn in test' : 'Turn in ' + esc(sec.label) + ' -&gt;'}</button>
+      </div>
+      ${!isLastSection ? `<p class="exam-muted mt-3 text-xs text-slate-500">Once you turn in this ${esc(p.sectionWord.toLowerCase())} you cannot return to it — the same rule applies on the real test.</p>` : ''}
+    </div>`;
+}
+
+function renderExamNotepad() {
+  const o = state.official;
+  const q = officialQ();
+  const isItem = o.noteTab === 'item';
+  const value = isItem ? (o.notes[q.id] || '') : o.globalNote;
+  return `
+    <div id="exam-notepad" class="exam-float exam-panel flex flex-col overflow-hidden rounded-lg border-2 border-slate-400 bg-white" style="left:${o.notePos.x}px; top:${o.notePos.y}px; width:${o.noteSize.w}px; height:${o.noteSize.h}px;">
+      <div data-drag="note" class="exam-grip flex items-center justify-between border-b border-slate-300 bg-slate-100 px-3 py-1.5">
+        <span class="text-xs font-bold">Notepad</span>
+        <button data-action="o-tool" data-tool="notepad" class="px-1 text-sm font-bold text-slate-500 hover:text-slate-900">&#10005;</button>
+      </div>
+      <div class="flex gap-1 border-b border-slate-200 px-2 py-1.5">
+        <button data-action="o-notetab" data-tab="item" class="rounded px-2 py-1 text-[11px] font-bold ${isItem ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600'}">This item</button>
+        <button data-action="o-notetab" data-tab="test" class="rounded px-2 py-1 text-[11px] font-bold ${!isItem ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600'}">Whole test</button>
+      </div>
+      <textarea data-action="o-note" class="exam-panel grow resize-none bg-white p-3 text-sm leading-relaxed focus:outline-none" placeholder="${isItem ? 'Notes for this item only.' : 'Notes for the whole test.'}">${esc(value)}</textarea>
+      <div data-resize="note" class="exam-resize"></div>
+    </div>`;
+}
+
+function renderExamCalculator() {
+  const o = state.official;
+  const pad = ['7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '0', '.', '=', '+'];
+  const sci = ['(', ')', '^', 'sqrt', 'ln', 'log', 'sin', 'cos', 'tan', 'pi'];
+  const sciLabel = { sqrt: '&radic;', pi: '&pi;', '^': 'x&#8319;' };
+  return `
+    <div id="exam-calc" class="exam-float exam-panel w-64 overflow-hidden rounded-lg border-2 border-slate-400 bg-white" style="left:${o.calcPos.x}px; top:${o.calcPos.y}px;">
+      <div data-drag="calc" class="exam-grip flex items-center justify-between border-b border-slate-300 bg-slate-100 px-3 py-1.5">
+        <span class="text-xs font-bold">Scientific calculator</span>
+        <button data-action="o-tool" data-tool="calculator" class="px-1 text-sm font-bold text-slate-500 hover:text-slate-900">&#10005;</button>
+      </div>
+      <div class="border-b border-slate-200 px-3 py-2 text-right font-mono text-sm break-all min-h-[2.5rem]">${esc(o.calcExpr || '0')}</div>
+      <div class="flex items-center justify-between px-2 py-1">
+        <button data-action="o-calcdeg" class="rounded bg-slate-100 px-2 py-1 text-[11px] font-bold text-slate-700">${o.calcDeg ? 'DEG' : 'RAD'}</button>
+        <div class="flex gap-1">
+          <button data-action="o-calc" data-k="C" class="rounded bg-slate-200 px-2 py-1 text-[11px] font-bold">C</button>
+          <button data-action="o-calc" data-k="back" class="rounded bg-slate-200 px-2 py-1 text-[11px] font-bold">&#9003;</button>
+        </div>
+      </div>
+      <div class="grid grid-cols-5 gap-1 px-2 pb-1">${sci.map((k) => `<button data-action="o-calc" data-k="${esc(k)}" class="rounded bg-slate-100 py-1.5 text-[11px] font-bold text-slate-700 hover:bg-slate-200">${sciLabel[k] || esc(k)}</button>`).join('')}</div>
+      <div class="grid grid-cols-4 gap-1 p-2">${pad.map((k) => `<button data-action="o-calc" data-k="${esc(k)}" class="rounded py-2 text-sm font-bold ${k === '=' ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-800 hover:bg-slate-200'}">${esc(k)}</button>`).join('')}</div>
+    </div>`;
+}
+
+function renderExamReferences() {
+  const o = state.official;
+  const p = officialProfiles[o.slug];
+  return `
+    <div id="exam-refs" class="exam-float exam-panel w-80 overflow-hidden rounded-lg border-2 border-slate-400 bg-white" style="left:${o.refPos.x}px; top:${o.refPos.y}px;">
+      <div data-drag="refs" class="exam-grip flex items-center justify-between border-b border-slate-300 bg-slate-100 px-3 py-1.5">
+        <span class="text-xs font-bold">References</span>
+        <button data-action="o-tool" data-tool="references" class="px-1 text-sm font-bold text-slate-500 hover:text-slate-900">&#10005;</button>
+      </div>
+      <div class="p-4 text-sm leading-relaxed">
+        <p>${esc(p.referenceNote || 'Reference material provided with this test opens here.')}</p>
+        <p class="exam-muted mt-3 text-xs text-slate-500">Terp Prep does not reproduce the official reference materials. On test day, open this tool to reach them.</p>
+      </div>
+    </div>`;
+}
+
+function renderExamHelp() {
+  const o = state.official;
+  const p = officialProfiles[o.slug];
+  const rows = p.tools.map((k) => toolCatalog[k]).filter(Boolean);
+  return `
+    <div class="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto bg-slate-900/60 p-6">
+      <div class="exam-panel w-full max-w-2xl rounded-xl bg-white p-6">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <h3 class="text-lg font-bold">Tool help</h3>
+            <p class="exam-muted mt-0.5 text-sm text-slate-500">${esc(p.platform)} · ${esc(p.realStructure)}</p>
+          </div>
+          <button data-action="o-tool" data-tool="help" class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-bold text-slate-700">Close</button>
+        </div>
+        <ul class="mt-4 space-y-2.5">${rows.map((tool) => `<li class="text-sm"><strong>${esc(tool.name)}</strong> — ${esc(tool.blurb)}</li>`).join('')}
+          <li class="text-sm"><strong>Calculator</strong> — ${esc(p.calcNote)}</li>
+        </ul>
+        <p class="exam-muted mt-4 border-t border-slate-200 pt-3 text-xs text-slate-500">Source: ${esc(p.sources[0].label)}</p>
+      </div>
+    </div>`;
+}
+
+function renderOfficial() {
+  const o = state.official;
+  const s = subjects.find((x) => x.slug === o.slug);
+  const p = officialProfiles[o.slug];
+  const sec = officialSection();
+  const q = officialQ();
+  const inSectionIndex = o.index - sec.start;
+  const sectionCount = sec.end - sec.start;
+  const isLastInSection = o.index === sec.end - 1;
+
+  return `
+  <div class="exam-root ${o.contrast} flex min-h-screen flex-col">
+    <header class="exam-bar sticky top-0 z-40 border-b-2 border-slate-300 bg-white">
+      <div class="flex flex-wrap items-center justify-between gap-3 px-4 py-2">
+        <div class="flex items-center gap-3">
+          <span class="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-slate-900 text-[10px] font-extrabold text-white">MD</span>
+          <span class="leading-tight">
+            <span class="block text-sm font-bold">${esc(s.fullName)}</span>
+            <span class="exam-muted block text-[11px] text-slate-500">${esc(p.platform)} — practice simulation</span>
+          </span>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="exam-muted rounded bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-700">${esc(sec.label)} of ${o.sections.length}</span>
+          <span class="exam-muted text-xs font-semibold text-slate-500">Question ${inSectionIndex + 1} of ${sectionCount}</span>
+          <span class="exam-muted flex items-center gap-1.5 rounded bg-slate-100 px-2.5 py-1">
+            <span class="text-[10px] font-bold uppercase text-slate-500">${o.timed ? 'Time left' : 'Elapsed'}</span>
+            <span id="exam-timer" class="font-mono text-sm font-bold tabular-nums">${fmtClock(o.timed ? o.secondsLeft : o.elapsed)}</span>
+          </span>
+          <button data-action="o-flag" class="rounded-md px-2.5 py-1.5 text-xs font-bold ${o.flags[q.id] ? 'bg-amber-400 text-amber-950' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}">&#9733; ${o.flags[q.id] ? 'Bookmarked' : 'Bookmark'}</button>
+          <button data-action="o-exit" class="rounded-md bg-white px-2.5 py-1.5 text-xs font-bold text-slate-500 ring-1 ring-slate-300 hover:text-slate-900">Exit</button>
+        </div>
+      </div>
+      ${renderExamTools()}
+    </header>
+
+    <div id="exam-content" class="grow" style="zoom:${o.zoom}%">
+      <div class="mx-auto max-w-4xl px-4 py-6">
+        ${o.showReview ? renderExamReview() : renderExamItem()}
+      </div>
+    </div>
+
+    <footer class="exam-bar sticky bottom-0 z-40 border-t-2 border-slate-300 bg-white">
+      <div class="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-3 px-4 py-2.5">
+        <button data-action="o-prev" ${o.index <= sec.start || o.showReview ? 'disabled' : ''} class="rounded-lg bg-white px-4 py-2 text-sm font-bold text-slate-700 ring-1 ring-slate-300 hover:bg-slate-50 disabled:opacity-40">&#8592; Back</button>
+        <div class="flex flex-wrap items-center gap-2">
+          ${p.clearBtn && !o.showReview ? '<button data-action="o-clear" class="rounded-lg bg-white px-3 py-2 text-xs font-bold text-slate-600 ring-1 ring-slate-300 hover:bg-slate-50">Clear answer</button>' : ''}
+          <button data-action="o-review" class="rounded-lg px-4 py-2 text-sm font-bold ${o.showReview ? 'bg-slate-900 text-white' : 'bg-white text-slate-700 ring-1 ring-slate-300 hover:bg-slate-50'}">Review</button>
+        </div>
+        ${o.showReview
+          ? '<span class="w-[92px]"></span>'
+          : isLastInSection
+            ? `<button data-action="o-review" class="rounded-lg bg-slate-900 px-5 py-2 text-sm font-bold text-white hover:bg-slate-700">Finish ${esc(sec.label)} &#8594;</button>`
+            : '<button data-action="o-next" class="rounded-lg bg-slate-900 px-5 py-2 text-sm font-bold text-white hover:bg-slate-700">Next &#8594;</button>'}
+      </div>
+    </footer>
+
+    ${o.tool.notepad ? renderExamNotepad() : ''}
+    ${o.tool.calculator && p.calculator ? renderExamCalculator() : ''}
+    ${o.tool.references && p.references ? renderExamReferences() : ''}
+    ${o.tool.lineReader ? '<div id="exam-linereader"><div id="exam-lr-top" style="top:0;height:0"></div><div id="exam-lr-bot" style="top:100%;bottom:0"></div></div>' : ''}
+    ${o.tool.help ? renderExamHelp() : ''}
+  </div>`;
+}
+
+function renderOfficialResults() {
+  const o = state.official;
+  const s = subjects.find((x) => x.slug === o.slug);
+  const t = themeOf(s);
+  const p = officialProfiles[o.slug];
+  const results = o.results || [];
+  const byId = {};
+  results.forEach((r) => { byId[r.id] = r; });
+
+  const machine = results.filter((r) => r.gradable);
+  const correct = machine.filter((r) => r.isCorrect).length;
+  const pct = machine.length ? Math.round((correct / machine.length) * 100) : 0;
+  const crQs = o.questions.filter((q) => q.type === 'cr');
+  const missed = o.questions.filter((q) => byId[q.id] && byId[q.id].gradable && !byId[q.id].isCorrect);
+  const flagged = o.questions.filter((q) => o.flags[q.id]);
+
+  const topicMap = new Map();
+  o.questions.forEach((q) => {
+    const r = byId[q.id];
+    if (!r || !r.gradable) return;
+    const entry = topicMap.get(q.topicName) || { total: 0, correct: 0 };
+    entry.total++;
+    if (r.isCorrect) entry.correct++;
+    topicMap.set(q.topicName, entry);
+  });
+
+  const answerText = (q) => {
+    const a = o.answers[q.id];
+    if (q.type === 'multi') {
+      const arr = Array.isArray(a) ? a : [];
+      return arr.length ? arr.map((x) => x.toUpperCase()).sort().join(', ') : 'No answer';
+    }
+    return a ? String(a).toUpperCase() : 'No answer';
+  };
+  const keyText = (q) => (q.type === 'multi' ? (q.answer || []).map((x) => x.toUpperCase()).sort().join(', ') : String(q.answer || '').toUpperCase());
+
+  const msg = pct >= 80 ? 'Strong command of this material — keep the pace and the tools you used today.'
+    : pct >= 60 ? 'Solid. Work through the missed items below, then run the official format again.'
+    : 'Use the breakdown below to pick one reporting category at a time and rebuild it.';
+
+  return `
+  <main class="mx-auto max-w-4xl px-4 py-8">
+    <div class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-100">
+      <div class="bg-gradient-to-br ${t.grad} p-8 text-center text-white">
+        <p class="text-xs font-bold uppercase tracking-wide text-white/80">Official format · ${esc(p.platform.split('(')[0].trim())}</p>
+        <p class="mt-1 text-sm font-semibold text-white/90">${esc(s.fullName)}</p>
+        <div class="mt-3 text-6xl font-extrabold">${pct}%</div>
+        <p class="mt-2 text-white/90">${correct} of ${machine.length} machine-scored items correct</p>
+        <p class="mt-1 text-xs text-white/70">${o.sections.length} ${esc(p.sectionWord.toLowerCase())}s · ${o.timed ? 'timed' : 'untimed'} · ${fmtClock(o.elapsed)} on the clock${crQs.length ? ' · ' + crQs.length + ' constructed response' + (crQs.length === 1 ? '' : 's') + ' to score below' : ''}</p>
+      </div>
+      <div class="p-6">
+        <p class="text-center text-sm text-slate-500">${msg}</p>
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+          <button data-action="o-start" data-slug="${s.slug}" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn}">Retake official format</button>
+          <button data-action="o-setup" data-slug="${s.slug}" class="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 ring-1 ring-slate-200">Change test or timing</button>
+          <button data-action="o-leave" class="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 ring-1 ring-slate-200">Back to ${esc(s.name)}</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <h2 class="text-lg font-bold">Reporting category breakdown</h2>
+      <div class="mt-4 space-y-3">${[...topicMap.entries()].map(([name, v]) => {
+        const tp = v.total ? Math.round((v.correct / v.total) * 100) : 0;
+        return `<div>
+          <div class="mb-1 flex justify-between text-sm"><span class="font-semibold">${esc(name)}</span><span class="font-bold text-slate-500">${v.correct}/${v.total} · ${tp}%</span></div>
+          <div class="h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full ${tp >= 70 ? 'bg-emerald-500' : tp >= 50 ? 'bg-amber-500' : 'bg-rose-500'}" style="width:${tp}%"></div></div>
+        </div>`;
+      }).join('')}</div>
+      ${flagged.length ? `<p class="mt-4 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">You bookmarked ${flagged.length} item${flagged.length === 1 ? '' : 's'} during the test. Bookmarked items are marked with a star below.</p>` : ''}
+    </div>
+
+    <div class="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <h2 class="text-lg font-bold">Items you missed (${missed.length})</h2>
+      ${missed.length === 0 ? '<p class="mt-2 text-sm text-slate-500">You answered every machine-scored item correctly.</p>' : `<div class="mt-4 space-y-4">${missed.map((q) => `
+        <div class="rounded-xl border-l-4 border-rose-400 bg-slate-50 p-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="rounded bg-slate-200 px-2 py-0.5 text-[11px] font-bold text-slate-700">${esc(q.topicName)}</span>
+            ${o.flags[q.id] ? '<span class="rounded bg-amber-300 px-2 py-0.5 text-[11px] font-bold text-amber-950">&#9733; Bookmarked</span>' : ''}
+          </div>
+          <p class="mt-2 font-semibold">${esc(q.prompt)}</p>
+          <p class="mt-2 text-sm"><span class="font-bold text-rose-600">Your answer:</span> ${esc(answerText(q))} &nbsp;·&nbsp; <span class="font-bold text-emerald-700">Correct:</span> ${esc(keyText(q))}</p>
+          <p class="mt-2 text-sm text-slate-600">${esc(q.explanation)}</p>
+        </div>`).join('')}</div>`}
+    </div>
+
+    ${crQs.length ? `<div class="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <h2 class="text-lg font-bold">Constructed responses — score these yourself</h2>
+      <p class="mt-1 text-sm text-slate-500">On the real test these are hand-scored against a rubric, so they are not part of the percentage above. Score each one honestly and it will count toward your saved accuracy.</p>
+      <div class="mt-4 space-y-5">${crQs.map((q) => {
+        const grade = o.selfGrade[q.id];
+        const written = o.answers[q.id];
+        const model = (q.sampleResponse && String(q.sampleResponse).trim()) ? nl(q.sampleResponse) : 'No model response is stored for this item.';
+        return `<div class="rounded-xl bg-slate-50 p-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="rounded bg-slate-200 px-2 py-0.5 text-[11px] font-bold text-slate-700">${esc(q.topicName)}</span>
+            ${q.points ? `<span class="rounded bg-slate-200 px-2 py-0.5 text-[11px] font-bold text-slate-700">${q.points} points</span>` : ''}
+          </div>
+          <p class="mt-2 font-semibold">${esc(q.prompt)}</p>
+          <div class="mt-3 rounded-lg bg-white p-3 ring-1 ring-slate-200">
+            <p class="text-[11px] font-bold uppercase text-slate-500">What you wrote</p>
+            <p class="mt-1.5 whitespace-pre-line text-sm text-slate-600">${written && String(written).trim() ? esc(written) : 'You left this item blank.'}</p>
+          </div>
+          <div class="mt-3 rounded-lg border-l-4 border-slate-400 bg-white p-3">
+            <p class="text-[11px] font-bold uppercase text-slate-500">Model response</p>
+            <p class="mt-1.5 text-sm leading-relaxed text-slate-600">${model}</p>
+          </div>
+          ${Array.isArray(q.rubric) && q.rubric.length ? `<div class="mt-3 rounded-lg bg-white p-3 ring-1 ring-slate-200">
+            <p class="text-[11px] font-bold uppercase text-slate-500">Scoring rubric — did your response...</p>
+            <ul class="mt-2 space-y-1.5">${q.rubric.map((r) => `<li class="flex gap-2 text-sm text-slate-600"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400"></span>${esc(r)}</li>`).join('')}</ul>
+          </div>` : ''}
+          <div class="mt-3 flex flex-wrap gap-2">
+            <button data-action="o-selfscore" data-qid="${q.id}" data-val="true" class="rounded-lg px-4 py-2 text-sm font-semibold ${grade === true ? 'bg-emerald-600 text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200'}">I met the rubric</button>
+            <button data-action="o-selfscore" data-qid="${q.id}" data-val="false" class="rounded-lg px-4 py-2 text-sm font-semibold ${grade === false ? 'bg-rose-600 text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200'}">Needs more work</button>
+          </div>
+        </div>`;
+      }).join('')}</div>
+    </div>` : ''}
+
+    <div class="mt-6">${renderToolReference(s.slug)}</div>
+  </main>`;
+}
+
 function bind() {
   app.querySelectorAll('[data-action]').forEach((el) => {
     const action = el.getAttribute('data-action');
@@ -2618,6 +3608,18 @@ function bind() {
       el.addEventListener('input', (e) => {
         const q = state.questions[state.index];
         state.answers[q.id] = e.target.value;
+      });
+      return;
+    }
+    if (action === 'o-text') {
+      el.addEventListener('input', (e) => { state.official.answers[officialQ().id] = e.target.value; });
+      return;
+    }
+    if (action === 'o-note') {
+      el.addEventListener('input', (e) => {
+        const o = state.official;
+        if (o.noteTab === 'item') o.notes[officialQ().id] = e.target.value;
+        else o.globalNote = e.target.value;
       });
       return;
     }
@@ -2663,8 +3665,282 @@ function bind() {
         state.ebasOpen = !state.ebasOpen;
         render();
       }
+
+      /* ---- Official Test Mode ---- */
+      else if (action === 'o-setup') {
+        stopOfficialTimer();
+        state.official = null;
+        const slug = el.getAttribute('data-slug');
+        if (slug) state.setupSlug = slug;
+        state.view = 'official-setup';
+        render();
+      } else if (action === 'o-pick') {
+        state.setupSlug = el.getAttribute('data-slug');
+        render();
+      } else if (action === 'o-timed') {
+        state.setupTimed = el.getAttribute('data-val') === 'true';
+        render();
+      } else if (action === 'o-start') {
+        startOfficial(el.getAttribute('data-slug') || state.setupSlug, state.setupTimed);
+      } else if (action === 'o-exit') {
+        exitOfficial(false);
+      } else if (action === 'o-leave') {
+        exitOfficial(true);
+      } else if (action === 'o-tool') {
+        const o = state.official;
+        const tool = el.getAttribute('data-tool');
+        o.tool[tool] = !o.tool[tool];
+        if (tool === 'highlighter' && !o.tool.highlighter) o.hlErase = false;
+        render();
+      } else if (action === 'o-hlcolor') {
+        state.official.hlColor = el.getAttribute('data-color');
+        state.official.hlErase = false;
+        render();
+      } else if (action === 'o-hlerase') {
+        state.official.hlErase = !state.official.hlErase;
+        render();
+      } else if (action === 'o-hlclear') {
+        const o = state.official;
+        const q = officialQ();
+        const scopes = ['passage', 'prompt'];
+        if (q.ebas) {
+          scopes.push('ebas-bg');
+          q.ebas.sources.forEach((src, si) => scopes.push('ebas-src-' + si));
+        }
+        scopes.forEach((sc) => { delete o.highlights[hlKey(q, sc)]; });
+        render();
+      } else if (action === 'o-zoom') {
+        const o = state.official;
+        const steps = [100, 150, 200, 300];
+        const dir = el.getAttribute('data-dir');
+        const i = Math.max(0, steps.indexOf(o.zoom));
+        if (dir === 'reset') o.zoom = 100;
+        else if (dir === 'in') o.zoom = steps[Math.min(steps.length - 1, i + 1)];
+        else o.zoom = steps[Math.max(0, i - 1)];
+        render();
+      } else if (action === 'o-contrast') {
+        const o = state.official;
+        const i = contrastModes.findIndex((c) => c.id === o.contrast);
+        o.contrast = contrastModes[(i + 1) % contrastModes.length].id;
+        render();
+      } else if (action === 'o-choose') {
+        const o = state.official;
+        const q = officialQ();
+        const cid = el.getAttribute('data-cid');
+        if (o.tool.eliminator) { toggleChoiceFlag(o.eliminated, q.id, cid); render(); return; }
+        if ((o.eliminated[q.id] || {})[cid] || (o.masked[q.id] || {})[cid]) return;
+        if (q.type === 'multi') {
+          const cur = Array.isArray(o.answers[q.id]) ? o.answers[q.id] : [];
+          o.answers[q.id] = cur.includes(cid) ? cur.filter((x) => x !== cid) : [...cur, cid];
+        } else {
+          o.answers[q.id] = cid;
+        }
+        render();
+      } else if (action === 'o-elim') {
+        toggleChoiceFlag(state.official.eliminated, officialQ().id, el.getAttribute('data-cid'));
+        render();
+      } else if (action === 'o-mask') {
+        toggleChoiceFlag(state.official.masked, officialQ().id, el.getAttribute('data-cid'));
+        render();
+      } else if (action === 'o-flag') {
+        const o = state.official;
+        const id = officialQ().id;
+        if (o.flags[id]) delete o.flags[id]; else o.flags[id] = true;
+        render();
+      } else if (action === 'o-clear') {
+        delete state.official.answers[officialQ().id];
+        render();
+      } else if (action === 'o-next') {
+        const o = state.official;
+        if (o.index < officialSection().end - 1) { o.index++; o.sectionExpired = false; render(); }
+      } else if (action === 'o-prev') {
+        const o = state.official;
+        if (o.index > officialSection().start) { o.index--; o.sectionExpired = false; render(); }
+      } else if (action === 'o-review') {
+        const o = state.official;
+        o.showReview = !o.showReview;
+        o.sectionExpired = false;
+        render();
+      } else if (action === 'o-goto') {
+        const o = state.official;
+        o.index = Number(el.getAttribute('data-i'));
+        o.showReview = false;
+        render();
+      } else if (action === 'o-turnin') {
+        const o = state.official;
+        const sec = officialSection();
+        const last = o.section === o.sections.length - 1;
+        const unanswered = o.questions.slice(sec.start, sec.end).filter((q) => !officialAnswered(q)).length;
+        const warn = unanswered ? `You have ${unanswered} unanswered item${unanswered === 1 ? '' : 's'}. ` : '';
+        if (last) {
+          if (confirm(warn + 'Turn in the whole test? You cannot change any answers after this.')) submitOfficial();
+        } else if (confirm(warn + `Turn in ${sec.label}? You will not be able to return to it.`)) {
+          advanceSection(false);
+        }
+      } else if (action === 'o-notetab') {
+        state.official.noteTab = el.getAttribute('data-tab');
+        render();
+      } else if (action === 'o-calcdeg') {
+        state.official.calcDeg = !state.official.calcDeg;
+        render();
+      } else if (action === 'o-calc') {
+        const o = state.official;
+        const k = el.getAttribute('data-k');
+        if (k === 'C') o.calcExpr = '';
+        else if (k === 'back') o.calcExpr = o.calcExpr.slice(0, -1);
+        else if (k === '=') {
+          try { o.calcExpr = String(Number(calcEval(o.calcExpr, o.calcDeg).toPrecision(12))); }
+          catch (err) { o.calcExpr = 'Error'; }
+        } else {
+          if (o.calcExpr === 'Error') o.calcExpr = '';
+          o.calcExpr += ['sqrt', 'ln', 'log', 'sin', 'cos', 'tan'].includes(k) ? k + '(' : k;
+        }
+        render();
+      } else if (action === 'o-selfscore') {
+        const o = state.official;
+        const qid = el.getAttribute('data-qid');
+        const ok = el.getAttribute('data-val') === 'true';
+        o.selfGrade[qid] = ok;
+        applySelfScore(o.slug, qid, ok);
+        render();
+      }
     });
   });
+  bindOfficial();
+}
+
+function toggleChoiceFlag(map, qid, cid) {
+  const next = { ...(map[qid] || {}) };
+  if (next[cid]) delete next[cid]; else next[cid] = true;
+  map[qid] = next;
+}
+
+/* ---- Direct DOM interactions that cannot live in the template: text
+   selection for the highlighter, dragging/resizing floating tools, and the
+   line reader. All committed to state so they survive the next re-render. ---- */
+
+let dragCtx = null;
+let resizeCtx = null;
+let lineReaderMove = null;
+
+function bindOfficial() {
+  const o = state.official;
+  if (!o || state.view !== 'official') { detachLineReader(); return; }
+
+  const content = document.getElementById('exam-content');
+  if (content && o.tool.highlighter) content.addEventListener('mouseup', applySelectionHighlight);
+
+  app.querySelectorAll('[data-drag]').forEach((h) => {
+    h.addEventListener('mousedown', (e) => startExamDrag(e, h.getAttribute('data-drag')));
+  });
+  app.querySelectorAll('[data-resize]').forEach((h) => {
+    h.addEventListener('mousedown', (e) => startExamResize(e, h.getAttribute('data-resize')));
+  });
+
+  if (o.tool.lineReader) attachLineReader(); else detachLineReader();
+}
+
+function applySelectionHighlight() {
+  const o = state.official;
+  if (!o || !o.tool.highlighter) return;
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.rangeCount) return;
+  const range = sel.getRangeAt(0);
+  let node = range.commonAncestorContainer;
+  if (node.nodeType === 3) node = node.parentNode;
+  const root = node && node.closest ? node.closest('[data-hl-key]') : null;
+  if (!root) return;
+  const key = root.getAttribute('data-hl-key');
+  const pre = range.cloneRange();
+  pre.selectNodeContents(root);
+  pre.setEnd(range.startContainer, range.startOffset);
+  const start = pre.toString().length;
+  const end = start + range.toString().length;
+  if (end <= start) return;
+  const list = o.highlights[key] || [];
+  o.highlights[key] = o.hlErase ? hlSubtract(list, start, end) : hlAdd(list, start, end, o.hlColor);
+  sel.removeAllRanges();
+  render();
+}
+
+const dragTargets = { note: ['exam-notepad', 'notePos'], calc: ['exam-calc', 'calcPos'], refs: ['exam-refs', 'refPos'] };
+
+function startExamDrag(e, which) {
+  const cfg = dragTargets[which];
+  const o = state.official;
+  if (!cfg || !o) return;
+  if (e.target.closest && e.target.closest('button')) return;
+  const elm = document.getElementById(cfg[0]);
+  if (!elm) return;
+  e.preventDefault();
+  dragCtx = { elm, key: cfg[1], dx: e.clientX - o[cfg[1]].x, dy: e.clientY - o[cfg[1]].y };
+  document.addEventListener('mousemove', onExamDragMove);
+  document.addEventListener('mouseup', endExamDrag);
+}
+
+function onExamDragMove(e) {
+  if (!dragCtx || !state.official) return;
+  const x = Math.max(0, Math.min(window.innerWidth - 80, e.clientX - dragCtx.dx));
+  const y = Math.max(0, Math.min(window.innerHeight - 40, e.clientY - dragCtx.dy));
+  state.official[dragCtx.key] = { x, y };
+  dragCtx.elm.style.left = x + 'px';
+  dragCtx.elm.style.top = y + 'px';
+}
+
+function endExamDrag() {
+  dragCtx = null;
+  document.removeEventListener('mousemove', onExamDragMove);
+  document.removeEventListener('mouseup', endExamDrag);
+}
+
+function startExamResize(e, which) {
+  const o = state.official;
+  if (which !== 'note' || !o) return;
+  const elm = document.getElementById('exam-notepad');
+  if (!elm) return;
+  e.preventDefault();
+  resizeCtx = { elm, x: e.clientX, y: e.clientY, w: o.noteSize.w, h: o.noteSize.h };
+  document.addEventListener('mousemove', onExamResizeMove);
+  document.addEventListener('mouseup', endExamResize);
+}
+
+function onExamResizeMove(e) {
+  if (!resizeCtx || !state.official) return;
+  const w = Math.max(220, resizeCtx.w + (e.clientX - resizeCtx.x));
+  const h = Math.max(180, resizeCtx.h + (e.clientY - resizeCtx.y));
+  state.official.noteSize = { w, h };
+  resizeCtx.elm.style.width = w + 'px';
+  resizeCtx.elm.style.height = h + 'px';
+}
+
+function endExamResize() {
+  resizeCtx = null;
+  document.removeEventListener('mousemove', onExamResizeMove);
+  document.removeEventListener('mouseup', endExamResize);
+}
+
+function attachLineReader() {
+  detachLineReader();
+  lineReaderMove = (e) => {
+    const o = state.official;
+    if (!o || !o.tool.lineReader) return;
+    const top = document.getElementById('exam-lr-top');
+    const bot = document.getElementById('exam-lr-bot');
+    if (!top || !bot) return;
+    const half = o.lineWindow / 2;
+    top.style.top = '0px';
+    top.style.height = Math.max(0, e.clientY - half) + 'px';
+    bot.style.top = Math.max(0, e.clientY + half) + 'px';
+    bot.style.bottom = '0px';
+  };
+  document.addEventListener('mousemove', lineReaderMove);
+}
+
+function detachLineReader() {
+  if (lineReaderMove) {
+    document.removeEventListener('mousemove', lineReaderMove);
+    lineReaderMove = null;
+  }
 }
 
 render();
