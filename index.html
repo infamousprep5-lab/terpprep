@@ -50,21 +50,22 @@
     .exam-root.c-amber .exam-stim { background: #171717; color: #fde047; }
     .exam-root.c-amber .exam-hl { color: #0f172a; }
   
-    body { font-family: "Segoe UI", Helvetica, Arial, sans-serif; background: #f3f0e6; color: #1c1b17; font-size: 16px; line-height: 1.45; margin: 0; }
+    body { font-family: "Segoe UI", Helvetica, Arial, sans-serif; background: #f3f0e6; color: #1c1b17; font-size: 18px; line-height: 1.5; margin: 0; }
+    .exam-root { font-size: 16px; line-height: 1.45; }
     button { font: inherit; }
     a { color: #0b3d78; }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 18px 16px 40px; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 22px 16px 48px; }
     .bar { position: sticky; top: 0; z-index: 30; background: #f3f0e6; border-bottom: 2px solid #1c1b17; }
-    .bar-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; max-width: 980px; margin: 0 auto; }
-    .brand { font-weight: 700; border-bottom: 3px solid #c8102e; padding: 0 0 1px; }
-    .bar nav { display: flex; flex-wrap: wrap; gap: 4px 14px; }
-    .bar nav button { color: #1c1b17; }
+    .bar-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; max-width: 980px; margin: 0 auto; }
+    .brand { font-size: 1.2rem; font-weight: 700; border-bottom: 3px solid #c8102e; padding: 0 0 1px; }
+    .bar nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+    .bar nav button { color: #1c1b17; font-size: 1.05rem; }
     .bar nav button.on { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-    h1 { font-size: 1.55rem; font-weight: 600; line-height: 1.25; margin: 0 0 8px; }
-    h2 { font-size: 1.05rem; font-weight: 700; margin: 1.15rem 0 0.35rem; }
-    h3 { font-size: 1rem; margin: 0; font-weight: 700; }
-    .lede { max-width: 44rem; margin-top: 0; }
-    .sub { color: #5c574e; font-size: 0.92rem; }
+    h1, .wrap h1 { font-size: 2rem; font-weight: 650; line-height: 1.2; margin: 0 0 12px; }
+    h2, .wrap h2 { font-size: 1.45rem; font-weight: 700; line-height: 1.25; margin: 1.25rem 0 0.45rem; }
+    h3, .wrap h3 { font-size: 1.2rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .lede { max-width: 44rem; margin-top: 0; font-size: 1.2rem; line-height: 1.55; }
+    .sub { color: #5c574e; font-size: 1rem; }
     .exam-root .sub { color: inherit; }
     .back { margin: 0 0 8px; }
     .linkish { color: #0b3d78; text-decoration: underline; text-underline-offset: 2px; }
@@ -74,8 +75,8 @@
     .btn-ghost:hover { background: #f6f3ea; }
     .btn:disabled, .choice:disabled { opacity: 0.45; }
     .tests { width: 100%; border-collapse: collapse; background: #fff; }
-    .tests th, .tests td { text-align: left; vertical-align: top; border-bottom: 1px solid #d4cfc3; padding: 10px 8px; }
-    .tests th { font-size: 0.78rem; font-weight: 700; background: #e7e2d4; }
+    .tests th, .tests td { text-align: left; vertical-align: top; border-bottom: 1px solid #d4cfc3; padding: 12px 10px; }
+    .tests th { font-size: 0.95rem; font-weight: 700; background: #e7e2d4; }
     .meter { height: 8px; background: #e4dfd2; margin-top: 6px; }
     .meter-fill { height: 8px; }
     .fill-ela { background: #1d4e89; }
@@ -94,9 +95,9 @@
     .mini td { padding: 4px 0; border-bottom: 1px solid #e7e2d4; vertical-align: top; font-size: 0.92rem; }
     .mini td:last-child { text-align: right; white-space: nowrap; padding-left: 8px; font-weight: 700; }
     .quiz-top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
-    .qmeta { color: #5c574e; font-size: 0.92rem; margin: 8px 0; }
-    .passage { white-space: pre-line; background: #fff; border-left: 3px solid #1c1b17; padding: 10px 12px; margin: 0 0 12px; }
-    .choice { display: flex; gap: 10px; width: 100%; text-align: left; border: 1px solid #c8c2b4; background: #fff; padding: 8px 10px; margin: 6px 0; cursor: pointer; }
+    .qmeta { color: #5c574e; font-size: 1rem; margin: 8px 0; }
+    .passage { white-space: pre-line; background: #fff; border-left: 3px solid #1c1b17; padding: 12px 14px; margin: 0 0 14px; font-size: 1.08em; line-height: 1.55; }
+    .choice { display: flex; gap: 10px; width: 100%; text-align: left; border: 1px solid #c8c2b4; background: #fff; padding: 10px 12px; margin: 8px 0; cursor: pointer; font-size: 1.05em; }
     .choice.on { border-color: #1c1b17; background: #f3efe4; }
     .choice.good { border-color: #1d6b45; background: #e7f2eb; }
     .choice.bad { border-color: #8d2f2f; background: #f8e8e6; }
