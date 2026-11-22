@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terp Prep — Maryland MSTAR and MISA Practice</title>
-  <meta name="description" content="Practice hub for Maryland ELA 10 MSTAR, MISA Life Science, and American Government MSTAR." />
+  <title>Terp Prep</title>
+  <meta name="description" content="Practice items for Maryland ELA 10, MISA Life Science, American Government, and Algebra I." />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: Inter, system-ui, Segoe UI, Roboto, sans-serif; background: #f8fafc; color: #0f172a; }
@@ -49,6 +49,82 @@
     .exam-root.c-amber .exam-muted { color: #d9c65a; }
     .exam-root.c-amber .exam-stim { background: #171717; color: #fde047; }
     .exam-root.c-amber .exam-hl { color: #0f172a; }
+  
+    body { font-family: "Segoe UI", Helvetica, Arial, sans-serif; background: #f3f0e6; color: #1c1b17; font-size: 16px; line-height: 1.45; margin: 0; }
+    button { font: inherit; }
+    a { color: #0b3d78; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 18px 16px 40px; }
+    .bar { position: sticky; top: 0; z-index: 30; background: #f3f0e6; border-bottom: 2px solid #1c1b17; }
+    .bar-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; max-width: 980px; margin: 0 auto; }
+    .brand { font-weight: 700; border-bottom: 3px solid #c8102e; padding: 0 0 1px; }
+    .bar nav { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+    .bar nav button { color: #1c1b17; }
+    .bar nav button.on { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    h1 { font-size: 1.55rem; font-weight: 600; line-height: 1.25; margin: 0 0 8px; }
+    h2 { font-size: 1.05rem; font-weight: 700; margin: 1.15rem 0 0.35rem; }
+    h3 { font-size: 1rem; margin: 0; font-weight: 700; }
+    .lede { max-width: 44rem; margin-top: 0; }
+    .sub { color: #5c574e; font-size: 0.92rem; }
+    .exam-root .sub { color: inherit; }
+    .back { margin: 0 0 8px; }
+    .linkish { color: #0b3d78; text-decoration: underline; text-underline-offset: 2px; }
+    .btn { display: inline-block; background: #1c1b17; color: #fff; border: 1px solid #1c1b17; padding: 7px 12px; cursor: pointer; }
+    .btn:hover { background: #333; }
+    .btn-ghost { background: #fff; color: #1c1b17; }
+    .btn-ghost:hover { background: #f6f3ea; }
+    .btn:disabled, .choice:disabled { opacity: 0.45; }
+    .tests { width: 100%; border-collapse: collapse; background: #fff; }
+    .tests th, .tests td { text-align: left; vertical-align: top; border-bottom: 1px solid #d4cfc3; padding: 10px 8px; }
+    .tests th { font-size: 0.78rem; font-weight: 700; background: #e7e2d4; }
+    .meter { height: 8px; background: #e4dfd2; margin-top: 6px; }
+    .meter-fill { height: 8px; }
+    .fill-ela { background: #1d4e89; }
+    .fill-misa { background: #1d6b45; }
+    .fill-gov { background: #8d2f2f; }
+    .fill-alg { background: #8a5a00; }
+    .split { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 28px; align-items: start; }
+    .rowline { display: flex; justify-content: space-between; gap: 16px; align-items: center; border-bottom: 1px solid #d4cfc3; padding: 12px 0; }
+    .rowline.tight { border: 0; padding: 0 0 8px; }
+    .topic { display: flex; justify-content: space-between; gap: 16px; align-items: center; border-bottom: 1px solid #d4cfc3; padding: 12px 0; }
+    .panel { background: #fff; border: 1px solid #d4cfc3; padding: 12px 14px; margin: 0 0 14px; }
+    .panel h2:first-child { margin-top: 0; }
+    .plain, .notes { margin: 8px 0; padding-left: 1.2rem; }
+    .notes li, .plain li { margin: 4px 0; }
+    .mini { width: 100%; border-collapse: collapse; }
+    .mini td { padding: 4px 0; border-bottom: 1px solid #e7e2d4; vertical-align: top; font-size: 0.92rem; }
+    .mini td:last-child { text-align: right; white-space: nowrap; padding-left: 8px; font-weight: 700; }
+    .quiz-top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .qmeta { color: #5c574e; font-size: 0.92rem; margin: 8px 0; }
+    .passage { white-space: pre-line; background: #fff; border-left: 3px solid #1c1b17; padding: 10px 12px; margin: 0 0 12px; }
+    .choice { display: flex; gap: 10px; width: 100%; text-align: left; border: 1px solid #c8c2b4; background: #fff; padding: 8px 10px; margin: 6px 0; cursor: pointer; }
+    .choice.on { border-color: #1c1b17; background: #f3efe4; }
+    .choice.good { border-color: #1d6b45; background: #e7f2eb; }
+    .choice.bad { border-color: #8d2f2f; background: #f8e8e6; }
+    .choice.dim { opacity: 0.55; }
+    .ltr { width: 1.25rem; font-weight: 700; flex: none; }
+    .fb { border-left: 4px solid #8d2f2f; background: #fff; padding: 10px 12px; margin-top: 12px; }
+    .fb.good { border-left-color: #1d6b45; }
+    textarea.answer { width: 100%; box-sizing: border-box; border: 1px solid #c8c2b4; padding: 8px; font: inherit; background: #fff; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 16px; }
+    .score { font-size: 2.6rem; font-weight: 700; margin: 0; }
+    .miss { border-left: 4px solid #8d2f2f; background: #fff; padding: 10px 12px; margin: 12px 0; }
+    .pick { display: block; width: 100%; text-align: left; border: 1px solid #d4cfc3; background: #fff; padding: 10px 12px; margin: 6px 0; cursor: pointer; }
+    .pick.on { border-color: #1c1b17; background: #f3efe4; }
+    .formulas { width: 100%; border-collapse: collapse; }
+    .formulas th, .formulas td { text-align: left; vertical-align: top; border-bottom: 1px solid #d4cfc3; padding: 6px 8px; }
+    .formulas th { width: 7.5rem; }
+    details.sheet { background: #fff; border: 1px solid #d4cfc3; padding: 8px 12px; margin: 12px 0; }
+    details.sheet summary { cursor: pointer; font-weight: 700; }
+    .foot { border-top: 1px solid #d4cfc3; color: #5c574e; font-size: 0.85rem; }
+    .foot .wrap { padding-top: 14px; padding-bottom: 28px; }
+    @media (max-width: 800px) {
+      .split { grid-template-columns: 1fr; }
+      .rowline, .topic { align-items: flex-start; flex-direction: column; }
+      .tests thead { display: none; }
+      .tests, .tests tbody, .tests tr, .tests td { display: block; width: 100%; }
+      .tests tr { border-bottom: 1px solid #d4cfc3; padding: 8px 0; }
+      .tests td { border: 0; padding: 2px 0; }
+    }
   </style>
 </head>
 <body>
@@ -2231,15 +2307,1513 @@ const government = {
   ],
 }
 
-const STORAGE_KEY = 'terp-prep-progress-v1';
-const subjects = [ela, misa, government];
+// Algebra I — MCAP (the high school math test; MSTAR is the name replacing MCAP).
+// Four topics line up with the four 40-minute sections. Section 1 is non-calculator.
 
-const themes = {
-  ela: { soft: 'bg-blue-50', text: 'text-blue-700', btn: 'bg-blue-600 hover:bg-blue-700', bar: 'bg-blue-500', chip: 'bg-blue-100 text-blue-800', grad: 'from-blue-500 to-blue-700', dot: 'bg-blue-500', ring: 'ring-blue-200', border: 'border-blue-500' },
-  misa: { soft: 'bg-emerald-50', text: 'text-emerald-700', btn: 'bg-emerald-600 hover:bg-emerald-700', bar: 'bg-emerald-500', chip: 'bg-emerald-100 text-emerald-800', grad: 'from-emerald-500 to-emerald-700', dot: 'bg-emerald-500', ring: 'ring-emerald-200', border: 'border-emerald-500' },
-  gov: { soft: 'bg-rose-50', text: 'text-rose-700', btn: 'bg-rose-600 hover:bg-rose-700', bar: 'bg-rose-500', chip: 'bg-rose-100 text-rose-800', grad: 'from-rose-500 to-red-700', dot: 'bg-rose-500', ring: 'ring-rose-200', border: 'border-rose-500' },
+const algebraSheet = '<table class="formulas"><tr><th>Linear</th><td>m = (y<sub>2</sub> − y<sub>1</sub>) / (x<sub>2</sub> − x<sub>1</sub>)<br>y = mx + b<br>y − y<sub>1</sub> = m(x − x<sub>1</sub>)</td></tr><tr><th>Quadratic</th><td>x = (−b ± √(b<sup>2</sup> − 4ac)) / (2a)<br>axis of symmetry: x = −b / (2a)<br>vertex form: y = a(x − h)<sup>2</sup> + k</td></tr><tr><th>Exponential</th><td>y = a · b<sup>x</sup><br>growth: y = a(1 + r)<sup>t</sup><br>decay: y = a(1 − r)<sup>t</sup></td></tr><tr><th>Statistics</th><td>residual = actual − predicted</td></tr></table><p class="sub">Practice sheet. On the real Algebra I test, TestNav opens the MSDE reference sheet.</p>';
+
+const algebra = {
+  id: 'algebra',
+  slug: 'algebra',
+  theme: 'alg',
+  name: 'Algebra I',
+  fullName: 'Algebra I — MCAP Mathematics',
+  tagline: 'Equations, functions, and statistics.',
+  officialUrl: 'https://support.mdassessments.com/practice-tests/',
+  accent: 'amber',
+  sheet: algebraSheet,
+  format: {
+    structure: '4 sections, 40 minutes each. Section 1 does not allow a calculator. Sections 2, 3, and 4 allow a graphing calculator (Desmos in TestNav, or a handheld TI-84 CE).',
+    itemTypes: [
+      'Selected response — one correct answer',
+      'Multiple select — choose all that apply',
+      'Constructed response — show the steps or the model',
+    ],
+    scoring: 'Most content items are 1 point and machine-scored. Reasoning items are scored with a rubric. The score report uses subclaims (content, reasoning, modeling), not a separate percentage for each unit.',
+  },
+  domains: [
+    { name: 'Number and Quantity', weight: 'About 1 of 24 content items (N.RN, N.Q)' },
+    { name: 'Algebra', weight: 'About 12 of 24 (expressions, equations, inequalities, systems)' },
+    { name: 'Functions', weight: 'About 9 of 24 (linear, quadratic, exponential)' },
+    { name: 'Statistics', weight: 'About 2 of 24 (scatter plots and linear models)' },
+  ],
+  studyTips: [
+    'Section 1 has no calculator. Practice solving and rearranging on paper before you depend on a calculator.',
+    'On later sections, write the equation first. Use the calculator to compute, not to skip the setup.',
+    'If you multiply or divide an inequality by a negative number, flip the inequality sign.',
+    'Same slope and different intercept: no solution. Same line: infinitely many solutions. Different slopes: one solution.',
+    'For a linear model, say what the slope and the starting value mean in the situation. A correlation is not a cause.',
+  ],
+  topics: [
+    {
+      id: 'equations',
+      name: 'Equations and inequalities',
+      blurb: 'Linear equations, inequalities, absolute value, units, and equivalent expressions. This is the non-calculator section on the timed test.',
+      questions: [
+        {
+          id: 'alg-eq-1',
+          type: 'single',
+          passage: 'Solve for x:\n3(x − 4) = 2x + 5',
+          prompt: 'What is the solution?',
+          choices: [
+            { id: 'a', text: 'x = 17' },
+            { id: 'b', text: 'x = 7' },
+            { id: 'c', text: 'x = −7' },
+            { id: 'd', text: 'x = 1' },
+          ],
+          answer: 'a',
+          explanation: 'Distribute: 3x − 12 = 2x + 5. Subtract 2x: x − 12 = 5. Add 12: x = 17.',
+        },
+        {
+          id: 'alg-eq-2',
+          type: 'single',
+          passage: 'Solve for x:\n−2(x + 3) < 8',
+          prompt: 'Which inequality is the solution?',
+          choices: [
+            { id: 'a', text: 'x > −7' },
+            { id: 'b', text: 'x < −7' },
+            { id: 'c', text: 'x > 7' },
+            { id: 'd', text: 'x < 7' },
+          ],
+          answer: 'a',
+          explanation: 'Distribute: −2x − 6 < 8, so −2x < 14. Dividing by −2 flips the sign: x > −7.',
+        },
+        {
+          id: 'alg-eq-3',
+          type: 'single',
+          passage: 'A car travels 150 miles on 5 gallons of gas.',
+          prompt: 'What is the unit rate in miles per gallon?',
+          choices: [
+            { id: 'a', text: '30 miles per gallon' },
+            { id: 'b', text: '750 miles per gallon' },
+            { id: 'c', text: '5 miles per gallon' },
+            { id: 'd', text: '0.03 miles per gallon' },
+          ],
+          answer: 'a',
+          explanation: 'Unit rate is miles divided by gallons: 150 / 5 = 30 miles per gallon.',
+        },
+        {
+          id: 'alg-eq-4',
+          type: 'single',
+          passage: 'Four numbers are listed below.',
+          prompt: 'Which number is irrational?',
+          choices: [
+            { id: 'a', text: '√16 + √9' },
+            { id: 'b', text: '(√3)(√12)' },
+            { id: 'c', text: '√2 + √8' },
+            { id: 'd', text: '√8 / √2' },
+          ],
+          answer: 'c',
+          explanation: '√16 + √9 = 4 + 3 = 7. (√3)(√12) = √36 = 6. √8 / √2 = √4 = 2. Those are rational. √2 + √8 = √2 + 2√2 = 3√2, which is irrational.',
+        },
+        {
+          id: 'alg-eq-5',
+          type: 'multi',
+          passage: 'Start with the equation 2(x + 3) = 10.',
+          prompt: 'Select the TWO equations that are equivalent to it.',
+          choices: [
+            { id: 'a', text: '2x + 6 = 10' },
+            { id: 'b', text: 'x + 3 = 5' },
+            { id: 'c', text: '2x + 3 = 10' },
+            { id: 'd', text: 'x + 6 = 10' },
+          ],
+          answer: ['a', 'b'],
+          explanation: 'Distributing gives 2x + 6 = 10. Dividing both sides by 2 gives x + 3 = 5. Choice C drops the factor of 2 on the 3. Choice D adds 6 to the wrong side.',
+        },
+        {
+          id: 'alg-eq-6',
+          type: 'single',
+          passage: 'The area of a triangle is A = (1/2)bh.',
+          prompt: 'Which equation solves for h?',
+          choices: [
+            { id: 'a', text: 'h = 2A / b' },
+            { id: 'b', text: 'h = A / (2b)' },
+            { id: 'c', text: 'h = 2b / A' },
+            { id: 'd', text: 'h = A − 2b' },
+          ],
+          answer: 'a',
+          explanation: 'Multiply both sides by 2: 2A = bh. Then divide by b: h = 2A / b.',
+        },
+        {
+          id: 'alg-eq-7',
+          type: 'single',
+          passage: 'A gym charges a $25 sign-up fee and $15 per month.',
+          prompt: 'Which equation gives the total cost C after m months?',
+          choices: [
+            { id: 'a', text: 'C = 15m + 25' },
+            { id: 'b', text: 'C = 25m + 15' },
+            { id: 'c', text: 'C = 15m − 25' },
+            { id: 'd', text: 'C = 40m' },
+          ],
+          answer: 'a',
+          explanation: 'The monthly amount is the rate, $15 per month, so 15m. The $25 is added once, not multiplied by the number of months.',
+        },
+        {
+          id: 'alg-eq-8',
+          type: 'single',
+          passage: 'A shop charges x dollars per shirt and a $2 packaging fee on every shirt. A customer buys 4 shirts. The cost is written as 4(x + 2).',
+          prompt: 'What does 4(x + 2) represent?',
+          choices: [
+            { id: 'a', text: 'The total cost of 4 shirts, with the packaging fee included on each shirt.' },
+            { id: 'b', text: 'The cost of one shirt only.' },
+            { id: 'c', text: 'Four dollars more than the price of one shirt.' },
+            { id: 'd', text: 'The packaging fee only.' },
+          ],
+          answer: 'a',
+          explanation: 'x + 2 is the price of one shirt plus its fee. Multiplying by 4 gives the total for four shirts.',
+        },
+        {
+          id: 'alg-eq-9',
+          type: 'single',
+          passage: 'Solve |x − 3| = 7.',
+          prompt: 'What is the solution set?',
+          choices: [
+            { id: 'a', text: 'x = 10 only' },
+            { id: 'b', text: 'x = 4 only' },
+            { id: 'c', text: 'x = 10 or x = −4' },
+            { id: 'd', text: 'x = −10 or x = 4' },
+          ],
+          answer: 'c',
+          explanation: 'The expression inside the absolute value is 7 or −7. x − 3 = 7 gives x = 10. x − 3 = −7 gives x = −4.',
+        },
+        {
+          id: 'alg-eq-10',
+          type: 'multi',
+          passage: 'Solve 2x − 1 ≥ 5.',
+          prompt: 'Select the TWO values that are solutions.',
+          choices: [
+            { id: 'a', text: '3' },
+            { id: 'b', text: '2' },
+            { id: 'c', text: '4' },
+            { id: 'd', text: '0' },
+          ],
+          answer: ['a', 'c'],
+          explanation: '2x ≥ 6, so x ≥ 3. Both 3 and 4 work. 2 and 0 do not.',
+        },
+        {
+          id: 'alg-eq-11',
+          type: 'cr',
+          points: 4,
+          passage: 'Equation:\n5(x − 1) − 2x = 3x + 4',
+          prompt: 'Solve the equation. Show each step, and state whether it has one solution, no solution, or infinitely many solutions.',
+          sampleResponse: '5(x − 1) − 2x = 3x + 4\n5x − 5 − 2x = 3x + 4\n3x − 5 = 3x + 4\nSubtract 3x from both sides: −5 = 4\n−5 = 4 is never true, so no value of x works. The equation has no solution.',
+          rubric: [
+            'Distributes and combines like terms correctly.',
+            'Reaches a contradiction such as −5 = 4.',
+            'States that the equation has no solution.',
+            'The steps are in an order a reader can follow.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'systems',
+      name: 'Systems and graphs',
+      blurb: 'One solution, no solution, or infinitely many. Graphing, substitution, and elimination.',
+      questions: [
+        {
+          id: 'alg-sy-1',
+          type: 'single',
+          passage: 'y = 2x + 1\ny = −x + 7',
+          prompt: 'What is the solution of the system?',
+          choices: [
+            { id: 'a', text: '(2, 5)' },
+            { id: 'b', text: '(5, 2)' },
+            { id: 'c', text: '(1, 7)' },
+            { id: 'd', text: 'No solution' },
+          ],
+          answer: 'a',
+          explanation: 'Set the right sides equal: 2x + 1 = −x + 7, so 3x = 6 and x = 2. Then y = 2(2) + 1 = 5. The solution is (2, 5).',
+        },
+        {
+          id: 'alg-sy-2',
+          type: 'single',
+          passage: 'y = 3x + 2\ny = 3x − 1',
+          prompt: 'How many solutions does this system have?',
+          choices: [
+            { id: 'a', text: 'No solution' },
+            { id: 'b', text: 'Exactly one solution' },
+            { id: 'c', text: 'Infinitely many solutions' },
+            { id: 'd', text: 'Exactly two solutions' },
+          ],
+          answer: 'a',
+          explanation: 'Both lines have slope 3, but the intercepts are 2 and −1. Parallel distinct lines never meet, so there is no solution.',
+        },
+        {
+          id: 'alg-sy-3',
+          type: 'single',
+          passage: 'The graphs of two linear equations intersect at the point (4, −1).',
+          prompt: 'What does that point represent?',
+          choices: [
+            { id: 'a', text: 'The ordered pair that satisfies both equations.' },
+            { id: 'b', text: 'The slope of both lines.' },
+            { id: 'c', text: 'The y-intercept of both lines.' },
+            { id: 'd', text: 'A point that is on only one of the lines.' },
+          ],
+          answer: 'a',
+          explanation: 'A point on both graphs is a solution of both equations. That is the solution of the system.',
+        },
+        {
+          id: 'alg-sy-4',
+          type: 'single',
+          passage: 'The graph of y > 2x − 3 is the half-plane above the line y = 2x − 3. The line itself is not included.',
+          prompt: 'Which point is in the solution set?',
+          choices: [
+            { id: 'a', text: '(0, 0)' },
+            { id: 'b', text: '(2, 1)' },
+            { id: 'c', text: '(0, −4)' },
+            { id: 'd', text: '(3, 2)' },
+          ],
+          answer: 'a',
+          explanation: 'Test (0, 0): 0 > 2(0) − 3, and 0 > −3 is true. (2, 1) gives 1 > 1, which is false. (0, −4) gives −4 > −3, false. (3, 2) gives 2 > 3, false.',
+        },
+        {
+          id: 'alg-sy-5',
+          type: 'multi',
+          passage: 'Four systems are listed.',
+          prompt: 'Select the TWO systems that have exactly one solution.',
+          choices: [
+            { id: 'a', text: 'y = x + 1 and y = −x + 3' },
+            { id: 'b', text: 'y = 2x and y = 2x + 5' },
+            { id: 'c', text: '2x + y = 7 and x − y = 2' },
+            { id: 'd', text: 'x + y = 3 and 2x + 2y = 6' },
+          ],
+          answer: ['a', 'c'],
+          explanation: 'A has slopes 1 and −1, so the lines meet once. C: adding the equations gives 3x = 9, so x = 3 and y = 1, one solution. B is two parallel lines. D is the same line twice, so there are infinitely many solutions.',
+        },
+        {
+          id: 'alg-sy-6',
+          type: 'single',
+          passage: 'Two lines in a system have slopes 4 and −1.',
+          prompt: 'How many solutions does the system have?',
+          choices: [
+            { id: 'a', text: 'Exactly one' },
+            { id: 'b', text: 'None' },
+            { id: 'c', text: 'Infinitely many' },
+            { id: 'd', text: 'It cannot be determined without the intercepts' },
+          ],
+          answer: 'a',
+          explanation: 'Different slopes mean the lines are not parallel, so they intersect exactly once. The intercepts are not needed to know the number of solutions.',
+        },
+        {
+          id: 'alg-sy-7',
+          type: 'single',
+          passage: 'Plan A costs $20 plus $0.10 per minute.\nPlan B costs $35 plus $0.05 per minute.',
+          prompt: 'For how many minutes do the two plans cost the same?',
+          choices: [
+            { id: 'a', text: '300 minutes' },
+            { id: 'b', text: '150 minutes' },
+            { id: 'c', text: '30 minutes' },
+            { id: 'd', text: '15 minutes' },
+          ],
+          answer: 'a',
+          explanation: '20 + 0.10m = 35 + 0.05m. Then 0.05m = 15, so m = 300.',
+        },
+        {
+          id: 'alg-sy-8',
+          type: 'single',
+          passage: '2x + 3y = 12\n4x − y = 10',
+          prompt: 'Which step eliminates y?',
+          choices: [
+            { id: 'a', text: 'Multiply the second equation by 3, then add the equations.' },
+            { id: 'b', text: 'Add the equations as they are written.' },
+            { id: 'c', text: 'Multiply the first equation by 4, then add.' },
+            { id: 'd', text: 'Divide both equations by y.' },
+          ],
+          answer: 'a',
+          explanation: 'Multiplying 4x − y = 10 by 3 gives 12x − 3y = 30. Adding that to 2x + 3y = 12 cancels the y terms.',
+        },
+        {
+          id: 'alg-sy-9',
+          type: 'single',
+          passage: 'y = −x + 6\ny = x',
+          prompt: 'What is the solution?',
+          choices: [
+            { id: 'a', text: '(3, 3)' },
+            { id: 'b', text: '(6, 0)' },
+            { id: 'c', text: '(0, 6)' },
+            { id: 'd', text: '(2, 4)' },
+          ],
+          answer: 'a',
+          explanation: 'Set x = −x + 6. Then 2x = 6, so x = 3 and y = 3.',
+        },
+        {
+          id: 'alg-sy-10',
+          type: 'cr',
+          points: 4,
+          passage: 'A student looks at this system and says, "There is one solution because there are two variables and two equations."\n\ny = 2x + 1\n4x − 2y = 8',
+          prompt: 'Is the student right? Use the equations in your explanation.',
+          sampleResponse: 'The student is not right. Solve the second equation for y: 4x − 2y = 8, so −2y = −4x + 8, and y = 2x − 4. That line has the same slope as y = 2x + 1, but a different intercept. The lines are parallel and do not meet, so the system has no solution. Two equations do not guarantee one solution.',
+          rubric: [
+            'Rewrites 4x − 2y = 8 as y = 2x − 4, or an equivalent comparison.',
+            'Identifies the same slope and different intercepts.',
+            'States that there is no solution.',
+            'Explains why "two equations" is not enough by itself.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'functions',
+      name: 'Functions',
+      blurb: 'Linear, quadratic, and exponential functions: notation, parameters, zeros, and equivalent forms.',
+      questions: [
+        {
+          id: 'alg-fn-1',
+          type: 'single',
+          passage: 'Each choice is a set of ordered pairs (x, y).',
+          prompt: 'Which set shows y as a function of x?',
+          choices: [
+            { id: 'a', text: '(1, 4), (1, 7), (2, 4)' },
+            { id: 'b', text: '(0, 5), (3, 5), (4, 2)' },
+            { id: 'c', text: '(2, 1), (3, 2), (2, 8)' },
+            { id: 'd', text: '(5, 0), (5, 1), (6, 2)' },
+          ],
+          answer: 'b',
+          explanation: 'A function gives each x only one y. In B, the x-values 0, 3, and 4 are all different, so the repeated y-value of 5 is allowed. A, C, and D each use the same x with two different y-values.',
+        },
+        {
+          id: 'alg-fn-2',
+          type: 'single',
+          passage: 'f(x) = 3x − 4',
+          prompt: 'What is f(2)?',
+          choices: [
+            { id: 'a', text: '2' },
+            { id: 'b', text: '10' },
+            { id: 'c', text: '−2' },
+            { id: 'd', text: '6' },
+          ],
+          answer: 'a',
+          explanation: 'f(2) = 3(2) − 4 = 6 − 4 = 2.',
+        },
+        {
+          id: 'alg-fn-3',
+          type: 'single',
+          passage: 'A tank holds 40 gallons and drains at a constant rate. The gallons left after m minutes is g(m) = 40 − 2.5m.',
+          prompt: 'What does −2.5 mean in this function?',
+          choices: [
+            { id: 'a', text: 'The tank loses 2.5 gallons each minute.' },
+            { id: 'b', text: 'The tank starts with 2.5 gallons.' },
+            { id: 'c', text: 'The tank is empty after 2.5 minutes.' },
+            { id: 'd', text: 'The tank gains 2.5 gallons each minute.' },
+          ],
+          answer: 'a',
+          explanation: 'The coefficient of m is the rate of change. Negative 2.5 means the amount decreases by 2.5 gallons per minute. The 40 is the starting amount.',
+        },
+        {
+          id: 'alg-fn-4',
+          type: 'single',
+          passage: 'A line passes through (1, 4) and (5, 12).',
+          prompt: 'What is the slope?',
+          choices: [
+            { id: 'a', text: '2' },
+            { id: 'b', text: '1/2' },
+            { id: 'c', text: '8' },
+            { id: 'd', text: '4' },
+          ],
+          answer: 'a',
+          explanation: 'Slope is change in y over change in x: (12 − 4) / (5 − 1) = 8 / 4 = 2. Choice B swaps rise and run. Choice C is only the change in y.',
+        },
+        {
+          id: 'alg-fn-5',
+          type: 'single',
+          passage: 'f(x) = x² − 6x + 5',
+          prompt: 'What are the zeros of f?',
+          choices: [
+            { id: 'a', text: 'x = 1 and x = 5' },
+            { id: 'b', text: 'x = −1 and x = −5' },
+            { id: 'c', text: 'x = 2 and x = 3' },
+            { id: 'd', text: 'x = 6 and x = 5' },
+          ],
+          answer: 'a',
+          explanation: 'x² − 6x + 5 = (x − 1)(x − 5). The zeros are 1 and 5.',
+        },
+        {
+          id: 'alg-fn-6',
+          type: 'single',
+          passage: 'y = 2(x − 3)² + 1',
+          prompt: 'What is the vertex?',
+          choices: [
+            { id: 'a', text: '(3, 1)' },
+            { id: 'b', text: '(−3, 1)' },
+            { id: 'c', text: '(3, −1)' },
+            { id: 'd', text: '(2, 1)' },
+          ],
+          answer: 'a',
+          explanation: 'Vertex form is y = a(x − h)² + k. Here h = 3 and k = 1, so the vertex is (3, 1). Because a = 2 is positive, that point is a minimum.',
+        },
+        {
+          id: 'alg-fn-7',
+          type: 'single',
+          passage: 'A population is modeled by P(t) = 200(1.08)^t, where t is the number of years.',
+          prompt: 'What do the numbers 200 and 1.08 mean?',
+          choices: [
+            { id: 'a', text: 'The population starts at 200 and grows by 8% each year.' },
+            { id: 'b', text: 'The population starts at 200 and increases by 8 each year.' },
+            { id: 'c', text: 'The population starts at 1.08 and increases by 200 each year.' },
+            { id: 'd', text: 'The population starts at 200 and decreases by 8% each year.' },
+          ],
+          answer: 'a',
+          explanation: '200 is the initial amount, P(0). The growth factor 1.08 means the population is multiplied by 1.08 each year, which is an 8% increase. Adding 8 each year would be linear, not exponential.',
+        },
+        {
+          id: 'alg-fn-8',
+          type: 'single',
+          passage: 'Four situations are described.',
+          prompt: 'Which situation is exponential?',
+          choices: [
+            { id: 'a', text: 'A savings jar gains $15 every week.' },
+            { id: 'b', text: 'A plant grows 2 cm every week.' },
+            { id: 'c', text: 'A quantity decreases by 12% each month.' },
+            { id: 'd', text: 'A taxi charges $3 plus $2 per mile.' },
+          ],
+          answer: 'c',
+          explanation: 'A constant percent change each equal time interval is exponential. The other three change by a constant amount, so they are linear.',
+        },
+        {
+          id: 'alg-fn-9',
+          type: 'multi',
+          passage: 'f(x) = (x − 2)² − 9',
+          prompt: 'Select the TWO statements that are true.',
+          choices: [
+            { id: 'a', text: 'The vertex is (2, −9).' },
+            { id: 'b', text: 'The zeros are x = 5 and x = −1.' },
+            { id: 'c', text: 'The parabola opens downward.' },
+            { id: 'd', text: 'The y-intercept is −9.' },
+          ],
+          answer: ['a', 'b'],
+          explanation: 'The vertex form shows (2, −9). Set (x − 2)² = 9, so x − 2 = 3 or x − 2 = −3, giving x = 5 or x = −1. The coefficient of the square is positive, so it opens upward. f(0) = 4 − 9 = −5, not −9.',
+        },
+        {
+          id: 'alg-fn-10',
+          type: 'single',
+          passage: 'Expand (x + 3)² − 4.',
+          prompt: 'Which expression is equivalent?',
+          choices: [
+            { id: 'a', text: 'x² + 6x + 5' },
+            { id: 'b', text: 'x² + 6x + 13' },
+            { id: 'c', text: 'x² + 9x + 5' },
+            { id: 'd', text: 'x² + 3x − 4' },
+          ],
+          answer: 'a',
+          explanation: '(x + 3)² = x² + 6x + 9. Subtract 4: x² + 6x + 5.',
+        },
+        {
+          id: 'alg-fn-11',
+          type: 'single',
+          passage: '(2x² + 3x − 1) + (x² − 5x + 4)',
+          prompt: 'What is the sum?',
+          choices: [
+            { id: 'a', text: '3x² − 2x + 3' },
+            { id: 'b', text: '3x² + 8x + 3' },
+            { id: 'c', text: '2x² − 2x + 3' },
+            { id: 'd', text: '3x² − 2x + 5' },
+          ],
+          answer: 'a',
+          explanation: 'Add like terms: (2 + 1)x² + (3 − 5)x + (−1 + 4) = 3x² − 2x + 3.',
+        },
+        {
+          id: 'alg-fn-12',
+          type: 'single',
+          passage: 'Solve x² + 2x − 8 = 0.',
+          prompt: 'What are the solutions?',
+          choices: [
+            { id: 'a', text: 'x = 2 or x = −4' },
+            { id: 'b', text: 'x = −2 or x = 4' },
+            { id: 'c', text: 'x = 2 or x = 4' },
+            { id: 'd', text: 'x = 8 or x = −1' },
+          ],
+          answer: 'a',
+          explanation: 'x² + 2x − 8 = (x + 4)(x − 2). The solutions are x = −4 and x = 2. The quadratic formula gives the same values: (−2 ± 6) / 2.',
+        },
+        {
+          id: 'alg-fn-13',
+          type: 'cr',
+          points: 3,
+          passage: 'The height of a drone, in meters, t seconds after it starts a climb is\nf(t) = −2(t − 4)² + 50.',
+          prompt: 'What does the vertex tell you about the drone? Say whether it is a maximum or a minimum, and why.',
+          sampleResponse: 'The vertex is (4, 50). The t-coordinate says this happens at 4 seconds, and the height is 50 meters. The number in front of the squared term is −2, which is negative, so the parabola opens downward and the vertex is a maximum. The drone is highest, 50 meters, at 4 seconds.',
+          rubric: [
+            'Identifies the vertex as (4, 50).',
+            'States that 4 seconds and 50 meters are the time and height of that point.',
+            'Uses the negative coefficient to explain that the vertex is a maximum.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'stats',
+      name: 'Statistics and models',
+      blurb: 'Scatter plots, slope and intercept in context, residuals, and linear versus exponential models.',
+      questions: [
+        {
+          id: 'alg-st-1',
+          type: 'single',
+          passage: 'A scatter plot of study hours and test scores slopes upward. Students with more hours tend to have higher scores.',
+          prompt: 'Which conclusion is supported by the scatter plot alone?',
+          choices: [
+            { id: 'a', text: 'There is a positive association between hours and scores.' },
+            { id: 'b', text: 'There is a negative association between hours and scores.' },
+            { id: 'c', text: 'There is no association.' },
+            { id: 'd', text: 'Studying more causes the higher scores.' },
+          ],
+          answer: 'a',
+          explanation: 'An upward trend is a positive association. The plot does not, by itself, show that one variable causes the other.',
+        },
+        {
+          id: 'alg-st-2',
+          type: 'single',
+          passage: 'A line fitted to study hours (x) and predicted score (y) is y = 2.5x + 40.',
+          prompt: 'What does the slope 2.5 mean?',
+          choices: [
+            { id: 'a', text: 'Each extra hour is associated with about 2.5 additional points.' },
+            { id: 'b', text: 'Each extra point is associated with 2.5 more hours.' },
+            { id: 'c', text: 'A student who studies 0 hours is predicted to score 2.5.' },
+            { id: 'd', text: '2.5 is the highest score on the test.' },
+          ],
+          answer: 'a',
+          explanation: 'Slope is the change in predicted score per 1 hour. The 40 is the predicted score at 0 hours, not the slope.',
+        },
+        {
+          id: 'alg-st-3',
+          type: 'single',
+          passage: 'In summer, ice cream sales and sunburn cases both go up. In winter, both go down.',
+          prompt: 'Which statement is the best reading of that correlation?',
+          choices: [
+            { id: 'a', text: 'Ice cream sales cause sunburn.' },
+            { id: 'b', text: 'A third factor, such as hot weather, can explain both increases.' },
+            { id: 'c', text: 'The association must be negative.' },
+            { id: 'd', text: 'If two variables rise together, one of them must cause the other.' },
+          ],
+          answer: 'b',
+          explanation: 'The two variables are associated, but a shared cause (heat and sun) can produce both. Correlation alone does not establish causation.',
+        },
+        {
+          id: 'alg-st-4',
+          type: 'single',
+          passage: 'For one student, a linear model predicts a score of 78. The actual score is 82.',
+          prompt: 'What is the residual, and where is the point relative to the line?',
+          choices: [
+            { id: 'a', text: '4, and the point is above the line.' },
+            { id: 'b', text: '−4, and the point is below the line.' },
+            { id: 'c', text: '4, and the point is below the line.' },
+            { id: 'd', text: '160, the sum of the predicted and actual scores.' },
+          ],
+          answer: 'a',
+          explanation: 'Residual = actual − predicted = 82 − 78 = 4. A positive residual means the point is above the line.',
+        },
+        {
+          id: 'alg-st-5',
+          type: 'multi',
+          passage: 'Four data patterns are listed in the order of the observations.',
+          prompt: 'Select the TWO patterns that are linear.',
+          choices: [
+            { id: 'a', text: '10, 30, 50, 70' },
+            { id: 'b', text: '5, 10, 20, 40' },
+            { id: 'c', text: '3, 7, 11, 15' },
+            { id: 'd', text: '8, 16, 32, 64' },
+          ],
+          answer: ['a', 'c'],
+          explanation: 'A increases by 20 each step. C increases by 4 each step. Equal differences are linear. B and D multiply by 2 each step, which is exponential.',
+        },
+        {
+          id: 'alg-st-6',
+          type: 'single',
+          passage: 'A bacteria culture starts at 50 cells and doubles every hour. t is the number of hours.',
+          prompt: 'Which function models the number of cells?',
+          choices: [
+            { id: 'a', text: 'B(t) = 50 + 2t' },
+            { id: 'b', text: 'B(t) = 50(2)^t' },
+            { id: 'c', text: 'B(t) = 2(50)^t' },
+            { id: 'd', text: 'B(t) = 100t' },
+          ],
+          answer: 'b',
+          explanation: 'Doubling each hour is multiplication by 2, so the factor is 2^t and the start value is 50. B(3) = 50 · 8 = 400, which is three doublings. Choice A adds 2 each hour instead of doubling.',
+        },
+        {
+          id: 'alg-st-7',
+          type: 'single',
+          passage: 'For a set of data, the correlation coefficient is r = −0.92.',
+          prompt: 'Which description fits this value?',
+          choices: [
+            { id: 'a', text: 'A strong negative linear association.' },
+            { id: 'b', text: 'A strong positive linear association.' },
+            { id: 'c', text: 'Almost no linear association.' },
+            { id: 'd', text: 'Proof that one variable causes the other to decrease.' },
+          ],
+          answer: 'a',
+          explanation: 'r near −1 means a strong negative linear association: as one variable increases, the other tends to decrease. It does not prove causation.',
+        },
+        {
+          id: 'alg-st-8',
+          type: 'single',
+          passage: 'A line fits a cloud of points, except for one point far to the right and well above the cloud.',
+          prompt: 'If that point is included in the fitted line, what is the most likely effect?',
+          choices: [
+            { id: 'a', text: 'It pulls the slope of the line upward.' },
+            { id: 'b', text: 'It forces the correlation to be exactly 1.' },
+            { id: 'c', text: 'A single point cannot change a fitted line.' },
+            { id: 'd', text: 'It turns a positive association into a negative one.' },
+          ],
+          answer: 'a',
+          explanation: 'A point far out in x and above the pattern has leverage. Including it tips the line up on that side, so the slope increases. It does not make the fit perfect, and it does not reverse the association by itself.',
+        },
+        {
+          id: 'alg-st-9',
+          type: 'cr',
+          points: 4,
+          passage: 'A club recorded the cost of ordering shirts.\n\nNumber of shirts | Cost ($)\n10 | 70\n20 | 110\n30 | 150',
+          prompt: 'Write a linear model for the cost C in terms of the number of shirts n. Use it to predict the cost of 50 shirts. Say what the slope and the constant term mean.',
+          sampleResponse: 'From 10 shirts to 20 shirts, the cost rises from 70 to 110, an increase of $40. That is $4 per shirt. Using 70 = 4(10) + b gives b = 30. So C = 4n + 30. For 50 shirts, C = 4(50) + 30 = 230. The slope, 4, is the cost of each additional shirt. The 30 is the cost when n = 0, a setup fee that does not depend on the number of shirts. The same line fits the row for 30 shirts: 4(30) + 30 = 150.',
+          rubric: [
+            'Finds a rate of $4 per shirt from the table.',
+            'Writes a correct model, C = 4n + 30, or an equivalent form.',
+            'Predicts $230 for 50 shirts.',
+            'Explains the slope as the per-shirt cost and the constant as a starting or setup cost.',
+          ],
+        },
+      ],
+    },
+  ],
 };
 
+const elaAdditions = {
+  // ---------------------------------------------------------------------------
+  // reading-lit — 12 items (ela-rl-12 … ela-rl-23)
+  // Fills gaps the existing bank underrepresents: RL.9-10.5 (structure/pacing),
+  // RL.9-10.2 (objective summary), RL.9-10.9 (transforming source material),
+  // drama, and the two-part Part A / Part B evidence pattern.
+  // ---------------------------------------------------------------------------
+  'reading-lit': [
+    // ela-rl-12 / ela-rl-13 are a Part A + Part B pair, modeled on the paired
+    // EBSR items in the ELA 10 2025 Practice Test (e.g., "Part A: Option C
+    // (intense) should be selected. Part B: Option A … should be selected.").
+    // Standard: RL.9-10.4 (Part A) and RL.9-10.1 (Part B).
+    // https://assessments.msde.maryland.gov/public/ela-10-2025-practice-test
+    {
+      id: 'ela-rl-12',
+      type: 'single',
+      passage:
+        'From "The Tide Clock"\n\n(1) Grandpa Ellis kept two clocks in the kitchen. One told the hour. The other, a brass dial the color of an old penny, told the tide. When I was nine I thought the second one was broken, because its single hand crawled so slowly you could not catch it moving.\n\n(2) "It is not slow," he said. "You are fast."\n\n(3) He had worked the Bay for forty-one years, tonging oysters off a deadrise boat his father built, and he measured his life the way the brass dial did — in long, patient arcs. My mother measured hers in shifts at the hospital and in the minutes between them. I had grown up on her clock. I could not read his.\n\n(4) The winter I turned sixteen, the doctors told him to stay off the water. He nodded the way he nodded at weather reports, which is to say politely and without agreement. Then he asked me to come along on a Saturday, "just to hand things."\n\n(5) We left in the dark. The engine coughed, caught, and settled into a rhythm I felt in my teeth. He worked the tongs — two long wooden shafts hinged like scissors — and every time he hauled, his shoulders told me something his mouth would not.\n\n(6) By noon the culling board held maybe a third of what he said it would have held when he was my age. He did not complain about it. He only said, "You see it now," as if the empty board were a sentence he had been waiting years for me to finish reading.\n\n(7) On the way in, he handed me the wheel. I steered badly. The bow wandered. He did not correct me.\n\n(8) "Watch the far shore, not the bow," he said. "Anything close will fool you."\n\n(9) I have thought about that instruction for twenty years, and I am still not certain whether he was talking about the boat.',
+      prompt:
+        'PART A: In paragraph 4, the description of Grandpa Ellis nodding "politely and without agreement" most nearly conveys that he',
+      choices: [
+        { id: 'a', text: 'does not understand what the doctors have told him.' },
+        { id: 'b', text: 'accepts the doctors’ authority outwardly while intending to keep working the water.' },
+        { id: 'c', text: 'agrees with the doctors but is too exhausted to say so aloud.' },
+        { id: 'd', text: 'resents the narrator’s mother for arranging the appointment.' },
+      ],
+      answer: 'b',
+      explanation:
+        'The comparison to how he receives "weather reports" is the key: a waterman hears a forecast, is courteous about it, and then decides for himself. The narrator says the nod is "politely and without agreement," so the outward courtesy and the inward refusal are stated directly. Choice A misreads courtesy as confusion; C contradicts "without agreement"; D introduces resentment the passage never shows.',
+    },
+    {
+      id: 'ela-rl-13',
+      type: 'single',
+      passage:
+        'From "The Tide Clock" (refer to the full passage in the previous question)\n\n(4) The winter I turned sixteen, the doctors told him to stay off the water. He nodded the way he nodded at weather reports, which is to say politely and without agreement. Then he asked me to come along on a Saturday, "just to hand things."\n\n(5) We left in the dark. The engine coughed, caught, and settled into a rhythm I felt in my teeth.',
+      prompt:
+        'PART B: Which quotation from the passage best supports the answer to Part A?',
+      choices: [
+        { id: 'a', text: '"He had worked the Bay for forty-one years" (paragraph 3)' },
+        { id: 'b', text: '"Then he asked me to come along on a Saturday, ‘just to hand things.’" (paragraph 4)' },
+        { id: 'c', text: '"The engine coughed, caught, and settled into a rhythm I felt in my teeth." (paragraph 5)' },
+        { id: 'd', text: '"I have thought about that instruction for twenty years" (paragraph 9)' },
+      ],
+      answer: 'b',
+      explanation:
+        'Part A claims he never intended to obey. The proof is what he does next: within the same paragraph he arranges another trip on the water and disguises it as needing a helper — "just to hand things." Choice A establishes his experience but not his intent; C is atmosphere; D is the narrator’s later reflection, not evidence about the doctors’ order.',
+    },
+    // Standard RL.9-10.5, modeled on the released ELA 10 item that asks how the
+    // author "structure[s] the passage to influence the reader's understanding."
+    {
+      id: 'ela-rl-14',
+      type: 'single',
+      passage:
+        'From "The Tide Clock"\n\n(1) Grandpa Ellis kept two clocks in the kitchen. One told the hour. The other, a brass dial the color of an old penny, told the tide. When I was nine I thought the second one was broken, because its single hand crawled so slowly you could not catch it moving.\n\n(2) "It is not slow," he said. "You are fast."\n\n(3) He had worked the Bay for forty-one years... and he measured his life the way the brass dial did — in long, patient arcs. My mother measured hers in shifts at the hospital and in the minutes between them. I had grown up on her clock. I could not read his.',
+      prompt:
+        'How does the author’s decision to open the passage with the two clocks shape the reader’s understanding of the rest of the story?',
+      choices: [
+        { id: 'a', text: 'It establishes two competing ways of measuring time, which becomes the frame for the narrator’s distance from her grandfather.' },
+        { id: 'b', text: 'It creates suspense about whether the brass dial is actually broken.' },
+        { id: 'c', text: 'It signals that the story will be primarily about the history of clockmaking.' },
+        { id: 'd', text: 'It shows that the narrator’s mother and grandfather were in open conflict.' },
+      ],
+      answer: 'a',
+      explanation:
+        'The opening image is doing structural work. Paragraph 3 converts the two clocks into two lives — the grandfather measures in "long, patient arcs," the mother "in shifts at the hospital" — and then states the consequence plainly: "I had grown up on her clock. I could not read his." Every later scene tests that gap. B treats a nine-year-old’s misreading as the plot; C mistakes the image for the subject; D invents a conflict between the adults that is never dramatized.',
+    },
+    // Standard RL.9-10.2 (objective summary). The released ELA 10 test includes
+    // "What is the best summary of the passage from Running the Rift?"
+    {
+      id: 'ela-rl-15',
+      type: 'single',
+      passage:
+        'From "The Tide Clock" (see paragraphs 1–9 above)',
+      prompt: 'Which choice is the best objective summary of the passage?',
+      choices: [
+        { id: 'a', text: 'A teenager is forced onto a boat by a stubborn grandfather and spends the day resenting the work until she finally learns to steer.' },
+        { id: 'b', text: 'A narrator recalls a day of oyster tonging with her grandfather during which she began to understand both his sense of time and the decline of the Bay he had worked for decades.' },
+        { id: 'c', text: 'A retired waterman explains to his granddaughter why the oyster population of the Chesapeake Bay has collapsed and what should be done about it.' },
+        { id: 'd', text: 'A family argues about whether an aging fisherman should follow his doctors’ advice, and the grandfather eventually agrees to stop working.' },
+      ],
+      answer: 'b',
+      explanation:
+        'An objective summary reports the central events and idea without judgment or invention. Choice B captures both threads the passage develops: the narrator finally beginning to "read" his clock, and the culling board holding "maybe a third of what he said it would have held." A adds resentment the text never shows and makes learning to steer the climax, though "I steered badly." C promises an explanation and a proposal the grandfather never offers — he says only "You see it now." D reverses the ending, since he never agrees to stop.',
+    },
+    // Standard RL.9-10.3, multi-select. Models the released "Which two details
+    // best support the answer to Part A?" evidence items.
+    {
+      id: 'ela-rl-16',
+      type: 'multi',
+      passage:
+        'From "The Tide Clock"\n\n(6) By noon the culling board held maybe a third of what he said it would have held when he was my age. He did not complain about it. He only said, "You see it now," as if the empty board were a sentence he had been waiting years for me to finish reading.\n\n(7) On the way in, he handed me the wheel. I steered badly. The bow wandered. He did not correct me.\n\n(8) "Watch the far shore, not the bow," he said. "Anything close will fool you."\n\n(9) I have thought about that instruction for twenty years, and I am still not certain whether he was talking about the boat.',
+      prompt:
+        'Select the TWO details that best support the idea that Grandpa Ellis teaches by withholding rather than by explaining.',
+      choices: [
+        { id: 'a', text: '"He only said, ‘You see it now,’ as if the empty board were a sentence he had been waiting years for me to finish reading."' },
+        { id: 'b', text: '"By noon the culling board held maybe a third of what he said it would have held when he was my age."' },
+        { id: 'c', text: '"I steered badly. The bow wandered. He did not correct me."' },
+        { id: 'd', text: '"We left in the dark."' },
+        { id: 'e', text: '"He had worked the Bay for forty-one years, tonging oysters off a deadrise boat his father built."' },
+      ],
+      answer: ['a', 'c'],
+      explanation:
+        'Both correct choices show a lesson deliberately left unfinished. In A he supplies four words and leaves the narrator to "finish reading" the meaning herself; in C he watches her fail and declines to intervene. Choice B reports the data he wants her to notice but not his teaching method; D is setting; E is background about his experience, not about how he instructs.',
+    },
+    // Poem cluster. RL.9-10.4 — figurative meaning, matching the released
+    // "Part A: Option B (highlight a connection to the speaker's memory)" item type.
+    {
+      id: 'ela-rl-17',
+      type: 'single',
+      passage:
+        'A poem, "Salt Line"\n\nMy grandfather names the water by its taste—\nsweet at the head of the creek, brackish at the bend,\nthen the long open mouth that gives back nothing\nbut sky. He says the salt is moving up.\n\nHe says it the way you say a neighbor is moving in:\nno alarm, only the arithmetic of change.\nI count the marsh grass thinning at the edge\nand learn the word he will not use — losing.',
+      prompt:
+        'What does the phrase "only the arithmetic of change" most strongly suggest about the grandfather?',
+      choices: [
+        { id: 'a', text: 'He is skilled at mathematics and enjoys measuring the creek.' },
+        { id: 'b', text: 'He treats an alarming transformation as an ordinary fact to be counted rather than mourned.' },
+        { id: 'c', text: 'He does not believe the salt line is actually moving.' },
+        { id: 'd', text: 'He is angry at the neighbor who is moving in nearby.' },
+      ],
+      answer: 'b',
+      explanation:
+        'The simile sets the tone: he reports rising salt "the way you say a neighbor is moving in," and the line explicitly rules out feeling — "no alarm, only the arithmetic of change." Arithmetic here means plain accounting, not grief. A takes a figure of speech literally; C contradicts "He says the salt is moving up"; D turns the comparison into a real neighbor.',
+    },
+    // RL.9-10.5 applied to poetic structure — a gap in the existing bank, which
+    // has metaphor and technique items but nothing on how form creates effect.
+    {
+      id: 'ela-rl-18',
+      type: 'single',
+      passage:
+        'A poem, "Salt Line" (second stanza)\n\nHe says it the way you say a neighbor is moving in:\nno alarm, only the arithmetic of change.\nI count the marsh grass thinning at the edge\nand learn the word he will not use — losing.',
+      prompt:
+        'How does the poem’s structure — particularly its final dash and last word — contribute to its meaning?',
+      choices: [
+        { id: 'a', text: 'The dash interrupts the poem before its argument is complete, leaving the reader unsure what is happening to the marsh.' },
+        { id: 'b', text: 'By holding "losing" until after the dash, the poem lets the speaker supply the emotional judgment her grandfather refuses to say.' },
+        { id: 'c', text: 'The dash signals a change of speaker from the granddaughter to the grandfather.' },
+        { id: 'd', text: 'The final word returns the poem to the flat, factual tone of the opening lines.' },
+      ],
+      answer: 'b',
+      explanation:
+        'The poem is built on a withheld word. The grandfather counts; the speaker counts too — "I count the marsh grass thinning" — but she goes one step further and names what the counting means. The dash creates the pause before that step, so form and meaning match. A misses that the poem is complete; C reverses the speakers, since the grandfather is the one "he will not use" refers to; D is the opposite of the effect, because "losing" breaks the flat tone.',
+    },
+    // Cross-text theme item with one detail from each selection — directly
+    // modeled on the released item whose Part B says "Choose one detail from
+    // each selection." Standard RL.9-10.2.
+    {
+      id: 'ela-rl-19',
+      type: 'multi',
+      passage:
+        'Use BOTH texts.\n\nFrom "The Tide Clock"\n\n(6) By noon the culling board held maybe a third of what he said it would have held when he was my age. He did not complain about it. He only said, "You see it now," as if the empty board were a sentence he had been waiting years for me to finish reading.\n\nFrom the poem "Salt Line"\n\nHe says it the way you say a neighbor is moving in:\nno alarm, only the arithmetic of change.\nI count the marsh grass thinning at the edge\nand learn the word he will not use — losing.',
+      prompt:
+        'Both texts develop the theme that an older speaker communicates loss through understatement. Select the TWO details that best support this theme — one from each selection.',
+      choices: [
+        { id: 'a', text: '"He did not complain about it. He only said, ‘You see it now.’" ("The Tide Clock")' },
+        { id: 'b', text: '"By noon the culling board held maybe a third of what he said it would have held." ("The Tide Clock")' },
+        { id: 'c', text: '"no alarm, only the arithmetic of change" ("Salt Line")' },
+        { id: 'd', text: '"sweet at the head of the creek, brackish at the bend" ("Salt Line")' },
+        { id: 'e', text: '"I count the marsh grass thinning at the edge" ("Salt Line")' },
+      ],
+      answer: ['a', 'c'],
+      explanation:
+        'The theme is about how the older speakers deliver bad news, so the evidence has to describe their manner. A names the restraint outright — "did not complain," "only said." C names it in the poem — "no alarm." Choice B supplies the loss itself but not the understatement; D is sensory description; E describes the younger speaker’s attention, not the grandfather’s.',
+    },
+    // Drama excerpt. The existing bank has prose and poetry but no drama.
+    // Standard RL.9-10.3 (complex characters with conflicting motivations).
+    {
+      id: 'ela-rl-20',
+      type: 'single',
+      passage:
+        'From the play "The Understudy," Act One\n\nMARISOL: You told Ms. Okafor I was ready.\n\nDEV: I told her you were the only one who knew every line. That is a different sentence.\n\nMARISOL: It sounded like the same sentence in the hallway.\n\nDEV: (picking up the script, not looking at her) In the hallway I was being generous. In the audition room I have to be accurate.\n\nMARISOL: You have the lead. You can afford to be generous.\n\nDEV: (a beat) I can afford it. I just cannot spend it twice.',
+      prompt:
+        'What do Dev’s final two lines most clearly reveal about him?',
+      choices: [
+        { id: 'a', text: 'He genuinely believes Marisol is unprepared for the role.' },
+        { id: 'b', text: 'He will support Marisol only up to the point where his support would cost him his own advantage.' },
+        { id: 'c', text: 'He has decided to give up the lead role to Marisol.' },
+        { id: 'd', text: 'He is unaware that his hallway comment raised Marisol’s hopes.' },
+      ],
+      answer: 'b',
+      explanation:
+        'Dev picks up Marisol’s own metaphor and completes it against her: "I can afford it. I just cannot spend it twice." He concedes he has the surplus and refuses to spend it, which is a limit on his generosity, not a doubt about her. A is ruled out because he says she "knew every line" and only calls the hallway version imprecise. C reverses the scene. D fails because he distinguishes the hallway from the audition room, showing he knows exactly what he implied.',
+    },
+    // RL.9-10.9 — how an author draws on and transforms source material. This
+    // standard has no coverage in the existing bank.
+    {
+      id: 'ela-rl-21',
+      type: 'single',
+      passage:
+        'From "Persephone at the Greyhound Station"\n\n(1) The old story says a girl was taken. In this one she buys the ticket herself, at 11:40 on a Tuesday, with money from a summer job her mother does not know about. The station smells like diesel and oranges. She has six pomegranate seeds in her coat pocket — she counted them in the kitchen, the way you count reasons — and she is not sure yet whether they are a promise to come back or an excuse not to.\n\n(2) Her mother will call the leaving a theft. Her mother will make the whole world cold about it. But the girl at gate four is doing arithmetic no myth ever let her do: how many months below, how many above, and who exactly gets to decide.',
+      prompt:
+        'How does the author transform the traditional myth this passage draws on?',
+      choices: [
+        { id: 'a', text: 'By moving the events to a modern setting while keeping the girl’s role as a victim unchanged.' },
+        { id: 'b', text: 'By shifting the girl from someone the story happens to into someone who chooses, which reframes the myth as a question about who holds authority over her life.' },
+        { id: 'c', text: 'By removing the pomegranate seeds so that the story no longer resembles its source.' },
+        { id: 'd', text: 'By arguing that the original myth was factually inaccurate.' },
+      ],
+      answer: 'b',
+      explanation:
+        'The first sentence states the transformation as a contrast: "The old story says a girl was taken. In this one she buys the ticket herself." The passage then makes the change thematic — she performs "arithmetic no myth ever let her do," ending on "who exactly gets to decide." A is wrong because agency, not just setting, is what changes. C is factually wrong, since she carries "six pomegranate seeds." D treats a myth as a factual claim, which the passage never does.',
+    },
+    {
+      id: 'ela-rl-22',
+      type: 'multi',
+      passage:
+        'From "Persephone at the Greyhound Station"\n\n(1) The old story says a girl was taken. In this one she buys the ticket herself, at 11:40 on a Tuesday, with money from a summer job her mother does not know about... She has six pomegranate seeds in her coat pocket — she counted them in the kitchen, the way you count reasons — and she is not sure yet whether they are a promise to come back or an excuse not to.\n\n(2) Her mother will call the leaving a theft. Her mother will make the whole world cold about it. But the girl at gate four is doing arithmetic no myth ever let her do: how many months below, how many above, and who exactly gets to decide.',
+      prompt:
+        'Select the TWO details that best show the retelling has moved authority from the mother to the daughter.',
+      choices: [
+        { id: 'a', text: '"she buys the ticket herself, at 11:40 on a Tuesday, with money from a summer job her mother does not know about"' },
+        { id: 'b', text: '"The station smells like diesel and oranges."' },
+        { id: 'c', text: '"she counted them in the kitchen, the way you count reasons"' },
+        { id: 'd', text: '"Her mother will make the whole world cold about it."' },
+        { id: 'e', text: '"how many months below, how many above, and who exactly gets to decide"' },
+      ],
+      answer: ['a', 'e'],
+      explanation:
+        'Choice A gives the daughter the two things the myth denied her — the purchase and the private funds. Choice E gives her the calculation itself and ends on the question of authority, "who exactly gets to decide." B is sensory setting. C shows deliberation but not authority over the outcome. D describes the mother’s power, which is the thing being displaced, not evidence of the displacement.',
+    },
+    // 3-point literary analysis CR, matching the existing bank's CR length and
+    // the released rubric criteria (accurate analysis, effective textual
+    // evidence, clear and coherent organization).
+    {
+      id: 'ela-rl-23',
+      type: 'cr',
+      points: 3,
+      passage:
+        'Source Texts for Writing\n\nFrom "The Tide Clock"\n\n(6) By noon the culling board held maybe a third of what he said it would have held when he was my age. He did not complain about it. He only said, "You see it now," as if the empty board were a sentence he had been waiting years for me to finish reading.\n\n(8) "Watch the far shore, not the bow," he said. "Anything close will fool you."\n\n(9) I have thought about that instruction for twenty years, and I am still not certain whether he was talking about the boat.\n\nFrom the poem "Salt Line"\n\nMy grandfather names the water by its taste—\nsweet at the head of the creek, brackish at the bend,\nthen the long open mouth that gives back nothing\nbut sky. He says the salt is moving up.\n\nHe says it the way you say a neighbor is moving in:\nno alarm, only the arithmetic of change.\nI count the marsh grass thinning at the edge\nand learn the word he will not use — losing.',
+      prompt:
+        'In both texts, a young narrator learns something from an older relative who does not say it directly. In a well-organized paragraph, analyze how each author uses that indirectness to develop meaning. Use specific evidence from BOTH texts.',
+      sampleResponse:
+        'In both texts the older relative refuses to name what is happening, and each author makes that refusal the source of the meaning. In "The Tide Clock," the grandfather responds to a nearly empty culling board with four words — "You see it now" — and the narrator understands the silence as deliberate, "as if the empty board were a sentence he had been waiting years for me to finish reading." Because he will not explain, the narrator has to do the interpreting, which is exactly what his last instruction asks of her: "Watch the far shore, not the bow." The poem "Salt Line" works the same way. The grandfather reports rising salt "the way you say a neighbor is moving in: no alarm, only the arithmetic of change," and the speaker fills the silence herself, learning "the word he will not use — losing." In both works, the older speaker supplies the facts and the younger one supplies the grief, and that division is the point: the authors suggest that some kinds of loss are handed down rather than announced, and that understanding them is itself a form of inheritance.',
+      rubric: [
+        'States a clear controlling idea about how indirectness develops meaning in both texts.',
+        'Uses at least one specific, accurately quoted piece of evidence from EACH text.',
+        'Explains how the evidence develops the idea rather than only summarizing the texts.',
+        'Organized and clear enough that any errors do not interfere with meaning.',
+      ],
+    },
+  ],
+
+  // ---------------------------------------------------------------------------
+  // reading-info — 12 items (ela-ri-12 … ela-ri-23)
+  // Targets RI.9-10.6 (point of view/rhetoric), RI.9-10.8 (evaluating the
+  // validity of reasoning and the sufficiency of evidence), and RI.9-10.9
+  // (seminal U.S. documents) — none of which the existing bank reaches — plus
+  // the comparative-analysis-of-evidentiary-support task from the released
+  // ELA 10 2025 Practice Test.
+  // ---------------------------------------------------------------------------
+  'reading-info': [
+    // ela-ri-12 / ela-ri-13 form a Part A + Part B pair on RI.9-10.2, modeled on
+    // the released central-idea EBSRs for "Happiness Doesn't Follow Success."
+    // https://assessments.msde.maryland.gov/public/ela-10-2025-practice-test
+    {
+      id: 'ela-ri-12',
+      type: 'single',
+      passage:
+        'Passage 1: From "What the Data Say About Phones in Class"\n\n(1) When one district collected phones in locked pouches for a full school year, researchers tracked three measures before and after: minutes of off-task behavior recorded by trained classroom observers, discipline referrals for conflicts that began online, and scores on end-of-unit assessments.\n\n(2) Off-task behavior fell by roughly a third. Referrals tied to online conflict fell by half in the middle schools but barely moved in the high schools. Assessment scores rose slightly, though the increase was small enough to be explained by two other changes the district made the same year.\n\n(3) None of this settles the question. A single district is not a country, and one year is not a trend. What the data do suggest is narrower and more useful: pouches change attention quickly, change social conflict unevenly, and change achievement slowly, if at all.\n\n(4) Policy arguments usually promise more than that. Careful evidence usually promises less.',
+      prompt:
+        'PART A: Which statement best expresses the central idea of Passage 1?',
+      choices: [
+        { id: 'a', text: 'Locked phone pouches raise test scores and should be adopted by every district.' },
+        { id: 'b', text: 'The evidence on phone pouches supports a narrow, uneven conclusion rather than the sweeping claims policy debates tend to make.' },
+        { id: 'c', text: 'Classroom observation is a more reliable measure than discipline referrals.' },
+        { id: 'd', text: 'Middle school students are more distracted by phones than high school students are.' },
+      ],
+      answer: 'b',
+      explanation:
+        'The author reports three results, then immediately limits them: "None of this settles the question. A single district is not a country, and one year is not a trend." Paragraph 4 states the contrast that organizes the whole passage — policy promises more, careful evidence promises less. A overstates a result the author explicitly discounts. C compares two measures the passage never ranks. D reverses the finding, which was about referrals for online conflict, not about overall distraction.',
+    },
+    {
+      id: 'ela-ri-13',
+      type: 'single',
+      passage:
+        'Passage 1: From "What the Data Say About Phones in Class" (see paragraphs 1–4 above)',
+      prompt: 'PART B: Which sentence from Passage 1 best supports the answer to Part A?',
+      choices: [
+        { id: 'a', text: '"Off-task behavior fell by roughly a third."' },
+        { id: 'b', text: '"Referrals tied to online conflict fell by half in the middle schools but barely moved in the high schools."' },
+        { id: 'c', text: '"Policy arguments usually promise more than that. Careful evidence usually promises less."' },
+        { id: 'd', text: '"researchers tracked three measures before and after"' },
+      ],
+      answer: 'c',
+      explanation:
+        'Part A is about the gap between what evidence can support and what advocates claim, and choice C states that gap directly. A and B are individual findings — they are the material the central idea comments on, not the comment itself. D describes the study design.',
+    },
+    // RI.9-10.8 — delineate and evaluate the argument, assessing whether the
+    // reasoning is valid and the evidence sufficient. Not covered by the
+    // existing bank, which stops at identifying balance and function.
+    {
+      id: 'ela-ri-14',
+      type: 'single',
+      passage:
+        'Passage 1: From "What the Data Say About Phones in Class"\n\n(2) ... Assessment scores rose slightly, though the increase was small enough to be explained by two other changes the district made the same year.\n\n(3) None of this settles the question. A single district is not a country, and one year is not a trend.',
+      prompt:
+        'Which statement best evaluates the author’s reasoning in Passage 1?',
+      choices: [
+        { id: 'a', text: 'The reasoning is weak because the author reports results and then refuses to draw any conclusion from them.' },
+        { id: 'b', text: 'The reasoning is sound because the author matches the size of each claim to the strength of the evidence, naming both the sample limits and a possible alternative explanation.' },
+        { id: 'c', text: 'The reasoning is flawed because the author relies only on personal experience rather than measurement.' },
+        { id: 'd', text: 'The reasoning is sound because the author proves that phone pouches cause higher achievement.' },
+      ],
+      answer: 'b',
+      explanation:
+        'Evaluating an argument means checking whether the conclusions are proportional to the evidence. This author flags a confounding variable ("two other changes the district made the same year") and the limits of a one-district, one-year sample, then scales the conclusion down accordingly. A is inaccurate: the author does conclude, just narrowly — attention changes quickly, conflict unevenly, achievement slowly. C describes Passage 2, not this one. D claims a causal proof the author specifically declines to make.',
+    },
+    // RI.9-10.6 — determining an author's point of view and how they advance it.
+    {
+      id: 'ela-ri-15',
+      type: 'multi',
+      passage:
+        'Passage 2: From "The Pouch Is Not the Point"\n\n(1) I taught for eleven years without a phone policy and three years with one. I can tell you exactly what changed, and it was not test scores.\n\n(2) What changed was the first four minutes of class. Before the pouches, those minutes went to pulling students out of a conversation that had started somewhere else. After, the room simply began. Students looked up. They looked at each other.\n\n(3) I have heard the objection that a locked pouch is a bandage over a wound we refuse to treat — that the real problem is a set of products engineered to hold attention. That objection is right. It is also not an argument for doing nothing while we wait for the wound to heal.\n\n(4) You will not find the first four minutes in a data table. Ask any teacher what they are worth.',
+      prompt:
+        'Select the TWO details that best reveal that the author of Passage 2 treats professional experience, rather than measurement, as the strongest kind of evidence.',
+      choices: [
+        { id: 'a', text: '"I taught for eleven years without a phone policy and three years with one. I can tell you exactly what changed, and it was not test scores."' },
+        { id: 'b', text: '"I have heard the objection that a locked pouch is a bandage over a wound we refuse to treat."' },
+        { id: 'c', text: '"You will not find the first four minutes in a data table. Ask any teacher what they are worth."' },
+        { id: 'd', text: '"That objection is right."' },
+        { id: 'e', text: '"Students looked up. They looked at each other."' },
+      ],
+      answer: ['a', 'c'],
+      explanation:
+        'Both correct choices set experience against measurement explicitly. A opens by establishing the author’s years in the classroom and dismissing test scores in the same breath. C names the limits of data and then redirects the reader to teachers as the authority. Choice B introduces a counterargument; D concedes it; E is a specific observation that illustrates the claim but does not argue about what counts as evidence.',
+    },
+    // RI.9-10.9 — analyze how two texts treat similar themes with different
+    // approaches, the skill the released comparative PCR assesses.
+    {
+      id: 'ela-ri-16',
+      type: 'single',
+      passage:
+        'Use BOTH passages.\n\nPassage 1 reports measured results from one district and then states: "None of this settles the question. A single district is not a country, and one year is not a trend."\n\nPassage 2 states: "You will not find the first four minutes in a data table. Ask any teacher what they are worth."',
+      prompt:
+        'Which statement best describes how the two authors differ in what they treat as authoritative evidence?',
+      choices: [
+        { id: 'a', text: 'Passage 1 trusts measurement and limits its claims to what measurement supports, while Passage 2 argues that the most important effects are ones measurement does not capture.' },
+        { id: 'b', text: 'Passage 1 relies on interviews with teachers, while Passage 2 relies on district assessment data.' },
+        { id: 'c', text: 'Both authors treat standardized test scores as the decisive evidence.' },
+        { id: 'd', text: 'Passage 2 rejects the findings reported in Passage 1 as inaccurate.' },
+      ],
+      answer: 'a',
+      explanation:
+        'Passage 1 builds from observers, referral counts, and assessment scores and then scales its claims to fit them. Passage 2 concedes that its central effect is invisible to data — "You will not find the first four minutes in a data table" — and appeals to teachers instead. B reverses the two. C is contradicted by both authors, since Passage 1 discounts the score increase and Passage 2 says "it was not test scores." D is wrong because Passage 2 never disputes Passage 1’s numbers; it argues they are incomplete.',
+    },
+    // 4-point comparative PCR. Directly modeled on the released "Comparative
+    // Analysis of Evidentiary Support" prompt and its 4-point Written
+    // Expression / 3-point Written Conventions rubrics.
+    // https://assessments.msde.maryland.gov/public/ela-10-2025-practice-test
+    {
+      id: 'ela-ri-17',
+      type: 'cr',
+      points: 4,
+      passage:
+        'Source Texts for Writing\n\nPassage 1: From "What the Data Say About Phones in Class"\n\n(1) When one district collected phones in locked pouches for a full school year, researchers tracked three measures before and after: minutes of off-task behavior recorded by trained classroom observers, discipline referrals for conflicts that began online, and scores on end-of-unit assessments.\n\n(2) Off-task behavior fell by roughly a third. Referrals tied to online conflict fell by half in the middle schools but barely moved in the high schools. Assessment scores rose slightly, though the increase was small enough to be explained by two other changes the district made the same year.\n\n(3) None of this settles the question. A single district is not a country, and one year is not a trend. What the data do suggest is narrower and more useful: pouches change attention quickly, change social conflict unevenly, and change achievement slowly, if at all.\n\n(4) Policy arguments usually promise more than that. Careful evidence usually promises less.\n\nPassage 2: From "The Pouch Is Not the Point"\n\n(1) I taught for eleven years without a phone policy and three years with one. I can tell you exactly what changed, and it was not test scores.\n\n(2) What changed was the first four minutes of class. Before the pouches, those minutes went to pulling students out of a conversation that had started somewhere else. After, the room simply began. Students looked up. They looked at each other.\n\n(3) I have heard the objection that a locked pouch is a bandage over a wound we refuse to treat — that the real problem is a set of products engineered to hold attention. That objection is right. It is also not an argument for doing nothing while we wait for the wound to heal.\n\n(4) You will not find the first four minutes in a data table. Ask any teacher what they are worth.',
+      prompt:
+        'You have read two passages about phone policies in schools. Write an essay that analyzes which author more effectively supports the argument he or she makes. Be sure to describe the kind of evidence each author uses, explain the strengths and limits of that evidence, and use specific details from BOTH passages.',
+      sampleResponse:
+        'Both authors argue about phone pouches, but they disagree about what should count as proof, and Passage 1 supports its argument more effectively because it matches the size of every claim to the evidence behind it. The author of Passage 1 builds from three separate measures — observed off-task minutes, discipline referrals for online conflict, and end-of-unit scores — and then reports results that do not all point the same way: attention improved by "roughly a third," referrals "fell by half in the middle schools but barely moved in the high schools," and scores rose only slightly. Crucially, the author immediately names a threat to that last result, noting the gain "was small enough to be explained by two other changes the district made the same year," and then names the limits of the sample: "A single district is not a country, and one year is not a trend." That willingness to argue against the author’s own strongest-sounding number is what makes the conclusion trustworthy.\n\nThe author of Passage 2 makes a genuinely valuable argument, and it is the more vivid of the two. The image of "the first four minutes of class" is concrete, and the detail that after the change "Students looked up. They looked at each other" captures something a referral count cannot. This author is also fair to the opposition, conceding that pouches may be "a bandage over a wound we refuse to treat" and answering that the objection "is also not an argument for doing nothing." But the evidence itself is a single teacher recalling fourteen years of classes, and the essay closes by placing that experience beyond checking: "You will not find the first four minutes in a data table."\n\nThat closing line is where the comparison turns. A reader can test Passage 1 by asking what the other two district changes were or by looking for a second district; a reader can only agree or disagree with Passage 2. Both essays are honest about their own weak points, which is to their credit, but only one gives the reader the tools to verify it. For that reason, Passage 1 supports its argument more effectively, even though Passage 2 makes the more memorable case.',
+      rubric: [
+        'States a clear claim about which author more effectively supports the argument.',
+        'Accurately analyzes the TYPE of evidence in each passage (measured data versus professional experience), not just the topic.',
+        'Uses specific, accurately quoted evidence from BOTH passages and explains its significance.',
+        'Acknowledges the strengths of the passage judged less effective.',
+        'Maintains a formal style with strong organization and control of conventions.',
+      ],
+    },
+    // Second informational cluster. RI.9-10.5 — analyze how an author's ideas
+    // are developed and refined by particular paragraphs.
+    {
+      id: 'ela-ri-18',
+      type: 'single',
+      passage:
+        'From "The Reef Builders"\n\n(1) An adult oyster filters up to fifty gallons of water a day. That single fact is why Maryland has spent two decades putting rock and shell back on the bottom of the Chesapeake Bay.\n\n(2) The logic runs in a chain. Oyster larvae need a hard surface to settle on. Two centuries of dredging ground the Bay’s old reefs down to mud, so even in years when larvae are plentiful, most of them land on a bottom that cannot hold them. Restoration crews barge in stone and cured shell, seed it with hatchery-raised spat, and then leave it alone — the last step being the hardest one to fund and the easiest one to skip.\n\n(3) Results have been uneven, and the unevenness is the interesting part. In sanctuaries closed to harvest for at least six years, reef height and oyster density have generally increased. In tributaries where the same rock was laid but harvest resumed, the reefs flattened again within a few seasons.\n\n(4) The lesson is not that restoration works or does not work. It is that restoration is not an event. A reef is a structure that oysters build faster than they are removed, or it is not a reef at all.',
+      prompt: 'How is paragraph 2 organized?',
+      choices: [
+        { id: 'a', text: 'As a chronological history of oyster harvesting in the Chesapeake Bay.' },
+        { id: 'b', text: 'As a cause-and-effect chain that explains why larvae fail without human intervention and what that intervention requires.' },
+        { id: 'c', text: 'As a comparison between two competing restoration methods.' },
+        { id: 'd', text: 'As a list of objections to spending public money on restoration.' },
+      ],
+      answer: 'b',
+      explanation:
+        'The author announces the structure in the first sentence — "The logic runs in a chain" — and then supplies the links: larvae need hard surfaces, dredging removed them, so larvae "land on a bottom that cannot hold them," so crews add rock, seed it, and leave it alone. A is wrong because there is no timeline of harvesting. C fails because only one method is described. D misreads the aside about funding as a list of objections.',
+    },
+    // RI.9-10.3 — analyze how the author connects and distinguishes points.
+    {
+      id: 'ela-ri-19',
+      type: 'single',
+      passage:
+        'From "The Reef Builders"\n\n(3) Results have been uneven, and the unevenness is the interesting part. In sanctuaries closed to harvest for at least six years, reef height and oyster density have generally increased. In tributaries where the same rock was laid but harvest resumed, the reefs flattened again within a few seasons.',
+      prompt:
+        'Why does the author place the sanctuary results and the harvested-tributary results side by side?',
+      choices: [
+        { id: 'a', text: 'To show that the amount of rock used is the factor that determines whether a reef survives.' },
+        { id: 'b', text: 'To argue that oyster harvesting should be permanently banned throughout the Chesapeake Bay.' },
+        { id: 'c', text: 'To isolate the variable that matters, since both sites received the same rock and only the length of protection differed.' },
+        { id: 'd', text: 'To suggest that hatchery-raised spat performs worse than wild spat.' },
+      ],
+      answer: 'c',
+      explanation:
+        'The author holds one thing constant and changes one thing: "the same rock was laid" in both places, and only harvest protection differs. That is a controlled comparison, and it points to protection over time as the cause. A is ruled out by "the same rock." B goes beyond what the author claims, since the passage recommends nothing. D introduces a comparison of spat types that the paragraph never makes.',
+    },
+    {
+      id: 'ela-ri-20',
+      type: 'multi',
+      passage:
+        'From "The Reef Builders"\n\n(2) ... Restoration crews barge in stone and cured shell, seed it with hatchery-raised spat, and then leave it alone — the last step being the hardest one to fund and the easiest one to skip.\n\n(3) In sanctuaries closed to harvest for at least six years, reef height and oyster density have generally increased. In tributaries where the same rock was laid but harvest resumed, the reefs flattened again within a few seasons.\n\n(4) The lesson is not that restoration works or does not work. It is that restoration is not an event.',
+      prompt:
+        'Select the TWO details that best support the claim that sustained protection matters more than the initial construction of a reef.',
+      choices: [
+        { id: 'a', text: '"In tributaries where the same rock was laid but harvest resumed, the reefs flattened again within a few seasons."' },
+        { id: 'b', text: '"Restoration crews barge in stone and cured shell, seed it with hatchery-raised spat"' },
+        { id: 'c', text: '"the last step being the hardest one to fund and the easiest one to skip"' },
+        { id: 'd', text: '"An adult oyster filters up to fifty gallons of water a day."' },
+        { id: 'e', text: '"Two centuries of dredging ground the Bay’s old reefs down to mud"' },
+      ],
+      answer: ['a', 'c'],
+      explanation:
+        'Choice A is the decisive evidence: identical construction plus resumed harvest equals failure. Choice C identifies the protective step — leaving the reef alone — as the one most likely to be abandoned, which is why the claim matters. B describes construction, the thing being downgraded. D is the passage’s opening justification for restoration. E explains the historical damage, not the role of ongoing protection.',
+    },
+    // RI.9-10.9 — seminal U.S. documents. PUBLIC-DOMAIN PRIMARY SOURCE: the
+    // Declaration of Independence (1776), quoted with attribution. The stem and
+    // all four options are original. This is the one item in the file that
+    // quotes a real text, and it is public domain.
+    {
+      id: 'ela-ri-21',
+      type: 'single',
+      passage:
+        'From the Declaration of Independence (1776), a public-domain founding document of the United States\n\n"We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness. — That to secure these rights, Governments are instituted among Men, deriving their just powers from the consent of the governed, — That whenever any Form of Government becomes destructive of these ends, it is the Right of the People to alter or to abolish it . . ."',
+      prompt:
+        'Which idea about the source of governmental authority is most directly expressed in this excerpt?',
+      choices: [
+        { id: 'a', text: 'A government’s authority is legitimate only because the people it governs have granted it.' },
+        { id: 'b', text: 'A government’s authority comes from the length of time it has existed.' },
+        { id: 'c', text: 'A government’s authority rests on its ability to expand national territory.' },
+        { id: 'd', text: 'A government’s authority is granted permanently and cannot be withdrawn.' },
+      ],
+      answer: 'a',
+      explanation:
+        'Two clauses carry the idea. Governments derive "their just powers from the consent of the governed," which locates the source of authority in the people, and if a government becomes "destructive of these ends, it is the Right of the People to alter or to abolish it," which confirms that the grant is conditional. That is popular sovereignty. B and C name grounds for authority the excerpt never mentions. D is directly contradicted by the right to "alter or to abolish."',
+    },
+    // RI.9-10.6 — how an author uses rhetoric to advance a point of view.
+    {
+      id: 'ela-ri-22',
+      type: 'single',
+      passage:
+        'From an opinion column, "Who Pays for the Quiet?"\n\nEvery budget season the same line appears: extend library hours. Every budget season it is the first line cut. We are told the cut is small. Small compared to what? A district that closes its libraries at three o’clock has not saved money. It has moved a cost onto the students who have nowhere else to work, and onto the families who will pay for it later — in tutoring, in grades, in a door that does not open.',
+      prompt:
+        'How does the author’s question "Small compared to what?" advance the argument?',
+      choices: [
+        { id: 'a', text: 'It asks readers for information the author does not have.' },
+        { id: 'b', text: 'It challenges the framing of the cut as minor and sets up the author’s claim that the cost has been shifted rather than eliminated.' },
+        { id: 'c', text: 'It concedes that the savings from the cut are in fact significant.' },
+        { id: 'd', text: 'It shifts the column from an argument to a neutral report on district budgeting.' },
+      ],
+      answer: 'b',
+      explanation:
+        'The rhetorical question interrupts a claim the author has just quoted from opponents — "We are told the cut is small" — and forces the reader to supply a comparison. The sentences that follow supply it: the district "has not saved money. It has moved a cost." A treats a rhetorical question as a genuine request. C reverses the author’s position. D ignores the clearly argumentative tone of the entire passage.',
+    },
+    // RI.9-10.4 — determine the meaning of words and phrases, including
+    // figurative and connotative meanings, in an informational text.
+    {
+      id: 'ela-ri-23',
+      type: 'single',
+      passage:
+        'From "The Reef Builders"\n\n(4) The lesson is not that restoration works or does not work. It is that restoration is not an event. A reef is a structure that oysters build faster than they are removed, or it is not a reef at all.',
+      prompt:
+        'What does the author mean by the statement "restoration is not an event"?',
+      choices: [
+        { id: 'a', text: 'Restoration projects should be scheduled during particular seasons of the year.' },
+        { id: 'b', text: 'Restoration is an ongoing balance that must be maintained, not a one-time action that can be completed and then left behind.' },
+        { id: 'c', text: 'Restoration efforts should not be publicized or celebrated by the state.' },
+        { id: 'd', text: 'Restoration has failed everywhere it has been attempted in the Chesapeake Bay.' },
+      ],
+      answer: 'b',
+      explanation:
+        'The next sentence defines the term: a reef exists only where oysters "build faster than they are removed," which is a rate, not a finished object. Calling restoration "not an event" therefore means it is a condition that has to be sustained. A takes "event" to mean a date on a calendar. C reads a word about publicity into a passage about biology. D contradicts paragraph 3, which reports increases in protected sanctuaries.',
+    },
+  ],
+
+  // ---------------------------------------------------------------------------
+  // vocabulary — 10 items (ela-v-11 … ela-v-20)
+  // The existing bank is ten near-identical "most nearly means" items. These add
+  // the two-part vocabulary EBSR from the released ELA 10 practice test, plus
+  // L.9-10.4b (roots and affixes), L.9-10.4c (reference materials/dictionary
+  // entries), L.9-10.4d (verifying an inferred meaning), and L.9-10.5
+  // (figurative language, word relationships, and nuance in connotation).
+  // ---------------------------------------------------------------------------
+  vocabulary: [
+    // Part A / Part B vocabulary pair. Models the released item whose key reads
+    // "Part A: Option C (intense) should be selected. Part B: Option A ('All
+    // business, all distance.' - line 9) should be selected." (RL.9-10.4)
+    {
+      id: 'ela-v-11',
+      type: 'single',
+      passage:
+        'From "The Grant Committee"\n\n(1) The evidence for the new reading program was tenuous. One school had raised its scores, but it had also replaced half its staff, lengthened its literacy block, and hired two coaches in the same year. Ms. Adeyemi did not say the program failed. She said only that nothing yet connected the program to the result.',
+      prompt: 'PART A: As used in the passage, "tenuous" most nearly means',
+      choices: [
+        { id: 'a', text: 'weak or lacking a firm basis.' },
+        { id: 'b', text: 'expensive and difficult to obtain.' },
+        { id: 'c', text: 'recent and not yet published.' },
+        { id: 'd', text: 'complicated but ultimately convincing.' },
+      ],
+      answer: 'a',
+      explanation:
+        'Everything after the first sentence explains why the evidence does not hold: three other changes happened at the same time, so "nothing yet connected the program to the result." Tenuous describes a link too thin to bear weight. B and C name qualities of the evidence the passage never mentions. D reverses the point, since the passage concludes that the connection has not been made.',
+    },
+    {
+      id: 'ela-v-12',
+      type: 'single',
+      passage:
+        'From "The Grant Committee" (see paragraph 1 above)',
+      prompt:
+        'PART B: Which phrase from the passage best helps the reader determine the meaning of "tenuous"?',
+      choices: [
+        { id: 'a', text: '"One school had raised its scores"' },
+        { id: 'b', text: '"replaced half its staff, lengthened its literacy block, and hired two coaches in the same year"' },
+        { id: 'c', text: '"Ms. Adeyemi did not say the program failed"' },
+        { id: 'd', text: '"nothing yet connected the program to the result"' },
+      ],
+      answer: 'd',
+      explanation:
+        'Choice D restates the meaning in plain words — no established connection — which is exactly what a tenuous link is. Choice B is genuinely tempting because it explains WHY the connection is unproven, but it lists confounding changes rather than defining the word. A reports the promising result; C clarifies what the speaker is not claiming.',
+    },
+    // L.9-10.4b — use patterns of word changes and Greek/Latin affixes and roots.
+    {
+      id: 'ela-v-13',
+      type: 'single',
+      passage:
+        'From a civics newsletter\n\nThe council argued that the developer had tried to circumvent the review process by filing three small permits instead of one large one.',
+      prompt:
+        'The word "circumvent" contains the Latin root circum-, meaning "around." Using that root and the context, "circumvent" most nearly means',
+      choices: [
+        { id: 'a', text: 'to speed up a process by following every step precisely.' },
+        { id: 'b', text: 'to find a way around a requirement rather than meeting it directly.' },
+        { id: 'c', text: 'to argue publicly against a decision that has already been made.' },
+        { id: 'd', text: 'to pay a fee in place of completing an application.' },
+      ],
+      answer: 'b',
+      explanation:
+        'Combine the root with the example. Circum- means around, and the developer split one large permit into three small ones — going around the review rather than through it. A contradicts "instead of one large one." C describes a public objection, which is what the council does, not what the developer did. D adds a payment the sentence never mentions.',
+    },
+    // L.9-10.4c — consult reference materials and choose the definition that
+    // fits the context. Multi-definition dictionary-entry items appear in MCAP
+    // and MSTAR item pools but not in this app's bank.
+    {
+      id: 'ela-v-14',
+      type: 'single',
+      passage:
+        'Sentence:\n\nA free press acts as a check on officials who would rather not be watched.\n\nDictionary entry:\n\ncheck (noun)\n1. a written order directing a bank to pay money\n2. a mark placed beside an item to show it has been verified\n3. something that restrains or controls\n4. a sudden stop or pause in movement',
+      prompt: 'Which definition of "check" applies to the way the word is used in the sentence?',
+      choices: [
+        { id: 'a', text: 'Definition 1' },
+        { id: 'b', text: 'Definition 2' },
+        { id: 'c', text: 'Definition 3' },
+        { id: 'd', text: 'Definition 4' },
+      ],
+      answer: 'c',
+      explanation:
+        'The sentence describes what a free press does to officials who "would rather not be watched" — it restrains them through exposure, which is definition 3. Definitions 1 and 2 are unrelated senses of the same spelling, and definition 4 would require the press to be halting a physical movement.',
+    },
+    // L.9-10.5b — analyze nuances in the meaning of words with similar denotations.
+    {
+      id: 'ela-v-15',
+      type: 'multi',
+      passage:
+        'From "Household Accounts"\n\nHer father was frugal in a way that had nothing to do with fear. He bought good tools once, repaired them for thirty years, and gave away what he did not need.',
+      prompt:
+        'Select the TWO words that are closest in meaning to "frugal" as it is used here.',
+      choices: [
+        { id: 'a', text: 'thrifty' },
+        { id: 'b', text: 'stingy' },
+        { id: 'c', text: 'economical' },
+        { id: 'd', text: 'wealthy' },
+        { id: 'e', text: 'reckless' },
+      ],
+      answer: ['a', 'c'],
+      explanation:
+        'This item turns on connotation, not denotation. "Thrifty" and "economical" both mean careful with resources without implying selfishness, which fits a man who "gave away what he did not need." "Stingy" carries the negative charge the passage explicitly rules out by saying his frugality "had nothing to do with fear." "Wealthy" and "reckless" are unrelated.',
+    },
+    // L.9-10.5a — interpret figures of speech in context.
+    {
+      id: 'ela-v-16',
+      type: 'single',
+      passage:
+        'From a debate summary\n\nThe new ordinance turned out to be a paper tiger: it announced steep fines, created no inspectors to issue them, and set no deadline for compliance.',
+      prompt: 'In this context, calling the ordinance "a paper tiger" means that it',
+      choices: [
+        { id: 'a', text: 'was written quickly and contains several errors.' },
+        { id: 'b', text: 'appears threatening but has no real power to enforce anything.' },
+        { id: 'c', text: 'protects an endangered species from development.' },
+        { id: 'd', text: 'was rejected by voters before it could take effect.' },
+      ],
+      answer: 'b',
+      explanation:
+        'The colon signals that what follows defines the figure: steep fines announced, no inspectors, no deadline. The ordinance looks fierce on paper and can do nothing, which is the whole point of the expression. A takes "paper" literally as drafting quality. C takes "tiger" literally. D adds a rejection the sentence never reports — the ordinance passed and simply cannot bite.',
+    },
+    // L.9-10.5b applied to an author's word choice and tone.
+    {
+      id: 'ela-v-17',
+      type: 'single',
+      passage:
+        'Two versions of the same sentence:\n\nVersion 1: The superintendent suggested that the schools review the policy.\n\nVersion 2: The superintendent insisted that the schools review the policy.',
+      prompt:
+        'What is the main effect of the word choice in Version 2 compared with Version 1?',
+      choices: [
+        { id: 'a', text: 'It makes the request sound optional and collaborative.' },
+        { id: 'b', text: 'It presents the superintendent as uncertain about the policy.' },
+        { id: 'c', text: 'It presents the review as a demand rather than an invitation, which raises the pressure on the schools.' },
+        { id: 'd', text: 'It changes the meaning of "review" from reading to rewriting.' },
+      ],
+      answer: 'c',
+      explanation:
+        'Suggested and insisted share a denotation — both introduce what the superintendent wants — but their connotations differ sharply in force. Insisted implies the schools have little room to decline. A describes Version 1. B is the opposite of what insisting conveys. D changes the wrong word, since "review" is identical in both versions.',
+    },
+    {
+      id: 'ela-v-18',
+      type: 'single',
+      passage:
+        'From "The Long Repair"\n\nThe grant would not solve the flooding, and no one on the committee pretended otherwise. It would ameliorate it — raise two intersections, clear four storm drains, and buy the neighborhood another decade to plan.',
+      prompt: 'As used in the passage, "ameliorate" most nearly means',
+      choices: [
+        { id: 'a', text: 'to explain the cause of a problem.' },
+        { id: 'b', text: 'to make a bad situation somewhat better without fully fixing it.' },
+        { id: 'c', text: 'to postpone a decision indefinitely.' },
+        { id: 'd', text: 'to make a situation considerably worse.' },
+      ],
+      answer: 'b',
+      explanation:
+        'The sentence brackets the word on both sides. Before it: the grant "would not solve the flooding." After it: three concrete improvements that buy "another decade." So the word has to mean improving without curing. A confuses relief with diagnosis. C ignores the actions actually taken. D reverses the meaning.',
+    },
+    {
+      id: 'ela-v-19',
+      type: 'multi',
+      passage:
+        'From "The Exit Interview"\n\nHer assessment of the program was candid. She named what had worked, named what had not, and did not soften either list for the people sitting in the room.',
+      prompt:
+        'Select the TWO words that are closest in meaning to "candid" as it is used here.',
+      choices: [
+        { id: 'a', text: 'frank' },
+        { id: 'b', text: 'cheerful' },
+        { id: 'c', text: 'straightforward' },
+        { id: 'd', text: 'hesitant' },
+        { id: 'e', text: 'formal' },
+      ],
+      answer: ['a', 'c'],
+      explanation:
+        'The second sentence defines the term through behavior: she named both lists and "did not soften either." Frank and straightforward both capture unsoftened directness. "Cheerful" describes mood, not honesty. "Hesitant" is the opposite. "Formal" describes register — a speaker can be formal and evasive at the same time.',
+    },
+    // L.9-10.4a/4d — use word position and function, then verify the inferred
+    // meaning. Tests the same base word in two different parts of speech.
+    {
+      id: 'ela-v-20',
+      type: 'single',
+      passage:
+        'Two sentences:\n\nSentence 1: The board will deliberate for an hour before voting.\n\nSentence 2: Her silence in the meeting was deliberate.',
+      prompt:
+        'Which choice correctly identifies how the meaning of the base word shifts between the two sentences?',
+      choices: [
+        { id: 'a', text: 'In Sentence 1 it is a verb meaning "to discuss carefully"; in Sentence 2 it is an adjective meaning "done on purpose."' },
+        { id: 'b', text: 'In Sentence 1 it is a noun meaning "a formal vote"; in Sentence 2 it is a verb meaning "to delay."' },
+        { id: 'c', text: 'It means "slow and unhurried" in both sentences, with no change in part of speech.' },
+        { id: 'd', text: 'In Sentence 1 it is an adjective meaning "official"; in Sentence 2 it is an adverb meaning "carefully."' },
+      ],
+      answer: 'a',
+      explanation:
+        'Position tells you the function. In Sentence 1, "will deliberate" is the predicate, so it is a verb meaning to weigh a matter through discussion. In Sentence 2 it follows a linking verb and describes "silence," so it is an adjective meaning intentional. B misidentifies both. C misses that "on purpose" and "unhurried" are different meanings, even though both senses trace to the same root. D assigns the wrong parts of speech in both sentences.',
+    },
+  ],
+
+  // ---------------------------------------------------------------------------
+  // writing — 8 constructed responses (ela-w-5 … ela-w-12)
+  // The existing four cover informative, argument, narrative, argument. These add
+  // the two full-length task types the ELA 10 form actually uses and the existing
+  // bank omits: the Literary Analysis Task (compare two literary texts) and the
+  // Research Simulation Task (synthesize three informational sources), plus the
+  // released Comparative Analysis of Evidentiary Support. Point values follow the
+  // released rubric structure (4-point Written Expression for the full tasks).
+  // https://assessments.msde.maryland.gov/public/ela-10-2025-practice-test
+  // ---------------------------------------------------------------------------
+  writing: [
+    {
+      id: 'ela-w-5',
+      type: 'cr',
+      points: 4,
+      passage:
+        'LITERARY ANALYSIS TASK — Stimulus\n\nText 1: From "The Tide Clock"\n\nGrandpa Ellis kept two clocks in the kitchen. One told the hour. The other, a brass dial the color of an old penny, told the tide... He had worked the Bay for forty-one years, tonging oysters off a deadrise boat his father built, and he measured his life the way the brass dial did — in long, patient arcs. My mother measured hers in shifts at the hospital and in the minutes between them. I had grown up on her clock. I could not read his.\n\nBy noon the culling board held maybe a third of what he said it would have held when he was my age. He did not complain about it. He only said, "You see it now," as if the empty board were a sentence he had been waiting years for me to finish reading.\n\nText 2: From "Persephone at the Greyhound Station"\n\nThe old story says a girl was taken. In this one she buys the ticket herself, at 11:40 on a Tuesday, with money from a summer job her mother does not know about... Her mother will call the leaving a theft. Her mother will make the whole world cold about it. But the girl at gate four is doing arithmetic no myth ever let her do: how many months below, how many above, and who exactly gets to decide.\n\nBoth texts place a young person between an older generation’s way of understanding the world and a choice the young person must make for herself.',
+      prompt:
+        'LITERARY ANALYSIS: Write an essay that analyzes how each author develops the relationship between a young narrator and an older relative. Consider each author’s use of narration, detail, and figurative language. Use specific evidence from BOTH texts to support your analysis.',
+      sampleResponse:
+        'Both authors put a young woman in the presence of an older relative whose way of seeing the world she has inherited without choosing, but they build the relationship out of opposite materials: one out of a silence the narrator must interpret, the other out of a story she must revise.\n\n"The Tide Clock" makes the relationship a problem of literacy. The two kitchen clocks are a metaphor for two ways of counting a life — the grandfather’s "long, patient arcs" against the mother’s "shifts at the hospital and the minutes between them" — and the narrator states her difficulty as a reading failure: "I had grown up on her clock. I could not read his." The author then keeps the grandfather nearly wordless so the narrator has to interpret him. When the culling board holds "maybe a third" of what it once did, he says four words, and the narrator supplies the meaning, describing the board "as if it were a sentence he had been waiting years for me to finish reading." Because the whole scene is told in retrospect by an adult, the reader watches understanding arrive late, which is exactly the relationship the author is describing.\n\n"Persephone at the Greyhound Station" builds the same generational distance out of a myth instead of a memory. The author announces the revision in the first two sentences — "The old story says a girl was taken. In this one she buys the ticket herself" — and gives the daughter every detail the traditional version denied her: a departure time, her own money, and the pomegranate seeds she counted herself, "the way you count reasons." The mother appears only in the future tense, as someone who "will call the leaving a theft," which keeps her powerful but places her outside the moment of choice. The essay ends on the real subject, "who exactly gets to decide."\n\nThe two authors therefore develop the same relationship from different directions. In "The Tide Clock," the older relative holds knowledge the young narrator has to work to receive; in "Persephone," the older relative holds a story the young narrator has to work to escape. Read together, they suggest that inheriting a way of seeing and choosing your own are not separate acts but the same difficult one.',
+      rubric: [
+        'States a clear controlling idea about how the relationship is developed in both texts.',
+        'Analyzes specific craft choices — narration, detail, figurative language — rather than summarizing plot.',
+        'Uses accurate, effectively integrated textual evidence from BOTH texts.',
+        'Organizes ideas logically with strong connections between them, and controls conventions.',
+      ],
+    },
+    {
+      id: 'ela-w-6',
+      type: 'cr',
+      points: 4,
+      passage:
+        'COMPARATIVE ANALYSIS OF EVIDENTIARY SUPPORT — Stimulus\n\nPassage 1: From "Grade Inflation Is Real, and Small"\n\nAcross a state system of 180 high schools, average GPA rose 0.21 points over eight years while scores on a common end-of-course exam were flat. That gap is the strongest single indicator of grade inflation available. But the gap was concentrated: in a quarter of the schools it was near zero, and in a tenth it exceeded half a point. Reporting only the statewide average hides the fact that the phenomenon is a local one with local causes — changes in retake policies, in late-work rules, and in how many teachers are new.\n\nPassage 2: From "Stop Blaming the Gradebook"\n\nI have graded roughly nineteen thousand assignments. A grade is not a measurement; it is a message from a teacher to a student about what to do next. When my district banned zeros for missing work, my grades went up. So did the number of students who eventually turned the work in. Call that inflation if you want. I call it a policy that finally stopped using arithmetic to punish teenagers for being fourteen.\n\nBoth authors respond to the claim that grades have become less meaningful.',
+      prompt:
+        'ARGUMENT / COMPARATIVE ANALYSIS: Which author more effectively supports the argument he or she makes? Write an essay that analyzes the kind of evidence each author uses, explains its strengths and limits, and reaches a reasoned judgment. Use specific evidence from BOTH passages.',
+      sampleResponse:
+        'Passage 1 supports its argument more effectively, because it treats its own strongest number with suspicion and Passage 2 never has to.\n\nThe author of Passage 1 begins with a comparison that is genuinely persuasive: across 180 schools, average GPA rose 0.21 points while common exam scores "were flat." Rather than resting there, the author breaks the average apart, reporting that in "a quarter of the schools it was near zero" and in "a tenth it exceeded half a point." That move costs the author the more dramatic headline and buys something better — a defensible claim that grade inflation is "a local one with local causes," followed by three candidate causes a reader could actually investigate. The evidence is also checkable: another analyst could pull the same distribution and disagree.\n\nPassage 2 makes an argument that Passage 1 cannot make, and it makes it well. Redefining a grade as "a message from a teacher to a student about what to do next" reframes the entire debate, and the author supplies a real consequence — after the district banned zeros, both grades and the number of students completing work rose. The closing line is the most memorable sentence in either passage. But the support is one teacher’s account of one district, and the crucial second claim, that more students "eventually turned the work in," is offered without any figure at all. A reader who doubts it has no way to test it.\n\nNeither passage is careless. Passage 2 is honest about being a first-person argument and does not pretend to be a study. Still, effectiveness of support is the question, and Passage 1 provides more evidence, provides it in a form that can be verified, and voluntarily qualifies its own conclusion. Passage 2 makes the better case for why we should care about grades; Passage 1 makes the better-supported case for what is actually happening to them.',
+      rubric: [
+        'States a clear claim about which author supports the argument more effectively.',
+        'Distinguishes the TYPES of evidence used (aggregate data with a distribution versus first-person professional experience).',
+        'Uses specific evidence from BOTH passages and explains its significance rather than quoting alone.',
+        'Acknowledges the strengths of the passage judged less effective, and maintains formal style and conventions.',
+      ],
+    },
+    {
+      id: 'ela-w-7',
+      type: 'cr',
+      points: 4,
+      passage:
+        'RESEARCH SIMULATION TASK — Stimulus (three sources)\n\nSource 1: From "The Heat Island Map"\n\nOn an August afternoon, surface temperatures within a single city can differ by more than fifteen degrees. The hottest blocks are consistently those with the least tree canopy and the most unshaded pavement. Because canopy cover in many American cities tracks decades-old housing and lending patterns, the neighborhoods that are hottest today are frequently the ones that were denied investment generations ago.\n\nSource 2: From an interview with a public-works director\n\n"People picture a heat plan as planting trees, and trees matter, but a tree you plant today shades a sidewalk in fifteen years. The things that help this August are cooler roof coatings, shade structures at bus stops, and keeping one air-conditioned public building open late in every neighborhood. Our problem is that the slow fix is popular and photographs well, and the fast fix is a line item nobody applauds."\n\nSource 3: From a county health department summary\n\nEmergency visits for heat-related illness cluster in three groups: outdoor workers, adults over 65 living alone, and residents of buildings without central cooling. During the most recent heat emergency, 71 percent of visits came from residents of blocks in the top quarter for surface temperature. Cooling centers were open, but average travel time to the nearest one exceeded twenty-five minutes for the neighborhoods with the highest visit rates.',
+      prompt:
+        'INFORMATIVE/EXPLANATORY (RESEARCH SIMULATION): Using all THREE sources, write an essay that explains why extreme heat affects some city neighborhoods far more than others and what makes an effective response difficult. Cite specific evidence from at least two of the sources.',
+      sampleResponse:
+        'Extreme heat is not distributed evenly across a city, and the reasons are physical, historical, and logistical at the same time. Source 1 establishes the physical mechanism: surface temperatures inside one city can vary "by more than fifteen degrees," and the hottest blocks are "those with the least tree canopy and the most unshaded pavement." It then supplies the historical layer, noting that canopy cover often follows "decades-old housing and lending patterns," so the blocks that overheat today are frequently the ones denied investment generations ago. Heat, in other words, lands on a map that was drawn long before anyone measured it.\n\nSource 3 shows what that map costs. During the most recent heat emergency, 71 percent of emergency visits for heat illness came from residents of blocks in the top quarter for surface temperature, and the people affected were concentrated in three vulnerable groups, including adults over 65 living alone. The same source identifies why an apparently adequate response failed: cooling centers were open, but average travel time to the nearest one "exceeded twenty-five minutes" precisely in the neighborhoods with the highest visit rates. A resource that exists but cannot be reached in time is not yet a solution.\n\nThe public-works director in Source 2 names the difficulty that ties the other two sources together. Tree planting addresses the mechanism Source 1 describes, but "a tree you plant today shades a sidewalk in fifteen years," while the measures that would help during this August — reflective roof coatings, shade at bus stops, one late-open cooled building per neighborhood — are, in the director’s words, "a line item nobody applauds." The response problem is therefore a mismatch of timelines: the visible investment pays off slowly, the invisible one pays off immediately, and public attention rewards the wrong one.\n\nTaken together, the sources explain that unequal heat is produced by unequal shade, inherited from unequal investment, measured in unequal illness, and answered by a system whose incentives favor the slower remedy. An effective plan would have to work on both clocks at once.',
+      rubric: [
+        'Explains the topic with a clear controlling idea rather than arguing a position.',
+        'Integrates evidence from at least TWO sources and attributes it clearly.',
+        'Connects the sources to one another instead of summarizing them one at a time.',
+        'Uses precise language and effective transitions, with strong control of conventions.',
+      ],
+    },
+    {
+      id: 'ela-w-8',
+      type: 'cr',
+      points: 3,
+      passage:
+        'NARRATIVE TASK — Stimulus\n\nRead the opening of a story. Then continue it.\n\nThe letter had been in the glove compartment for three weeks, which is how Nadia knew her father had read it. He never put anything away. He only moved things to where he would not have to look at them.\n\nShe found it while hunting for the tire gauge, and she did not open it, and then she did, at a red light, with the engine running and the turn signal counting off seconds like someone tapping a foot.\n\nContinue the narrative. You may take the story anywhere, but keep Nadia and the letter, and keep the story in the same time and place.',
+      prompt:
+        'NARRATIVE: Continue the story from the point where Nadia opens the letter. Use descriptive detail, at least one line of dialogue, and a clear sequence of events. End at a moment that reveals something about Nadia or her father that the opening only hinted at.',
+      sampleResponse:
+        'The light turned green before she finished the first line, and the car behind her waited a full two seconds before it said anything, which in this town counted as patience.\n\nThe letter was from the community college. It was addressed to her father. It congratulated him on his admission to the welding certificate program and reminded him that the deposit had been due on the eleventh.\n\nNadia pulled into the lot of the hardware store, though she did not need anything from the hardware store. She read it twice more. Her father was fifty-four. He had told her, in March, that the shop was cutting hours, and then he had told her nothing else about it for four months, which she had taken to mean the problem had solved itself.\n\nWhen she got home he was on the porch with the radio on, low, the way he kept it when he was thinking and did not want to be caught at it.\n\n"You went looking for the tire gauge," he said. It was not a question.\n\n"The deposit was due on the eleventh."\n\nHe did not answer for long enough that she heard the whole end of a song. Then he said, "I know when it was due."\n\nAnd that was the thing about her father, she realized, standing on the second step with the letter still in her hand: he had not hidden it because he was ashamed of going back to school at fifty-four. He had hidden it because he had already decided not to go, and he did not want to be talked out of a decision he had made for her.',
+      rubric: [
+        'Continues the narrative logically and maintains the established characters, setting, and voice.',
+        'Uses descriptive detail and at least one line of dialogue effectively.',
+        'Builds a clear sequence of events toward a revealing final moment.',
+      ],
+    },
+    {
+      id: 'ela-w-9',
+      type: 'cr',
+      points: 4,
+      passage:
+        'ARGUMENT TASK — Stimulus\n\nProposal under debate:\n"Our district should adopt a later high school start time, moving first period from 7:30 a.m. to 8:45 a.m."\n\nNotes for writers:\n• Adolescent sleep cycles shift later during the teenage years; most teens do not fall asleep easily before about 11 p.m.\n• Districts that moved start times later have reported improved attendance and, in several cases, fewer crashes among teen drivers.\n• A later high school start usually requires shifting elementary start times earlier, because most districts run one bus fleet in tiers.\n• Earlier elementary start times shift the child-care burden onto families with young children, often before parents leave for work.\n• Later dismissal compresses time for after-school jobs, athletic practices with shared fields, and caring for younger siblings.\n\nTake a position on the proposal. You may use the notes and your own knowledge, and you must address a counterargument.',
+      prompt:
+        'ARGUMENT: Should the district move the high school start time to 8:45 a.m.? Write an argumentative essay that states a claim, supports it with at least two developed reasons and relevant evidence, and acknowledges and responds to the strongest opposing argument.',
+      sampleResponse:
+        'The district should move the high school start time to 8:45 a.m., but only as part of a plan that pays for the disruption it creates rather than passing that cost to families with young children.\n\nThe first reason is biological rather than a matter of willpower. Adolescent sleep cycles shift later during the teenage years, so most teenagers cannot reliably fall asleep before about 11 p.m. A 7:30 a.m. first period therefore does not ask students to go to bed earlier; it asks them to sleep less. The measurable effects of correcting this are the second reason. Districts that have moved start times later report better attendance and, in several cases, fewer crashes among teen drivers — outcomes that matter more than any single course grade, because a student who is absent or injured is not learning anything at all.\n\nThe strongest objection is not about teenagers, and it deserves to be answered on its own terms. Because most districts run one bus fleet in tiers, a later high school start usually forces an earlier elementary start, which pushes young children to bus stops before many parents leave for work. Families with the least schedule flexibility absorb that change first. The compressed afternoon is real too: shared athletic fields, after-school jobs, and the students who pick up younger siblings all lose time.\n\nThose costs are arguments for designing the change carefully, not for keeping a schedule that measurably harms students. A district that adopts the later start should fund supervised early-morning space at elementary schools, publish athletic field schedules before the change rather than after it, and protect a defined block for students who work or care for siblings. If the district cannot fund those supports, it should delay the change until it can — because shifting a burden from one group of children to another is not a reform. Done properly, though, the later start delivers better attendance, safer drivers, and rested students, and the district should commit to it.',
+      rubric: [
+        'States a clear position on the proposal.',
+        'Develops at least two reasons with relevant evidence from the stimulus or accurate outside knowledge.',
+        'Acknowledges the strongest counterargument and responds to it rather than dismissing it.',
+        'Maintains a formal style, logical organization, and control of conventions.',
+      ],
+    },
+    {
+      id: 'ela-w-10',
+      type: 'cr',
+      points: 3,
+      passage:
+        'INFORMATIVE/EXPLANATORY TASK — Stimulus\n\nFrom a museum exhibit panel, "How a Bill Becomes Slow"\n\nA bill introduced in the Maryland General Assembly is assigned to a committee, where most bills stop. A committee chair decides whether the bill receives a hearing. If it does, the bill can be amended, voted out favorably, voted out unfavorably, or simply left without a vote when the session ends.\n\nThe General Assembly meets in a regular session of ninety days. Bills that do not pass both chambers before adjournment die and must be reintroduced the following year. Supporters describe the short session as a discipline that forces priorities; critics describe it as a bottleneck in which a single chair can end a bill without a recorded vote.\n\nExplain the process and the disagreement about it. Do not argue for a side.',
+      prompt:
+        'INFORMATIVE/EXPLANATORY: Explain how the committee stage and the length of the legislative session shape which bills become law, and explain why observers disagree about whether that design is a strength or a weakness. Use details from the stimulus.',
+      sampleResponse:
+        'Two features of the Maryland legislative process do most of the work of deciding which bills become law, and neither one is a floor vote. The first is the committee stage. Every introduced bill is assigned to a committee, and the panel notes that this is where "most bills stop." A committee chair controls whether a bill even receives a hearing, and a bill that gets one can still be amended, voted out favorably, voted out unfavorably, or left without any vote at all. That last outcome matters most, because a bill can end without any legislator ever going on record about it.\n\nThe second feature is time. The General Assembly meets in a regular session of ninety days, and bills that have not passed both chambers by adjournment die and must be reintroduced the next year. The short calendar interacts with the committee stage: a chair does not have to defeat a bill, only delay it past the deadline.\n\nObservers draw opposite conclusions from the same design. Supporters describe the compressed session as a discipline, arguing that a hard deadline forces legislators to rank priorities instead of debating everything at once. Critics describe the same structure as a bottleneck, focusing on the fact that a single chair can end a bill without a recorded vote and therefore without accountability to voters. The disagreement is less about the facts of the process than about what a legislature is for — whether the greater risk is passing too much or quietly stopping too much.',
+      rubric: [
+        'Accurately explains the committee stage and the effect of the ninety-day session.',
+        'Presents both interpretations without arguing for either one.',
+        'Uses specific details from the stimulus and precise, formal language.',
+      ],
+    },
+    {
+      id: 'ela-w-11',
+      type: 'cr',
+      points: 4,
+      passage:
+        'ARGUMENT TASK — Stimulus (two sources)\n\nSource A: From a district technology memo\n\nThe pilot placed an AI writing assistant in ninth-grade English. Teachers reported that first drafts arrived cleaner and that conferences moved faster because fewer minutes went to surface errors. On the end-of-year assessment, which is handwritten and untimed, pilot students scored slightly below the comparison group on organization and slightly above on conventions.\n\nSource B: From a letter to the school board by a group of English teachers\n\n"We are not opposed to the tool. We are opposed to buying it before deciding what we want students to be able to do without it. A cleaner first draft is not evidence of a stronger writer; it may be evidence of a stronger draft. Ask us to name the skills we will still teach directly, fund the time to teach them, and then we will tell you where the assistant helps."',
+      prompt:
+        'ARGUMENT: Should the district expand the AI writing assistant to all ninth-grade English classes? Write an argumentative essay that states a claim, supports it with evidence from BOTH sources, and responds to the strongest opposing view.',
+      sampleResponse:
+        'The district should not expand the AI writing assistant district-wide yet, because the only outcome that clearly improved is the one the tool most directly produces, and the teachers have named a condition that has not been met.\n\nThe pilot results in Source A cut in two directions, and the direction that matters is easy to miss. Pilot students scored "slightly above the comparison group on conventions" — precisely the surface features an assistant supplies — and "slightly below" on organization, which is the skill a writer has to own. The teacher-reported benefits are real: drafts "arrived cleaner" and conferences "moved faster." But a faster conference is a measure of the teacher’s time, not of the student’s growth, and on the one measure taken away from the tool, in a handwritten and untimed setting, the pilot group did not come out ahead.\n\nSource B identifies why that pattern should slow the decision. The teachers explicitly state that they "are not opposed to the tool," which makes their objection harder to dismiss as resistance to change. Their argument is about sequence: decide what students must be able to do unaided, fund the instruction that builds it, and only then determine where an assistant belongs. Their sharpest line names the confusion in the pilot data directly — "A cleaner first draft is not evidence of a stronger writer; it may be evidence of a stronger draft."\n\nThe strongest case for expanding now is that time returned to teachers is itself instructional time, and that argument has weight: minutes not spent marking comma splices can be spent on argument and structure. But Source A does not show that trade paying off, since organization is exactly where pilot students trailed. Until the district can show that recovered conference time improves the skills the assistant does not perform, expansion buys a better-looking draft rather than a better writer. The responsible step is to continue the pilot for one more year with organization as the primary measure, adopt the teachers’ condition of naming the unaided skills first, and expand only if the numbers move.',
+      rubric: [
+        'States a clear claim about whether to expand the program.',
+        'Uses specific evidence from BOTH sources, including the mixed result in the pilot data.',
+        'Explains reasoning rather than only quoting, and distinguishes what the evidence does and does not show.',
+        'Addresses the strongest opposing view and maintains formal style and conventions.',
+      ],
+    },
+    {
+      id: 'ela-w-12',
+      type: 'cr',
+      points: 3,
+      passage:
+        'NARRATIVE TASK — Stimulus\n\nRead this scene, told from Marisol’s point of view.\n\nDEV: I told her you were the only one who knew every line. That is a different sentence.\n\nMARISOL: It sounded like the same sentence in the hallway.\n\nDEV: In the hallway I was being generous. In the audition room I have to be accurate.\n\nMARISOL: You have the lead. You can afford to be generous.\n\nDEV: I can afford it. I just cannot spend it twice.\n\nMarisol walked out of the theater knowing exactly what had happened and not at all why.',
+      prompt:
+        'NARRATIVE: Rewrite this scene as a short narrative told from DEV’s point of view, beginning a few minutes before the conversation. Keep the dialogue’s meaning but reveal what Dev is thinking and what he does not say. Use descriptive detail and a clear sequence of events.',
+      sampleResponse:
+        'Ms. Okafor asked the question in the wrong room. That was the part Dev kept coming back to afterward — that she had asked it in the audition room, with the callback list already printed, and not in the hallway where a person could still be generous for free.\n\n"Is Marisol ready?" she had said, not looking up.\n\nHe had answered the only way that was true in that room. He said Marisol was the only one who knew every line. He watched Ms. Okafor write something short. He did not say what he had said Tuesday by the water fountain, which was that Marisol was better than him in the second act and everybody knew it. He had meant that. He had also meant it in a hallway, where nothing was being decided.\n\nWhen Marisol found him after, holding her script rolled into a tube the way she did when she was angry, he did not put his own script down. Looking at her would have made it a conversation instead of a position.\n\n"In the hallway I was being generous," he said. "In the audition room I have to be accurate."\n\nWhat he did not say was that both sentences were accurate, and that the difference between them was worth a lead role, and that he had known which one to use before she ever asked.\n\n"You have the lead," she said. "You can afford to be generous."\n\nHe waited a beat, because the true answer arrived faster than he wanted it to.\n\n"I can afford it. I just cannot spend it twice."\n\nHe listened to her leave. Then he read four lines he already knew by heart, out loud, to an empty house, so that the room would not be quiet enough for him to hear what he had just done.',
+      rubric: [
+        'Successfully shifts the point of view while preserving the meaning of the original dialogue.',
+        'Reveals the new narrator’s thinking, including what he chooses not to say.',
+        'Uses descriptive detail and a clear sequence of events with a coherent ending.',
+      ],
+    },
+  ],
+};
+
+(function attachBank(subject, bank) {
+  Object.keys(bank).forEach(function (topicId) {
+    var topic = subject.topics.filter(function (t) { return t.id === topicId; })[0];
+    if (!topic) return;
+    bank[topicId].forEach(function (q) {
+      var taken = topic.questions.some(function (old) { return old.id === q.id; });
+      if (!taken) topic.questions.push(q);
+    });
+  });
+})(ela, elaAdditions);
+const STORAGE_KEY = 'terp-prep-progress-v1';
+const subjects = [ela, misa, government, algebra];
+
+const themes = {
+  ela: { bar: 'fill-ela' },
+  misa: { bar: 'fill-misa' },
+  gov: { bar: 'fill-gov' },
+  alg: { bar: 'fill-alg' },
+};
 function themeOf(s) { return themes[s.theme] || themes.ela; }
 
 function countQ(s) { return s.topics.reduce((n, t) => n + t.questions.length, 0); }
@@ -2408,221 +3982,175 @@ function render() {
   bind();
 }
 
+function siteHeader(activeSlug) {
+  return `<header class="bar"><div class="bar-row">
+    <button type="button" data-action="home" class="brand">Terp Prep</button>
+    <nav>${subjects.map((s) => `<button type="button" data-action="subject" data-slug="${s.slug}" class="${s.slug === activeSlug ? 'on' : ''}">${esc(s.name)}</button>`).join('')}</nav>
+  </div></header>`;
+}
+function siteFooter() {
+  return `<footer class="foot"><div class="wrap">Terp Prep is an independent study aid. The items are original practice, not official MSDE questions. The timed test copies the section rules and tools; it is not TestNav or the Cognia kiosk.</div></footer>`;
+}
+function sectionHasCalc(profile, sectionIndex) {
+  if (!profile) return false;
+  if (Array.isArray(profile.calculatorSections)) return profile.calculatorSections.indexOf(sectionIndex) !== -1;
+  return !!profile.calculator;
+}
+function calcBlurb(p) {
+  if (!p) return '';
+  if (Array.isArray(p.calculatorSections)) return 'calculator on sections 2-4';
+  return p.calculator ? 'calculator allowed' : 'no calculator';
+}
+
 function renderHome() {
   const total = subjects.reduce((n, s) => n + countQ(s), 0);
   const attempted = subjects.reduce((n, s) => n + statsFor(s.slug).answered, 0);
-  return `
-  <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
-    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-      <button data-action="home" class="flex items-center gap-2.5">
-        <span class="grid h-9 w-9 place-items-center rounded-xl bg-slate-900 text-white font-extrabold">T</span>
-        <span class="text-left leading-tight">
-          <span class="block text-sm font-extrabold">Terp Prep</span>
-          <span class="block text-[11px] text-slate-500">Maryland MSTAR &amp; MISA</span>
-        </span>
-      </button>
-      <nav class="flex gap-1 overflow-x-auto">${subjects.map((s) => {
-        const t = themeOf(s);
-        return `<button data-action="subject" data-slug="${s.slug}" class="flex items-center gap-2 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100"><span class="h-2 w-2 rounded-full ${t.dot}"></span>${esc(s.name)}</button>`;
-      }).join('')}</nav>
-    </div>
-  </header>
-  <main class="mx-auto max-w-6xl px-4 py-8">
-    <section class="mb-10 overflow-hidden rounded-3xl bg-slate-900 px-6 py-12 text-white sm:px-12">
-      <span class="inline-flex rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold">Maryland MSTAR &amp; MISA prep</span>
-      <p class="mt-6 max-w-xl text-lg text-slate-300">Practice for <strong class="text-white">ELA 10 MSTAR</strong>, <strong class="text-white">MISA</strong>, and <strong class="text-white">American Government MSTAR</strong> — with feedback and saved progress. MSTAR (Maryland System of Testing Academic Readiness) is the new name for the former MCAP ELA and Government tests; MISA remains the life-science assessment. Each full test is built for about an hour of focused practice.</p>
-      <div class="mt-6 flex flex-wrap gap-3">${subjects.map((s) => {
-        const t = themeOf(s);
-        return `<button data-action="subject" data-slug="${s.slug}" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn}">Start ${esc(s.name)}</button>`;
-      }).join('')}</div>
-      <p class="mt-6 text-sm text-slate-400">${total} practice items · ${attempted} attempted so far</p>
-    </section>
-    <h2 class="mb-4 text-xl font-bold">Choose a test to prepare</h2>
-    <div class="grid gap-5 md:grid-cols-3">${subjects.map((s) => {
-      const t = themeOf(s);
-      const st = statsFor(s.slug);
-      return `<button data-action="subject" data-slug="${s.slug}" class="rounded-2xl bg-white text-left shadow-sm ring-1 ring-slate-100 overflow-hidden hover:-translate-y-1 transition">
-        <div class="bg-gradient-to-br ${t.grad} p-5 text-white">
-          <div class="flex justify-between"><span class="rounded-full bg-white/20 px-2.5 py-1 text-xs font-semibold">${esc(s.name)}</span><span class="text-xs">${countQ(s)} items</span></div>
-          <h3 class="mt-3 text-lg font-extrabold">${esc(s.fullName)}</h3>
-          <p class="mt-1 text-sm text-white/85">${esc(s.tagline)}</p>
-        </div>
-        <div class="p-5">
-          <ul class="mb-4 space-y-1.5 text-sm text-slate-600">${s.topics.slice(0,4).map((tp) => `<li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full ${t.dot}"></span>${esc(tp.name)}</li>`).join('')}</ul>
-          <div class="mb-1 flex justify-between text-xs font-semibold text-slate-500"><span>Coverage</span><span>${st.pct}%</span></div>
-          <div class="h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full ${t.bar}" style="width:${st.pct}%"></div></div>
-          <div class="mt-3 flex justify-between text-xs text-slate-500"><span>${st.answered}/${st.total} attempted${st.answered ? ' · ' + st.accuracy + '% correct' : ''}</span><span class="${t.text} font-bold">Open -&gt;</span></div>
-        </div>
-      </button>`;
-    }).join('')}</div>
-
-    <section class="mt-10 overflow-hidden rounded-3xl border-2 border-dashed border-slate-300 bg-white p-6 sm:p-8">
-      <div class="flex flex-wrap items-start justify-between gap-6">
-        <div class="max-w-2xl">
-          <span class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-xs font-bold text-white"><span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Official Test Mode</span>
-          <h2 class="mt-3 text-2xl font-extrabold">Take it the way you'll take it on test day</h2>
-          <p class="mt-2 text-sm text-slate-600">A full-screen simulation of the real Maryland testing platforms — timed ${esc(officialProfiles.ela.sectionWord.toLowerCase())}s you can't go back to, the actual on-screen tools (highlighter, answer eliminator, notepad, bookmark, review screen, line reader, magnification, colour contrast${officialProfiles.misa.calculator ? ', calculator on MISA' : ''}), and <strong>no answer feedback until you turn it in</strong>.</p>
-          <p class="mt-2 text-xs text-slate-500">ELA 10 runs on Pearson TestNav 8; Government and MISA run on the Cognia MCAP Government &amp; LS MISA Kiosk. Terp Prep mirrors each one separately.</p>
-        </div>
-        <button data-action="o-setup" class="rounded-xl bg-slate-900 px-5 py-3 text-sm font-bold text-white hover:bg-slate-700">Enter Official Test Mode -&gt;</button>
-      </div>
-      <div class="mt-6 grid gap-3 sm:grid-cols-3">${subjects.map((s) => {
-        const th = themeOf(s);
+  return siteHeader(null) + `
+  <main class="wrap">
+    <h1>Maryland high school practice</h1>
+    <p class="lede">Original items for ELA 10, Life Science (MISA), American Government, and Algebra I. ELA and Government are moving from MCAP to MSTAR. Algebra I is still given as MCAP. MISA stays MISA. Progress stays in this browser. ${attempted} of ${total} items attempted.</p>
+    <table class="tests">
+      <thead><tr><th>Test</th><th>Format</th><th>Items</th><th>Progress</th><th></th></tr></thead>
+      <tbody>
+      ${subjects.map((s) => {
+        const st = statsFor(s.slug);
         const p = officialProfiles[s.slug];
-        return `<button data-action="o-setup" data-slug="${s.slug}" class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-left hover:border-slate-400 hover:bg-white">
-          <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full ${th.dot}"></span><span class="text-sm font-bold">${esc(s.name)}</span></div>
-          <p class="mt-1 text-xs text-slate-500">${p.sections} ${esc(p.sectionWord.toLowerCase())}s · ${p.sectionMinutes} min each · ${p.calculator ? 'calculator provided' : 'no calculator'}</p>
-          <p class="mt-2 text-xs font-bold ${th.text}">Start official format -&gt;</p>
-        </button>`;
-      }).join('')}</div>
-    </section>
-  </main>
-  <footer class="border-t border-slate-200 bg-white mt-8"><div class="mx-auto max-w-6xl px-4 py-6 text-center text-xs text-slate-500">Terp Prep is an independent study aid. Practice items are original and modeled on MSTAR/MISA formats - not official test questions.</div></footer>`;
+        return `<tr>
+          <td><button type="button" data-action="subject" data-slug="${s.slug}" class="linkish"><strong>${esc(s.name)}</strong></button><div class="sub">${esc(s.fullName)}</div></td>
+          <td>${p.sections} ${esc(p.sectionWord.toLowerCase())}s, ${p.sectionMinutes} min<div class="sub">${esc(calcBlurb(p))}</div></td>
+          <td>${countQ(s)}</td>
+          <td>${st.answered} of ${st.total}${st.answered ? ', ' + st.accuracy + '% correct' : ''}<div class="meter"><div class="meter-fill ${themeOf(s).bar}" style="width:${st.pct}%"></div></div></td>
+          <td><button type="button" data-action="subject" data-slug="${s.slug}" class="btn">Open</button></td>
+        </tr>`;
+      }).join('')}
+      </tbody>
+    </table>
+    <h2>Timed test</h2>
+    <p>You work in sections, you cannot return to a section after you turn it in, and you do not see answers until the end. Highlighter, answer eliminator, notepad, bookmark, review, line reader, zoom, and contrast are included. Algebra I locks the calculator on section 1. MISA includes a calculator on every session.</p>
+    <p><button type="button" data-action="o-setup" class="btn">Set up a timed test</button></p>
+    <ul class="plain">
+      ${subjects.map((s) => {
+        const p = officialProfiles[s.slug];
+        return `<li><button type="button" data-action="o-setup" data-slug="${s.slug}" class="linkish">${esc(s.name)}</button> — ${p.sections} × ${p.sectionMinutes} min, ${esc(calcBlurb(p))}</li>`;
+      }).join('')}
+    </ul>
+  </main>` + siteFooter();
 }
+
 
 function renderSubject() {
   const s = subjects.find((x) => x.slug === state.slug);
-  const t = themeOf(s);
   const op = officialProfiles[s.slug];
   const st = statsFor(s.slug);
-  const recent = [...st.sessions].reverse().slice(0, 5);
-  return `
-  <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
-    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-      <button data-action="home" class="flex items-center gap-2.5">
-        <span class="grid h-9 w-9 place-items-center rounded-xl bg-slate-900 text-white font-extrabold">T</span>
-        <span class="text-sm font-extrabold">Terp Prep</span>
-      </button>
-      <nav class="flex gap-1">${subjects.map((sub) => {
-        const th = themeOf(sub);
-        const active = sub.slug === s.slug;
-        return `<button data-action="subject" data-slug="${sub.slug}" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ${active ? th.soft + ' ' + th.text : 'text-slate-600 hover:bg-slate-100'}"><span class="h-2 w-2 rounded-full ${th.dot}"></span>${esc(sub.name)}</button>`;
-      }).join('')}</nav>
-    </div>
-  </header>
-  <main class="mx-auto max-w-6xl px-4 py-8">
-    <button data-action="home" class="mb-4 text-sm font-semibold text-slate-500 hover:text-slate-900">&lt;- All tests</button>
-    <section class="overflow-hidden rounded-3xl bg-gradient-to-br ${t.grad} p-6 text-white sm:p-8">
-      <span class="inline-flex rounded-full bg-white/20 px-2.5 py-1 text-xs font-semibold">${esc(s.name)}</span>
-      <h1 class="mt-3 text-3xl font-extrabold sm:text-4xl">${esc(s.fullName)}</h1>
-      <p class="mt-2 text-white/90">${esc(s.tagline)}</p>
-      <p class="mt-4 text-sm text-white/85"><strong>Format:</strong> ${esc(s.format.structure)}</p>
-      <a href="${esc(s.officialUrl)}" target="_blank" rel="noreferrer" class="mt-4 inline-block text-sm font-semibold underline">Official practice &amp; resources -&gt;</a>
-    </section>
-    <div class="mt-6 grid gap-6 lg:grid-cols-3">
-      <div class="lg:col-span-2 space-y-6">
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100 flex flex-wrap items-center justify-between gap-3">
-          <div><h2 class="text-lg font-bold">Full practice test</h2><p class="text-sm text-slate-500">A shuffled mix of every topic — about 1 hour of focused practice, with feedback after every item.</p></div>
-          <button data-action="quiz" data-slug="${s.slug}" data-mode="full" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn}">Start full test (${st.total} items)</button>
-        </div>
-        <div class="rounded-2xl border-2 border-dashed border-slate-300 bg-white p-6 flex flex-wrap items-center justify-between gap-3">
+  const recent = [...st.sessions].reverse().slice(0, 8);
+  return siteHeader(s.slug) + `
+  <main class="wrap">
+    <p class="back"><button type="button" data-action="home" class="linkish">All tests</button></p>
+    <h1>${esc(s.fullName)}</h1>
+    <p class="lede">${esc(s.format.structure)}</p>
+    <p class="sub">${esc(s.format.scoring)}</p>
+    <p><a href="${esc(s.officialUrl)}" target="_blank" rel="noreferrer">Official practice and resources</a></p>
+    <div class="split">
+      <div>
+        <div class="rowline">
           <div>
-            <div class="flex items-center gap-2"><h2 class="text-lg font-bold">Official format</h2><span class="rounded-full bg-slate-900 px-2 py-0.5 text-[11px] font-bold text-white">Test-day simulation</span></div>
-            <p class="text-sm text-slate-500">${esc(op.platform)} — ${op.sections} ${esc(op.sectionWord.toLowerCase())}s of ${op.sectionMinutes} minutes, real on-screen tools, no feedback until you turn it in.</p>
+            <h2>Full set</h2>
+            <p class="sub">Every topic, shuffled. The answer shows after you check each item.</p>
           </div>
-          <button data-action="o-setup" data-slug="${s.slug}" class="rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-700">Official format -&gt;</button>
+          <button type="button" data-action="quiz" data-slug="${s.slug}" data-mode="full" class="btn">Start ${st.total} items</button>
         </div>
-        <div>
-          <h2 class="mb-3 text-lg font-bold">Practice by topic</h2>
-          <div class="space-y-3">${s.topics.map((tp) => `
-            <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ${t.ring} flex flex-wrap items-center justify-between gap-4">
-              <div><div class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full ${t.dot}"></span><h3 class="font-bold">${esc(tp.name)}</h3><span class="rounded-full px-2.5 py-1 text-xs font-semibold ${t.chip}">${tp.questions.length} Q</span></div>
-              <p class="mt-1 text-sm text-slate-500">${esc(tp.blurb)}</p></div>
-              <button data-action="quiz" data-slug="${s.slug}" data-mode="${tp.id}" class="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50">Practice -&gt;</button>
-            </div>`).join('')}
+        <div class="rowline">
+          <div>
+            <h2>Timed sections</h2>
+            <p class="sub">${esc(op.platform)}. ${op.sections} ${esc(op.sectionWord.toLowerCase())}s of ${op.sectionMinutes} minutes. No answers until you submit. ${esc(calcBlurb(op))}.</p>
           </div>
+          <button type="button" data-action="o-setup" data-slug="${s.slug}" class="btn btn-ghost">Open test setup</button>
         </div>
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-          <h2 class="text-lg font-bold">Test-day strategy</h2>
-          <ul class="mt-3 space-y-2">${s.studyTips.map((tip, i) => `<li class="flex gap-3 text-sm text-slate-600"><span class="grid h-5 w-5 place-items-center rounded-full ${t.chip} text-[11px] font-bold">${i+1}</span>${esc(tip)}</li>`).join('')}</ul>
-        </div>
+        <h2>Topics</h2>
+        ${s.topics.map((tp) => `
+          <div class="topic">
+            <div>
+              <h3>${esc(tp.name)} <span class="sub">(${tp.questions.length})</span></h3>
+              <p class="sub">${esc(tp.blurb)}</p>
+            </div>
+            <button type="button" data-action="quiz" data-slug="${s.slug}" data-mode="${tp.id}" class="btn btn-ghost">Practice</button>
+          </div>`).join('')}
+        <h2>Before the test</h2>
+        <ol class="notes">${s.studyTips.map((tip) => `<li>${esc(tip)}</li>`).join('')}</ol>
+        ${s.sheet ? `<h2>Formula sheet</h2><div class="panel">${s.sheet}</div>` : ''}
       </div>
-      <aside class="space-y-6">
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-          <div class="flex justify-between"><h2 class="text-lg font-bold">Your progress</h2>${st.answered ? `<button data-action="reset" data-slug="${s.slug}" class="text-xs font-semibold text-slate-400 hover:text-rose-600">Reset</button>` : ''}</div>
-          <div class="mt-4 mb-2 flex justify-between text-xs font-semibold text-slate-500"><span>Coverage</span><span>${st.pct}%</span></div>
-          <div class="h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full ${t.bar}" style="width:${st.pct}%"></div></div>
-          <div class="mt-4 grid grid-cols-2 gap-3">
-            <div class="rounded-xl bg-slate-50 px-4 py-3"><div class="text-2xl font-extrabold">${st.answered}/${st.total}</div><div class="text-xs font-semibold uppercase text-slate-500">Attempted</div></div>
-            <div class="rounded-xl bg-slate-50 px-4 py-3"><div class="text-2xl font-extrabold">${st.accuracy}%</div><div class="text-xs font-semibold uppercase text-slate-500">Accuracy</div></div>
+      <aside>
+        <div class="panel">
+          <div class="rowline tight">
+            <h2>Progress</h2>
+            ${st.answered ? `<button type="button" data-action="reset" data-slug="${s.slug}" class="linkish">Reset</button>` : ''}
           </div>
+          <p>${st.answered} of ${st.total} attempted${st.answered ? '. ' + st.accuracy + '% marked correct.' : '.'}</p>
+          <div class="meter"><div class="meter-fill ${themeOf(s).bar}" style="width:${st.pct}%"></div></div>
         </div>
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-          <h2 class="text-lg font-bold">Tools on test day</h2>
-          <p class="mt-1 text-xs text-slate-500">${esc(op.platform)}</p>
-          <ul class="mt-3 flex flex-wrap gap-1.5">${op.tools.map((k) => toolCatalog[k]).filter(Boolean).map((tool) => `<li class="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-600">${esc(tool.name)}</li>`).join('')}
-            <li class="rounded-full px-2.5 py-1 text-[11px] font-semibold ${op.calculator ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${op.calculator ? 'Calculator' : 'No calculator'}</li>
-          </ul>
-          <button data-action="o-setup" data-slug="${s.slug}" class="mt-4 text-xs font-bold text-slate-500 hover:text-slate-900">See full tool reference &amp; sources -&gt;</button>
+        <div class="panel">
+          <h2>What the test covers</h2>
+          <ul class="plain">${s.domains.map((d) => `<li><strong>${esc(d.name)}</strong><br><span class="sub">${esc(d.weight)}</span></li>`).join('')}</ul>
         </div>
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-          <h2 class="text-lg font-bold">Reporting categories</h2>
-          <ul class="mt-3 space-y-3">${s.domains.map((d) => `<li class="text-sm"><div class="font-semibold">${esc(d.name)}</div><div class="text-slate-500">${esc(d.weight)}</div></li>`).join('')}</ul>
-        </div>
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-          <h2 class="text-lg font-bold">Recent sessions</h2>
-          ${recent.length === 0 ? '<p class="mt-2 text-sm text-slate-500">No sessions yet.</p>' : `<ul class="mt-3 space-y-2">${recent.map((sesh) => `<li class="flex justify-between rounded-lg bg-slate-50 px-3 py-2 text-sm"><span class="truncate pr-2 font-medium">${esc(sesh.label)}</span><span class="font-bold">${sesh.total ? sesh.score + '/' + sesh.total : '-'}</span></li>`).join('')}</ul>`}
+        <div class="panel">
+          <h2>Recent sessions</h2>
+          ${recent.length === 0 ? '<p class="sub">None yet.</p>' : `<table class="mini">${recent.map((sesh) => `<tr><td>${esc(sesh.label)}</td><td>${sesh.total ? sesh.score + '/' + sesh.total : '—'}</td></tr>`).join('')}</table>`}
         </div>
       </aside>
     </div>
-  </main>`;
+  </main>` + siteFooter();
 }
+
 
 function renderQuiz() {
   const s = subjects.find((x) => x.slug === state.slug);
-  const t = themeOf(s);
   const q = state.questions[state.index];
   const isChecked = !!state.checked[q.id];
   const answer = state.answers[q.id];
   const isLast = state.index === state.questions.length - 1;
   const ebas = q.ebas || state.ebas;
   const progressPct = ((state.index + (isChecked ? 1 : 0)) / state.questions.length) * 100;
+  const typeLabel = q.type === 'single' ? 'Multiple choice' : q.type === 'multi' ? 'Multiple select' : 'Constructed response' + (q.points ? ', up to ' + q.points + ' points' : '');
 
   let body = '';
   if (q.type === 'single' || q.type === 'multi') {
-    if (q.type === 'multi') body += '<p class="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Select all that apply</p>';
-    body += `<div class="mt-5 space-y-2.5">${q.choices.map((c) => {
+    if (q.type === 'multi') body += '<p class="sub">Select all that apply.</p>';
+    body += q.choices.map((c) => {
       const selected = q.type === 'multi' ? (Array.isArray(answer) && answer.includes(c.id)) : answer === c.id;
       const isCorrectChoice = q.type === 'multi' ? (q.answer || []).includes(c.id) : q.answer === c.id;
-      let cls = 'border-slate-200 bg-white hover:border-slate-300';
+      let cls = 'choice';
       if (isChecked) {
-        if (isCorrectChoice) cls = 'border-emerald-500 bg-emerald-50';
-        else if (selected) cls = 'border-rose-500 bg-rose-50';
-        else cls = 'border-slate-200 bg-white opacity-70';
-      } else if (selected) cls = t.border + ' ' + t.soft;
-      return `<button data-action="choose" data-cid="${c.id}" ${isChecked ? 'disabled' : ''} class="flex w-full items-start gap-3 rounded-xl border-2 p-3.5 text-left ${cls}">
-        <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center border-2 text-[11px] font-bold ${q.type === 'multi' ? 'rounded-md' : 'rounded-full'} ${selected || (isChecked && isCorrectChoice) ? 'border-current' : 'border-slate-300 text-transparent'}">${c.id.toUpperCase()}</span>
-        <span class="text-sm leading-relaxed">${esc(c.text)}</span>
-      </button>`;
-    }).join('')}</div>`;
+        if (isCorrectChoice) cls += ' good';
+        else if (selected) cls += ' bad';
+        else cls += ' dim';
+      } else if (selected) cls += ' on';
+      return `<button type="button" data-action="choose" data-cid="${c.id}" ${isChecked ? 'disabled' : ''} class="${cls}"><span class="ltr">${c.id.toUpperCase()}</span><span>${esc(c.text)}</span></button>`;
+    }).join('');
   } else {
-    body = `<div class="mt-5"><textarea data-action="text" ${isChecked ? 'disabled' : ''} rows="7" class="w-full resize-y rounded-xl border border-slate-200 p-4 text-sm leading-relaxed focus:outline-none focus:ring-2 focus:ring-slate-200 disabled:bg-slate-50" placeholder="Type your response here (optional — you can reveal the model and move on anytime)...">${esc(answer || '')}</textarea>
-      ${q.points ? `<p class="mt-1 text-xs text-slate-500">Worth up to ${q.points} points on the rubric below. Writing is optional — use Reveal or Skip to continue the exam.</p>` : '<p class="mt-1 text-xs text-slate-500">Writing is optional — use Reveal or Skip to continue the exam.</p>'}</div>`;
+    body = `<textarea data-action="text" ${isChecked ? 'disabled' : ''} rows="8" class="answer" placeholder="Write your response. You can open the sample without writing.">${esc(answer || '')}</textarea>
+      <p class="sub">${q.points ? 'Up to ' + q.points + ' points. ' : ''}Writing is optional here.</p>`;
   }
 
   let feedback = '';
   if (isChecked && q.type !== 'cr') {
     const ok = q.type === 'single' ? answer === q.answer : sameSet(answer || [], q.answer || []);
-    feedback = `<div class="mt-5 rounded-xl border-l-4 p-4 ${ok ? 'border-emerald-500 bg-emerald-50' : 'border-rose-500 bg-rose-50'}"><p class="font-bold">${ok ? 'Correct' : 'Not quite'}</p><p class="mt-1 text-sm text-slate-600">${esc(q.explanation)}</p></div>`;
+    feedback = `<div class="fb${ok ? ' good' : ''}"><strong>${ok ? 'Correct' : 'Incorrect'}</strong><p>${esc(q.explanation)}</p></div>`;
   }
   if (isChecked && q.type === 'cr') {
     const grade = state.selfGrade[q.id];
     const model = (q.sampleResponse && String(q.sampleResponse).trim())
       ? nl(q.sampleResponse)
-      : 'No model response is stored for this item. Use the rubric below, then continue.';
+      : 'No sample response is stored for this item.';
     const rubricHtml = Array.isArray(q.rubric) && q.rubric.length
-      ? `<div class="rounded-xl bg-white p-4 ring-1 ring-slate-200"><p class="text-xs font-bold uppercase text-slate-500">Scoring rubric — did your response...</p><ul class="mt-2 space-y-1.5">${q.rubric.map((r) => `<li class="flex gap-2 text-sm text-slate-600"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-slate-400 shrink-0"></span>${esc(r)}</li>`).join('')}</ul></div>`
-      : '<div class="rounded-xl bg-white p-4 ring-1 ring-slate-200"><p class="text-sm text-slate-600">Use a clear claim, text evidence, and organized reasoning.</p></div>';
-    feedback = `<div class="mt-5 space-y-4">
-      <div class="rounded-xl border-l-4 border-slate-400 bg-slate-50 p-4"><p class="text-xs font-bold uppercase text-slate-500">Model response</p><p class="mt-2 text-sm leading-relaxed text-slate-600">${model}</p></div>
+      ? `<div class="panel"><p class="sub">Rubric</p><ul class="plain">${q.rubric.map((r) => `<li>${esc(r)}</li>`).join('')}</ul></div>`
+      : '';
+    feedback = `<div class="panel"><p class="sub">Sample response</p><p>${model}</p></div>
       ${rubricHtml}
-      <div class="rounded-xl bg-slate-50 p-4"><p class="text-sm font-semibold">Optional self-check (you can continue either way)</p>
-        <div class="mt-3 flex flex-wrap gap-2">
-          <button data-action="grade" data-val="true" class="rounded-xl px-4 py-2 text-sm font-semibold ${grade === true ? 'bg-emerald-600 text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200'}">I met the rubric</button>
-          <button data-action="grade" data-val="false" class="rounded-xl px-4 py-2 text-sm font-semibold ${grade === false ? 'bg-rose-600 text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200'}">Needs more work</button>
-        </div>
-      </div>
-    </div>`;
+      <p>Score this only if you want it in your saved accuracy.</p>
+      <p>
+        <button type="button" data-action="grade" data-val="true" class="btn${grade === true ? '' : ' btn-ghost'}">Met the rubric</button>
+        <button type="button" data-action="grade" data-val="false" class="btn${grade === false ? '' : ' btn-ghost'}">Did not</button>
+      </p>`;
   }
 
   const canCheck = q.type === 'cr'
@@ -2633,71 +4161,64 @@ function renderQuiz() {
 
   let ebasHtml = '';
   if (ebas) {
-    ebasHtml = `<div class="mt-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ${t.ring}">
-      <button data-action="toggle-ebas" class="flex w-full items-center justify-between text-left"><span class="font-bold ${t.text}">Source Set - click to ${state.ebasOpen ? 'hide' : 'show'}</span><span class="text-slate-400">${state.ebasOpen ? '^' : 'v'}</span></button>
-      ${state.ebasOpen ? `<div class="mt-3 space-y-3"><p class="font-semibold">${esc(ebas.compellingQuestion)}</p><p class="text-sm text-slate-500">${esc(ebas.background)}</p>${ebas.sources.map((src) => `<div class="rounded-xl bg-slate-50 p-4"><div class="flex justify-between gap-3"><span class="font-bold">${esc(src.label)}</span><span class="text-xs italic text-slate-500">${esc(src.citation)}</span></div><p class="mt-1.5 text-sm text-slate-600">${esc(src.text)}</p></div>`).join('')}</div>` : ''}
+    ebasHtml = `<div class="panel">
+      <button type="button" data-action="toggle-ebas" class="linkish">Sources — ${state.ebasOpen ? 'hide' : 'show'}</button>
+      ${state.ebasOpen ? `<p><strong>${esc(ebas.compellingQuestion)}</strong></p><p class="sub">${esc(ebas.background)}</p>${ebas.sources.map((src) => `<div class="passage"><strong>${esc(src.label)}</strong> <span class="sub">${esc(src.citation)}</span><br>${esc(src.text)}</div>`).join('')}` : ''}
     </div>`;
   }
 
-  return `
-  <main class="mx-auto max-w-3xl px-4 py-8">
-    <div class="mb-4 flex justify-between"><button data-action="subject" data-slug="${s.slug}" class="text-sm font-semibold text-slate-500 hover:text-slate-900">&lt;- Exit</button><span class="text-sm font-semibold text-slate-500">Question ${state.index + 1} of ${state.questions.length}</span></div>
-    <div class="h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full ${t.bar} transition-all" style="width:${progressPct}%"></div></div>
-    <div class="mt-3 flex flex-wrap gap-2">
-      <span class="rounded-full px-2.5 py-1 text-xs font-semibold ${t.chip}">${esc(state.label)}</span>
-      ${q.topicName && state.mode === 'full' ? `<span class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">${esc(q.topicName)}</span>` : ''}
-      <span class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">${q.type === 'single' ? 'Multiple choice' : q.type === 'multi' ? 'Multiple select' : 'Constructed response' + (q.points ? ' · ' + q.points + ' pt' : '')}</span>
+  const sheet = s.sheet ? `<details class="sheet"><summary>Formula sheet</summary>${s.sheet}</details>` : '';
+
+  return siteHeader(s.slug) + `
+  <main class="wrap">
+    <div class="quiz-top">
+      <button type="button" data-action="subject" data-slug="${s.slug}" class="linkish">Back to ${esc(s.name)}</button>
+      <span>Question ${state.index + 1} of ${state.questions.length}</span>
     </div>
+    <div class="meter"><div class="meter-fill ${themeOf(s).bar}" style="width:${progressPct}%"></div></div>
+    <p class="qmeta">${esc(state.label)}${q.topicName && state.mode === 'full' ? ' · ' + esc(q.topicName) : ''} · ${typeLabel}</p>
+    ${sheet}
     ${ebasHtml}
-    <div class="mt-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      ${q.passage ? `<div class="mb-5 whitespace-pre-line rounded-xl border-l-4 border-slate-300 bg-slate-50 p-4 text-[15px] leading-relaxed text-slate-600">${nl(q.passage)}</div>` : ''}
-      <h2 class="text-lg font-semibold leading-snug">${esc(q.prompt)}</h2>
+    <div class="panel">
+      ${q.passage ? `<div class="passage">${nl(q.passage)}</div>` : ''}
+      <h2>${esc(q.prompt)}</h2>
       ${body}
       ${feedback}
-      <div class="mt-6 flex flex-wrap items-center justify-between gap-3">
-        <button data-action="prev" ${state.index === 0 ? 'disabled' : ''} class="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 ring-1 ring-slate-200 disabled:opacity-40">&lt;- Previous</button>
-        <div class="flex flex-wrap gap-2">
+      <div class="actions">
+        <button type="button" data-action="prev" ${state.index === 0 ? 'disabled' : ''} class="btn btn-ghost">Previous</button>
+        <span>
           ${!isChecked
             ? (q.type === 'cr'
-              ? `<button data-action="check" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn}">Reveal model &amp; rubric</button>
-                 <button data-action="skip-cr" class="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 ring-1 ring-slate-200">Skip essay -&gt;</button>`
-              : `<button data-action="check" ${canCheck ? '' : 'disabled'} class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn} disabled:opacity-40">Check answer</button>`)
-            : `<button data-action="next" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn}">${isLast ? 'Finish and see score' : 'Next question -&gt;'}</button>`}
-        </div>
+              ? `<button type="button" data-action="check" class="btn">Show sample and rubric</button>
+                 <button type="button" data-action="skip-cr" class="btn btn-ghost">Skip</button>`
+              : `<button type="button" data-action="check" ${canCheck ? '' : 'disabled'} class="btn">Check answer</button>`)
+            : `<button type="button" data-action="next" class="btn">${isLast ? 'Finish' : 'Next'}</button>`}
+        </span>
       </div>
     </div>
   </main>`;
 }
 
+
 function renderResults() {
   const s = subjects.find((x) => x.slug === state.slug);
-  const t = themeOf(s);
   const results = state._lastResults || [];
   const gradable = results.filter((r) => r.gradable);
   const correct = gradable.filter((r) => r.isCorrect).length;
   const pct = gradable.length ? Math.round((correct / gradable.length) * 100) : 0;
-  const msg = pct >= 80 ? 'Excellent - you have a strong command of this material.'
-    : pct >= 60 ? 'Good work. Review the items you missed and try again.'
-    : 'Keep going - repetition here is exactly how you build the score you want.';
-  return `
-  <main class="mx-auto max-w-2xl px-4 py-8">
-    <div class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-100">
-      <div class="bg-gradient-to-br ${t.grad} p-8 text-center text-white">
-        <p class="text-sm font-semibold uppercase tracking-wide text-white/80">${esc(state.label)}</p>
-        <div class="mt-3 text-6xl font-extrabold">${pct}%</div>
-        <p class="mt-2 text-white/90">${correct} of ${gradable.length} scored items correct</p>
-      </div>
-      <div class="p-6 text-center">
-        <p class="text-sm text-slate-500">${msg}</p>
-        <div class="mt-6 flex flex-wrap justify-center gap-3">
-          <button data-action="quiz" data-slug="${s.slug}" data-mode="${state.mode}" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn}">Try this set again</button>
-          <button data-action="subject" data-slug="${s.slug}" class="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 ring-1 ring-slate-200">Back to ${esc(s.name)}</button>
-          <button data-action="home" class="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 ring-1 ring-slate-200">All tests</button>
-        </div>
-      </div>
-    </div>
-  </main>`;
+  return siteHeader(s.slug) + `
+  <main class="wrap">
+    <p class="qmeta">${esc(state.label)}</p>
+    <p class="score">${pct}%</p>
+    <p>${correct} of ${gradable.length} scored items correct. A constructed response counts only if you marked it against the rubric.</p>
+    <p>
+      <button type="button" data-action="quiz" data-slug="${s.slug}" data-mode="${state.mode}" class="btn">Retry this set</button>
+      <button type="button" data-action="subject" data-slug="${s.slug}" class="btn btn-ghost">Back to ${esc(s.name)}</button>
+      <button type="button" data-action="home" class="btn btn-ghost">All tests</button>
+    </p>
+  </main>` + siteFooter();
 }
+
 
 /* =============================================================================
    OFFICIAL TEST MODE
@@ -2793,7 +4314,34 @@ const officialProfiles = {
       { label: 'Maryland Assessment, Accessibility & Accommodations Manual', url: 'https://marylandpublicschools.org/programs/Documents/Special-Ed/IEP/MAM508102017.pdf' },
     ],
   },
-};
+  algebra: {
+    platform: 'TestNav 8 (Pearson / ADAM)',
+    sectionWord: 'Section',
+    sections: 4,
+    sectionMinutes: 40,
+    realStructure: 'Four 40-minute Sections. Section 1 is non-calculator. Sections 2, 3, and 4 allow a graphing calculator. You may review and change answers only inside the section you are currently in.',
+    highlightColors: ['blue', 'pink'],
+    highlightNote: 'TestNav shows a small pop-up over your selection with the available highlighter colours.',
+    tools: ['highlighter', 'eliminator', 'masking', 'notepad', 'bookmark', 'review', 'lineReader', 'zoom', 'contrast', 'calculator', 'references'],
+    calculator: false,
+    calculatorSections: [1, 2, 3],
+    references: true,
+    clearBtn: false,
+    calcNote: 'Section 1 is non-calculator. Sections 2, 3, and 4 provide a graphing calculator (Desmos in TestNav, or a handheld TI-84 CE). This practice copy includes a scientific calculator on those sections, not a full grapher. CAS calculators are not allowed on the real test.',
+    referenceNote: 'Formula sheet for Algebra I practice.',
+    referenceHtml: algebraSheet,
+    extras: [
+      'You can review and change answers only inside the current section.',
+      'Scratch paper is provided on the real test.',
+      'The reference sheet is available in every section, including the non-calculator section.',
+    ],
+    sources: [
+      { label: 'MCAP 2025-2026 Test Coordinator Manual (Algebra I: four 40-minute sections, Section 1 non-calculator)', url: 'https://support.mdassessments.com/resources/training/MD1167026_TCM_Sp26_WEBTAG.pdf' },
+      { label: 'MSDE Mathematics Assessment Tools Policy (Desmos graphing calculator on Algebra I calculator sections)', url: 'https://msde.maryland.gov/media/26386' },
+      { label: 'MCAP Algebra I High-Level Blueprint', url: 'https://msde.maryland.gov/media/26358' },
+      { label: 'MSDE practice tests and TestNav tutorial', url: 'https://support.mdassessments.com/practice-tests/' },
+    ],
+  },};
 
 const toolCatalog = {
   highlighter: { name: 'Highlighter', blurb: 'Select passage or question text and mark it. Erase a single highlight or clear the whole screen.' },
@@ -2805,7 +4353,7 @@ const toolCatalog = {
   lineReader: { name: 'Line Reader', blurb: 'A movable window that dims everything except the line or lines you are reading.' },
   zoom: { name: 'Magnification', blurb: 'Zoom the test content. The kiosk steps through 100%, 150%, 200% and 300%.' },
   contrast: { name: 'Colour Contrast', blurb: 'Change the background and text colours of the test content. Must be switched on in advance via your PNP on the real test.' },
-  calculator: { name: 'Scientific Calculator', blurb: 'Built into the platform. Provided on MISA; never provided on ELA/L.' },
+  calculator: { name: 'Calculator', blurb: 'Opens the calculator when this test and this section allow one.' },
   references: { name: 'References', blurb: 'Opens the reference material provided with the test in a movable, resizable window.' },
 };
 
@@ -3009,6 +4557,7 @@ function advanceSection(expired) {
   o.showReview = false;
   o.sectionExpired = !!expired;
   if (o.timed) o.secondsLeft = profile.sectionMinutes * 60;
+  if (!sectionHasCalc(profile, o.section)) o.tool.calculator = false;
   render();
 }
 
@@ -3059,7 +4608,7 @@ function applySelfScore(slug, qid, ok) {
   writeProgress(data);
 }
 
-/* ---- Scientific calculator (MISA only). Hand-written parser, no eval. ---- */
+/* ---- Scientific calculator (MISA, and Algebra I sections 2-4). Hand-written parser, no eval. ---- */
 function calcEval(expr, deg) {
   const src = String(expr).replace(/\s+/g, '').replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-').replace(/π/g, 'pi').replace(/√/g, 'sqrt');
   let i = 0;
@@ -3130,89 +4679,48 @@ function renderToolReference(slug) {
   const s = subjects.find((x) => x.slug === slug);
   const rows = p.tools.map((k) => toolCatalog[k]).filter(Boolean);
   return `
-    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      <h3 class="text-lg font-bold">Tools you get on the real ${esc(s.name)} test</h3>
-      <p class="mt-1 text-sm text-slate-500">Platform: <strong>${esc(p.platform)}</strong>. ${esc(p.realStructure)}</p>
-      <ul class="mt-4 space-y-2.5">${rows.map((tool) => `
-        <li class="flex gap-3 text-sm"><span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400"></span><span><strong>${esc(tool.name)}</strong> — ${esc(tool.blurb)}</span></li>`).join('')}
-        <li class="flex gap-3 text-sm"><span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full ${p.calculator ? 'bg-emerald-500' : 'bg-rose-400'}"></span><span><strong>Calculator</strong> — ${esc(p.calcNote)}</span></li>
-      </ul>
-      ${p.extras && p.extras.length ? `<div class="mt-4 rounded-xl bg-slate-50 p-4">
-        <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Also good to know</p>
-        <ul class="mt-2 space-y-1.5">${p.extras.map((x) => `<li class="text-sm text-slate-600">${esc(x)}</li>`).join('')}</ul>
-      </div>` : ''}
-      <div class="mt-4 border-t border-slate-100 pt-3">
-        <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Sources (MSDE / platform documentation)</p>
-        <ul class="mt-2 space-y-1">${p.sources.map((src) => `<li class="text-xs text-slate-500"><a href="${esc(src.url)}" target="_blank" rel="noreferrer" class="underline hover:text-slate-900">${esc(src.label)}</a></li>`).join('')}</ul>
-      </div>
+    <div class="panel">
+      <h2>Tools on the real ${esc(s.name)} test</h2>
+      <p class="sub">${esc(p.platform)}. ${esc(p.realStructure)}</p>
+      <ul class="plain">${rows.map((tool) => `<li><strong>${esc(tool.name)}.</strong> ${esc(tool.blurb)}</li>`).join('')}</ul>
+      <p><strong>Calculator.</strong> ${esc(p.calcNote)}</p>
+      ${p.extras && p.extras.length ? `<ul class="plain">${p.extras.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+      <p class="sub">Sources</p>
+      <ul class="plain">${p.sources.map((src) => `<li><a href="${esc(src.url)}" target="_blank" rel="noreferrer">${esc(src.label)}</a></li>`).join('')}</ul>
     </div>`;
 }
+
 
 function renderOfficialSetup() {
   const s = subjects.find((x) => x.slug === state.setupSlug) || subjects[0];
   const p = officialProfiles[s.slug];
-  const t = themeOf(s);
   const items = countQ(s);
-  return `
-  <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
-    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-      <button data-action="home" class="flex items-center gap-2.5">
-        <span class="grid h-9 w-9 place-items-center rounded-xl bg-slate-900 text-white font-extrabold">T</span>
-        <span class="text-sm font-extrabold">Terp Prep</span>
-      </button>
-      <span class="rounded-full bg-slate-900 px-3 py-1 text-xs font-bold text-white">Official Test Mode</span>
-    </div>
-  </header>
-  <main class="mx-auto max-w-5xl px-4 py-8">
-    <button data-action="home" class="mb-4 text-sm font-semibold text-slate-500 hover:text-slate-900">&lt;- All tests</button>
-    <section class="overflow-hidden rounded-3xl bg-slate-900 p-6 text-white sm:p-8">
-      <span class="inline-flex rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold">Test-day simulation</span>
-      <h1 class="mt-3 text-3xl font-extrabold sm:text-4xl">Official Test Mode</h1>
-      <p class="mt-2 max-w-2xl text-slate-300">A full-screen run-through in the shape of the real thing: timed sections you cannot go back to, the same on-screen tools, no answer feedback until you turn it in.</p>
-    </section>
-
-    <h2 class="mb-3 mt-8 text-lg font-bold">1. Choose your test</h2>
-    <div class="grid gap-4 md:grid-cols-3">${subjects.map((sub) => {
-      const th = themeOf(sub);
+  return siteHeader(null) + `
+  <main class="wrap">
+    <p class="back"><button type="button" data-action="home" class="linkish">All tests</button></p>
+    <h1>Timed test</h1>
+    <p class="lede">Same section rules as the real test: after you turn a section in, you cannot go back, and correct answers stay hidden until the end.</p>
+    <h2>Test</h2>
+    ${subjects.map((sub) => {
       const pr = officialProfiles[sub.slug];
-      const active = sub.slug === s.slug;
-      return `<button data-action="o-pick" data-slug="${sub.slug}" class="rounded-2xl border-2 bg-white p-5 text-left transition ${active ? th.border + ' ' + th.soft : 'border-slate-200 hover:border-slate-300'}">
-        <div class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full ${th.dot}"></span><span class="font-bold">${esc(sub.name)}</span></div>
-        <p class="mt-1.5 text-sm text-slate-600">${esc(sub.fullName)}</p>
-        <p class="mt-2 text-xs font-semibold ${th.text}">${pr.sections} ${esc(pr.sectionWord.toLowerCase())}s · ${pr.sectionMinutes} min each</p>
-      </button>`;
-    }).join('')}</div>
-
-    <h2 class="mb-3 mt-8 text-lg font-bold">2. Choose your timing</h2>
-    <div class="grid gap-4 sm:grid-cols-2">
-      <button data-action="o-timed" data-val="true" class="rounded-2xl border-2 bg-white p-5 text-left ${state.setupTimed ? t.border + ' ' + t.soft : 'border-slate-200 hover:border-slate-300'}">
-        <div class="font-bold">Timed — official section clock</div>
-        <p class="mt-1 text-sm text-slate-600">${p.sectionMinutes} minutes per ${esc(p.sectionWord.toLowerCase())}. When the clock runs out the ${esc(p.sectionWord.toLowerCase())} closes automatically, exactly like test day.</p>
-      </button>
-      <button data-action="o-timed" data-val="false" class="rounded-2xl border-2 bg-white p-5 text-left ${!state.setupTimed ? t.border + ' ' + t.soft : 'border-slate-200 hover:border-slate-300'}">
-        <div class="font-bold">Untimed — learn the tools first</div>
-        <p class="mt-1 text-sm text-slate-600">Same interface and same ${esc(p.sectionWord.toLowerCase())} structure, but the clock counts up instead of down. Best for your first run.</p>
-      </button>
-    </div>
-
-    <div class="mt-8 flex flex-wrap items-center gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      <div class="grow">
-        <h2 class="text-lg font-bold">3. Start the ${esc(s.name)} official-format test</h2>
-        <p class="text-sm text-slate-500">${items} items across ${p.sections} ${esc(p.sectionWord.toLowerCase())}s. You will not see whether an answer is right until you turn the whole test in.</p>
-      </div>
-      <button data-action="o-start" data-slug="${s.slug}" class="rounded-xl px-5 py-3 text-sm font-bold text-white ${t.btn}">Begin test -&gt;</button>
-    </div>
-
-    <div class="mt-8">${renderToolReference(s.slug)}</div>
-    <p class="mt-4 text-xs text-slate-400">Terp Prep is an independent study aid. This is a practice simulation of the Maryland testing platforms, not the official software, and the items are original.</p>
-  </main>`;
+      const on = sub.slug === s.slug;
+      return `<button type="button" data-action="o-pick" data-slug="${sub.slug}" class="pick${on ? ' on' : ''}"><strong>${esc(sub.name)}</strong> — ${esc(sub.fullName)}<br><span class="sub">${pr.sections} ${esc(pr.sectionWord.toLowerCase())}s, ${pr.sectionMinutes} min, ${esc(calcBlurb(pr))}</span></button>`;
+    }).join('')}
+    <h2>Clock</h2>
+    <button type="button" data-action="o-timed" data-val="true" class="pick${state.setupTimed ? ' on' : ''}"><strong>Timed</strong><br><span class="sub">${p.sectionMinutes} minutes per ${esc(p.sectionWord.toLowerCase())}. When time runs out, that ${esc(p.sectionWord.toLowerCase())} closes.</span></button>
+    <button type="button" data-action="o-timed" data-val="false" class="pick${!state.setupTimed ? ' on' : ''}"><strong>Untimed</strong><br><span class="sub">Same sections and tools. The clock counts up.</span></button>
+    <p><button type="button" data-action="o-start" data-slug="${s.slug}" class="btn">Start ${esc(s.name)} (${items} items)</button></p>
+    ${renderToolReference(s.slug)}
+  </main>` + siteFooter();
 }
+
 
 function renderExamTools() {
   const o = state.official;
   const p = officialProfiles[o.slug];
   const btn = (tool, label) => {
     if (!p.tools.includes(tool)) return '';
+    if (tool === 'calculator' && !sectionHasCalc(p, o.section)) return '';
     const on = !!o.tool[tool];
     return `<button data-action="o-tool" data-tool="${tool}" class="rounded-md px-2.5 py-1.5 text-xs font-bold ${on ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}">${esc(label)}</button>`;
   };
@@ -3276,6 +4784,7 @@ function renderExamItem() {
 
   return `
     ${o.sectionExpired ? `<div class="mb-4 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-3 text-sm font-semibold text-amber-900">Time expired on the previous ${esc(p.sectionWord.toLowerCase())}. You are now in ${esc(sec.label)} and cannot return to earlier ${esc(p.sectionWord.toLowerCase())}s.</div>` : ''}
+    ${Array.isArray(p.calculatorSections) ? `<p class="exam-muted mb-3 text-sm">${sectionHasCalc(p, o.section) ? 'Calculator section. The toolbar calculator is a scientific calculator. On the real test this section has a Desmos graphing calculator.' : 'Non-calculator section. The calculator stays off, same as Section 1 of Algebra I.'}</p>` : ''}
     ${ebas ? `<div class="exam-card mb-4 rounded-lg border-2 border-slate-200 bg-white p-5">
       <div class="exam-muted text-[11px] font-bold uppercase tracking-wide text-slate-500">Evidence-Based Argument Set — source material</div>
       <p class="mt-2 font-bold">${esc(ebas.compellingQuestion)}</p>
@@ -3379,18 +4888,20 @@ function renderExamCalculator() {
 function renderExamReferences() {
   const o = state.official;
   const p = officialProfiles[o.slug];
+  const extra = p.referenceHtml ? 'width:440px;max-width:92vw;' : '';
+  const body = p.referenceHtml
+    ? p.referenceHtml
+    : `<p>${esc(p.referenceNote || 'Reference material for this test opens here.')}</p><p class="exam-muted mt-3 text-xs text-slate-500">On the real test, this window opens the sheet that comes with the exam.</p>`;
   return `
-    <div id="exam-refs" class="exam-float exam-panel w-80 overflow-hidden rounded-lg border-2 border-slate-400 bg-white" style="left:${o.refPos.x}px; top:${o.refPos.y}px;">
+    <div id="exam-refs" class="exam-float exam-panel overflow-hidden rounded-lg border-2 border-slate-400 bg-white" style="left:${o.refPos.x}px; top:${o.refPos.y}px; width:${p.referenceHtml ? '440px' : '320px'}; ${extra}">
       <div data-drag="refs" class="exam-grip flex items-center justify-between border-b border-slate-300 bg-slate-100 px-3 py-1.5">
         <span class="text-xs font-bold">References</span>
-        <button data-action="o-tool" data-tool="references" class="px-1 text-sm font-bold text-slate-500 hover:text-slate-900">&#10005;</button>
+        <button type="button" data-action="o-tool" data-tool="references" class="px-1 text-sm font-bold text-slate-500 hover:text-slate-900">&#10005;</button>
       </div>
-      <div class="p-4 text-sm leading-relaxed">
-        <p>${esc(p.referenceNote || 'Reference material provided with this test opens here.')}</p>
-        <p class="exam-muted mt-3 text-xs text-slate-500">Terp Prep does not reproduce the official reference materials. On test day, open this tool to reach them.</p>
-      </div>
+      <div class="p-4 text-sm leading-relaxed" style="max-height:62vh;overflow:auto">${body}</div>
     </div>`;
 }
+
 
 function renderExamHelp() {
   const o = state.official;
@@ -3437,6 +4948,7 @@ function renderOfficial() {
         </div>
         <div class="flex flex-wrap items-center gap-2">
           <span class="exam-muted rounded bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-700">${esc(sec.label)} of ${o.sections.length}</span>
+          ${Array.isArray(p.calculatorSections) ? `<span class="exam-muted rounded bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-700">${sectionHasCalc(p, o.section) ? 'Calculator' : 'No calculator'}</span>` : ''}
           <span class="exam-muted text-xs font-semibold text-slate-500">Question ${inSectionIndex + 1} of ${sectionCount}</span>
           <span class="exam-muted flex items-center gap-1.5 rounded bg-slate-100 px-2.5 py-1">
             <span class="text-[10px] font-bold uppercase text-slate-500">${o.timed ? 'Time left' : 'Elapsed'}</span>
@@ -3471,7 +4983,7 @@ function renderOfficial() {
     </footer>
 
     ${o.tool.notepad ? renderExamNotepad() : ''}
-    ${o.tool.calculator && p.calculator ? renderExamCalculator() : ''}
+    ${o.tool.calculator && sectionHasCalc(p, o.section) ? renderExamCalculator() : ''}
     ${o.tool.references && p.references ? renderExamReferences() : ''}
     ${o.tool.lineReader ? '<div id="exam-linereader"><div id="exam-lr-top" style="top:0;height:0"></div><div id="exam-lr-bot" style="top:100%;bottom:0"></div></div>' : ''}
     ${o.tool.help ? renderExamHelp() : ''}
@@ -3481,7 +4993,6 @@ function renderOfficial() {
 function renderOfficialResults() {
   const o = state.official;
   const s = subjects.find((x) => x.slug === o.slug);
-  const t = themeOf(s);
   const p = officialProfiles[o.slug];
   const results = o.results || [];
   const byId = {};
@@ -3514,92 +5025,61 @@ function renderOfficialResults() {
   };
   const keyText = (q) => (q.type === 'multi' ? (q.answer || []).map((x) => x.toUpperCase()).sort().join(', ') : String(q.answer || '').toUpperCase());
 
-  const msg = pct >= 80 ? 'Strong command of this material — keep the pace and the tools you used today.'
-    : pct >= 60 ? 'Solid. Work through the missed items below, then run the official format again.'
-    : 'Use the breakdown below to pick one reporting category at a time and rebuild it.';
+  return siteHeader(s.slug) + `
+  <main class="wrap">
+    <p class="qmeta">${esc(s.fullName)} · ${esc(p.platform.split('(')[0].trim())} · ${o.timed ? 'timed' : 'untimed'} · ${fmtClock(o.elapsed)}</p>
+    <p class="score">${pct}%</p>
+    <p>${correct} of ${machine.length} machine-scored items correct.${crQs.length ? ' ' + crQs.length + ' constructed response' + (crQs.length === 1 ? '' : 's') + ' to score below. Those are not in the percent.' : ''}</p>
+    <p>
+      <button type="button" data-action="o-start" data-slug="${s.slug}" class="btn">Retake</button>
+      <button type="button" data-action="o-setup" data-slug="${s.slug}" class="btn btn-ghost">Change test or timing</button>
+      <button type="button" data-action="o-leave" class="btn btn-ghost">Back to ${esc(s.name)}</button>
+    </p>
 
-  return `
-  <main class="mx-auto max-w-4xl px-4 py-8">
-    <div class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-100">
-      <div class="bg-gradient-to-br ${t.grad} p-8 text-center text-white">
-        <p class="text-xs font-bold uppercase tracking-wide text-white/80">Official format · ${esc(p.platform.split('(')[0].trim())}</p>
-        <p class="mt-1 text-sm font-semibold text-white/90">${esc(s.fullName)}</p>
-        <div class="mt-3 text-6xl font-extrabold">${pct}%</div>
-        <p class="mt-2 text-white/90">${correct} of ${machine.length} machine-scored items correct</p>
-        <p class="mt-1 text-xs text-white/70">${o.sections.length} ${esc(p.sectionWord.toLowerCase())}s · ${o.timed ? 'timed' : 'untimed'} · ${fmtClock(o.elapsed)} on the clock${crQs.length ? ' · ' + crQs.length + ' constructed response' + (crQs.length === 1 ? '' : 's') + ' to score below' : ''}</p>
-      </div>
-      <div class="p-6">
-        <p class="text-center text-sm text-slate-500">${msg}</p>
-        <div class="mt-6 flex flex-wrap justify-center gap-3">
-          <button data-action="o-start" data-slug="${s.slug}" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-white ${t.btn}">Retake official format</button>
-          <button data-action="o-setup" data-slug="${s.slug}" class="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 ring-1 ring-slate-200">Change test or timing</button>
-          <button data-action="o-leave" class="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 ring-1 ring-slate-200">Back to ${esc(s.name)}</button>
-        </div>
-      </div>
-    </div>
+    <h2>By topic</h2>
+    ${[...topicMap.entries()].map(([name, v]) => {
+      const tp = v.total ? Math.round((v.correct / v.total) * 100) : 0;
+      return `<div>
+        <div class="quiz-top"><span>${esc(name)}</span><span>${v.correct}/${v.total} · ${tp}%</span></div>
+        <div class="meter"><div class="meter-fill ${themeOf(s).bar}" style="width:${tp}%"></div></div>
+      </div>`;
+    }).join('')}
+    ${flagged.length ? `<p>Bookmarked during the test: ${flagged.length}. Those items are marked below.</p>` : ''}
 
-    <div class="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      <h2 class="text-lg font-bold">Reporting category breakdown</h2>
-      <div class="mt-4 space-y-3">${[...topicMap.entries()].map(([name, v]) => {
-        const tp = v.total ? Math.round((v.correct / v.total) * 100) : 0;
-        return `<div>
-          <div class="mb-1 flex justify-between text-sm"><span class="font-semibold">${esc(name)}</span><span class="font-bold text-slate-500">${v.correct}/${v.total} · ${tp}%</span></div>
-          <div class="h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full ${tp >= 70 ? 'bg-emerald-500' : tp >= 50 ? 'bg-amber-500' : 'bg-rose-500'}" style="width:${tp}%"></div></div>
-        </div>`;
-      }).join('')}</div>
-      ${flagged.length ? `<p class="mt-4 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">You bookmarked ${flagged.length} item${flagged.length === 1 ? '' : 's'} during the test. Bookmarked items are marked with a star below.</p>` : ''}
-    </div>
+    <h2>Missed (${missed.length})</h2>
+    ${missed.length === 0 ? '<p>Every machine-scored item was correct.</p>' : missed.map((q) => `
+      <div class="miss">
+        <p class="sub">${esc(q.topicName)}${o.flags[q.id] ? ' · bookmarked' : ''}</p>
+        <p><strong>${esc(q.prompt)}</strong></p>
+        <p>Your answer: ${esc(answerText(q))}. Correct: ${esc(keyText(q))}.</p>
+        <p>${esc(q.explanation)}</p>
+      </div>`).join('')}
 
-    <div class="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      <h2 class="text-lg font-bold">Items you missed (${missed.length})</h2>
-      ${missed.length === 0 ? '<p class="mt-2 text-sm text-slate-500">You answered every machine-scored item correctly.</p>' : `<div class="mt-4 space-y-4">${missed.map((q) => `
-        <div class="rounded-xl border-l-4 border-rose-400 bg-slate-50 p-4">
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="rounded bg-slate-200 px-2 py-0.5 text-[11px] font-bold text-slate-700">${esc(q.topicName)}</span>
-            ${o.flags[q.id] ? '<span class="rounded bg-amber-300 px-2 py-0.5 text-[11px] font-bold text-amber-950">&#9733; Bookmarked</span>' : ''}
-          </div>
-          <p class="mt-2 font-semibold">${esc(q.prompt)}</p>
-          <p class="mt-2 text-sm"><span class="font-bold text-rose-600">Your answer:</span> ${esc(answerText(q))} &nbsp;·&nbsp; <span class="font-bold text-emerald-700">Correct:</span> ${esc(keyText(q))}</p>
-          <p class="mt-2 text-sm text-slate-600">${esc(q.explanation)}</p>
-        </div>`).join('')}</div>`}
-    </div>
-
-    ${crQs.length ? `<div class="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      <h2 class="text-lg font-bold">Constructed responses — score these yourself</h2>
-      <p class="mt-1 text-sm text-slate-500">On the real test these are hand-scored against a rubric, so they are not part of the percentage above. Score each one honestly and it will count toward your saved accuracy.</p>
-      <div class="mt-4 space-y-5">${crQs.map((q) => {
+    ${crQs.length ? `<h2>Constructed responses</h2>
+      <p class="sub">These are hand-scored on the real test. Marking one here updates your saved accuracy and does not add another session.</p>
+      ${crQs.map((q) => {
         const grade = o.selfGrade[q.id];
         const written = o.answers[q.id];
-        const model = (q.sampleResponse && String(q.sampleResponse).trim()) ? nl(q.sampleResponse) : 'No model response is stored for this item.';
-        return `<div class="rounded-xl bg-slate-50 p-4">
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="rounded bg-slate-200 px-2 py-0.5 text-[11px] font-bold text-slate-700">${esc(q.topicName)}</span>
-            ${q.points ? `<span class="rounded bg-slate-200 px-2 py-0.5 text-[11px] font-bold text-slate-700">${q.points} points</span>` : ''}
-          </div>
-          <p class="mt-2 font-semibold">${esc(q.prompt)}</p>
-          <div class="mt-3 rounded-lg bg-white p-3 ring-1 ring-slate-200">
-            <p class="text-[11px] font-bold uppercase text-slate-500">What you wrote</p>
-            <p class="mt-1.5 whitespace-pre-line text-sm text-slate-600">${written && String(written).trim() ? esc(written) : 'You left this item blank.'}</p>
-          </div>
-          <div class="mt-3 rounded-lg border-l-4 border-slate-400 bg-white p-3">
-            <p class="text-[11px] font-bold uppercase text-slate-500">Model response</p>
-            <p class="mt-1.5 text-sm leading-relaxed text-slate-600">${model}</p>
-          </div>
-          ${Array.isArray(q.rubric) && q.rubric.length ? `<div class="mt-3 rounded-lg bg-white p-3 ring-1 ring-slate-200">
-            <p class="text-[11px] font-bold uppercase text-slate-500">Scoring rubric — did your response...</p>
-            <ul class="mt-2 space-y-1.5">${q.rubric.map((r) => `<li class="flex gap-2 text-sm text-slate-600"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400"></span>${esc(r)}</li>`).join('')}</ul>
-          </div>` : ''}
-          <div class="mt-3 flex flex-wrap gap-2">
-            <button data-action="o-selfscore" data-qid="${q.id}" data-val="true" class="rounded-lg px-4 py-2 text-sm font-semibold ${grade === true ? 'bg-emerald-600 text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200'}">I met the rubric</button>
-            <button data-action="o-selfscore" data-qid="${q.id}" data-val="false" class="rounded-lg px-4 py-2 text-sm font-semibold ${grade === false ? 'bg-rose-600 text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200'}">Needs more work</button>
-          </div>
+        const model = (q.sampleResponse && String(q.sampleResponse).trim()) ? nl(q.sampleResponse) : 'No sample is stored for this item.';
+        return `<div class="panel">
+          <p class="sub">${esc(q.topicName)}${q.points ? ' · ' + q.points + ' points' : ''}</p>
+          <p><strong>${esc(q.prompt)}</strong></p>
+          <p class="sub">What you wrote</p>
+          <p class="passage">${written && String(written).trim() ? esc(written) : 'Left blank.'}</p>
+          <p class="sub">Sample</p>
+          <p>${model}</p>
+          ${Array.isArray(q.rubric) && q.rubric.length ? `<ul class="plain">${q.rubric.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
+          <p>
+            <button type="button" data-action="o-selfscore" data-qid="${q.id}" data-val="true" class="btn${grade === true ? '' : ' btn-ghost'}">Met the rubric</button>
+            <button type="button" data-action="o-selfscore" data-qid="${q.id}" data-val="false" class="btn${grade === false ? '' : ' btn-ghost'}">Did not</button>
+          </p>
         </div>`;
-      }).join('')}</div>
-    </div>` : ''}
+      }).join('')}` : ''}
 
-    <div class="mt-6">${renderToolReference(s.slug)}</div>
-  </main>`;
+    ${renderToolReference(s.slug)}
+  </main>` + siteFooter();
 }
+
 
 function bind() {
   app.querySelectorAll('[data-action]').forEach((el) => {
